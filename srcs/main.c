@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/03 01:20:00 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/04 22:57:39 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,11 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		ft_usage();
-	if (!(win = (t_win*)malloc(sizeof(t_win))))
-		return (0);
+	if (!ft_strcmp(av[1], "julia") || !ft_strcmp(av[1], "mandelbrot"))
+		if (!(win = (t_win*)malloc(sizeof(t_win))))
+			return (0);
+	else
+		ft_usage();	
 	ft_parse(&win, av[1]);
 	ft_init_start(&win, av[1]);
 	ft_new_imgs(&win);
