@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/05 23:52:06 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/06 19:20:02 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 # define COEF_Z 0.2
 # define MIN_ZOOM 0.01
 # define MAX_ZOOM 150
+# define MAX_ALT 15
+# define MIN_ALT -15
+
+# define NB_THREADS 4
 # define MAX_ALT 15
 # define MIN_ALT -15
 
@@ -69,7 +73,21 @@
 # define PAGE_DOWN 121
 # define PAGE_UP 116
 
-typedef struct		s_win
+typedef struct		s_win	t_win;
+
+typedef struct		s_thread
+{
+	int				id;
+	t_win			*win;
+}					t_thread;
+
+typedef struct		s_render
+{
+	pthread_t		threads[NB_THREADS];
+	t_thread		thrds[NB_THREADS];
+}					t_render;
+
+struct				s_win
 {
 	int				fract;
 	void			*mlx_ptr;
@@ -92,13 +110,8 @@ typedef struct		s_win
 	int				old_it_max;
 	double			x1;
 	double			y1;
-}					t_win;
-
-typedef struct		s_complex
-{
-	double reel;
-	double imaginaire;
-}					t_complex;
+	t_render		render;
+};
 
 void		ft_init_start(t_win **win);
 void		ft_init_mandelbrot(t_win **win);
@@ -121,6 +134,8 @@ void		ft_draw_fractale(t_win **win);
 void		ft_reset_fractale(t_win **win);
 void		ft_create_bship(t_win **win);
 void		ft_create_julia2(t_win **win);
+void		ft_multithreading(t_win *win);
+void		*ft_create_mandelbrot_multi(void *winn);
 
 #endif
  

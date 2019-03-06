@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 14:35:16 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/06 19:23:28 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,34 @@ void	ft_draw_fractale(t_win **win)
 	mlx_put_image_to_window((*win)->mlx_ptr, (*win)->win_ptr, (*win)->img_ptr, 0, 0);
 	ft_print_menu(win);
 	ft_put_vig(win);
+}
+
+void		ft_multithreading(t_win *win)
+{
+	t_render	*render2;
+	int			i;
+
+	i = 0;
+	render2 = &win->render;
+	while (i < NB_THREADS)
+	{
+		render2->thrds[i].id = i;
+		render2->thrds[i].win = win;
+		if (pthread_create(&render2->threads[i], NULL, ft_create_mandelbrot_multi, &render2->thrds[i]))
+		{
+			ft_putstr("erreur pthread create poto");
+			return ;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < NB_THREADS)
+	{
+		if (pthread_join(render2->threads[i], NULL))
+		{
+			ft_putstr("erreur pthread join poto");
+			return ;
+		}
+		i++;
+	}
 }

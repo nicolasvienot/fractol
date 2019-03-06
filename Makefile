@@ -6,20 +6,20 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/05 21:47:34 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/06 18:07:45 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fractol
 
-SRCS	=	srcs/main.c srcs/ft_error.c srcs/ft_fractales.c srcs/ft_print.c srcs/ft_put_vig.c srcs/ft_init_struct.c srcs/ft_select_fractale.c
+SRCS	=	srcs/main.c srcs/ft_error.c srcs/ft_fractales.c srcs/ft_print.c srcs/ft_put_vig.c srcs/ft_init_struct.c srcs/ft_select_fractale.c srcs/ft_fractales_multi.c
 
-CC		=	gcc -O2 -O3
+CC		=	gcc
 
 INC.	=	-I libft/ -I includes/ -I mlx/
 
 FLAGS	=  -Wall -Werror -Wextra
-# -lpthread
+
 OBJS	=	$(SRCS:.c=.o)
 
 F.WORK	=	-lmlx -L mlx -framework OpenGL -framework Appkit
