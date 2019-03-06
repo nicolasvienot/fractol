@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 19:52:00 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/06 20:11:41 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define MAX_ALT 15
 # define MIN_ALT -15
 
-# define NB_THREADS 4
+# define NB_THREADS 8
 # define MAX_ALT 15
 # define MIN_ALT -15
 

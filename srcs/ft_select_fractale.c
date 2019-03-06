@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 19:56:19 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/06 20:13:46 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_reset_fractale(t_win *win)
 void	ft_draw_fractale(t_win *win)
 {
 	if (win->fract == 1)
-		ft_create_mandelbrot(win);
+		ft_multithreading(win);
 	if (win->fract == 2)
 		ft_create_julia(win);
 	if (win->fract == 3)

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 20:02:07 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/06 20:14:28 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int			deal_key(int keycode, t_win *win)
 		ft_exit(win);
 	mlx_destroy_image(win->mlx_ptr, win->img_ptr);
 	win->img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
-	// ft_draw_fractale(win);
-	ft_multithreading(win);
+	ft_draw_fractale(win);
+	// ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img_ptr, 0, 0);
 	ft_print_menu(win);
 	ft_put_vig(win);
@@ -86,7 +86,8 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 	}
 	mlx_destroy_image(win->mlx_ptr, win->img_ptr);
 	win->img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
-	ft_multithreading(win);
+	ft_draw_fractale(win);
+	// ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img_ptr, 0, 0);
 	ft_print_menu(win);
 	ft_put_vig(win);
@@ -95,8 +96,8 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 
 int		deal_expose(t_win *win)
 {
-	// ft_draw_fractale(win);
-	ft_multithreading(win);
+	ft_draw_fractale(win);
+	// ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img_ptr, 0, 0);
 	ft_print_menu(win);
 	ft_put_vig(win);
