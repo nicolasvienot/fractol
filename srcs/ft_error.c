@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 11:48:56 by auguyon           #+#    #+#             */
-/*   Updated: 2019/03/05 22:13:34 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/06 19:53:10 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void		ft_usage(void)
 	exit(EXIT_FAILURE);
 }
 
-int			ft_exit(t_win **win)
+int			ft_exit(t_win *win)
 {
-	free(*win);
+	free(win);
 	exit(EXIT_SUCCESS);
 }

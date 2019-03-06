@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 19:20:02 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/06 19:52:00 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,27 +113,27 @@ struct				s_win
 	t_render		render;
 };
 
-void		ft_init_start(t_win **win);
-void		ft_init_mandelbrot(t_win **win);
-void		ft_init_julia(t_win **win);
+void		ft_init_start(t_win *win);
+void		ft_init_mandelbrot(t_win *win);
+void		ft_init_julia(t_win *win);
 void		ft_usage(void);
-int			ft_exit(t_win **win);
-void		ft_create_julia(t_win **win);
-void		ft_create_mandelbrot(t_win **win);
-void		ft_create_mandelbrot2(t_win **win);
-void		ft_create_tricorn(t_win **win);
-int			ft_print_menu(t_win **win);
-int			ft_print_menu1(t_win **win);
-int			ft_print_menu2(t_win **win);
-int			ft_print_menu3(t_win **win);
-void		mlx_put_pixel_to_image(t_win **win, int x, int y, int a);
-void		mlx_put_pixel_to_image_2(t_win **win, int x, int y, int a);
-void		ft_put_vig(t_win **win);
+int			ft_exit(t_win *win);
+void		ft_create_julia(t_win *win);
+void		ft_create_mandelbrot(t_win *win);
+void		ft_create_mandelbrot2(t_win *win);
+void		ft_create_tricorn(t_win *win);
+int			ft_print_menu(t_win *win);
+int			ft_print_menu1(t_win *win);
+int			ft_print_menu2(t_win *win);
+int			ft_print_menu3(t_win *win);
+void		mlx_put_pixel_to_image(t_win *win, int x, int y, int a);
+void		mlx_put_pixel_to_image_2(t_win *win, int x, int y, int a);
+void		ft_put_vig(t_win *win);
 t_win		*ft_select_fractale(char *str);
-void		ft_draw_fractale(t_win **win);
-void		ft_reset_fractale(t_win **win);
-void		ft_create_bship(t_win **win);
-void		ft_create_julia2(t_win **win);
+void		ft_draw_fractale(t_win *win);
+void		ft_reset_fractale(t_win *win);
+void		ft_create_bship(t_win *win);
+void		ft_create_julia2(t_win *win);
 void		ft_multithreading(t_win *win);
 void		*ft_create_mandelbrot_multi(void *winn);
 
