@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 23:23:35 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 23:51:29 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,8 +166,8 @@ void		ft_usage(void);
 int			ft_exit(t_win *win);
 int			ft_print_menu(t_win *win);
 int			ft_print_menu1(t_win *win);
-int			ft_print_menu2(t_win *win);
-int			ft_print_menu3(t_win *win);
+// int			ft_print_menu2(t_win *win);
+// int			ft_print_menu3(t_win *win);
 
 void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a);
 void		mlx_put_pixel_to_image_2(t_img *img, int x, int y, int a);

@@ -6,31 +6,31 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 17:31:05 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 00:00:52 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	ft_print_menu_3(t_win *win)
-{
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 285, 970, PURPLE, \
-			"Color type :");
+// static void	ft_print_menu_3(t_win *win)
+// {
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 285, 970, PURPLE, \
+	// 		"Color type :");
 	// if (win->choosecolor == 0)
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 415, 970, PURPLE, \
-			"Color gradient w/ GREY");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 415, 970, PURPLE, \
+	// 		"Color gradient w/ GREY");
 	// else if (win->choosecolor == 1)
 	// 	mlx_string_put(win->mlx_ptr, win->win_ptr, 415, 970, PURPLE, \
 	// 		"Color gradient");
 	// else if (win->choosecolor == 2)
 	// 	mlx_string_put(win->mlx_ptr, win->win_ptr, 415, 970, PURPLE, \
 	// 		"Colors from file");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 1075, PURPLE, \
-			"Copyright 2019 nvienot");
-}
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 1075, PURPLE, \
+	// 		"Copyright 2019 nvienot");
+// }
 
-static void	ft_print_menu_2(t_win *win)
-{
+// static void	ft_print_menu_2(t_win *win)
+// {
 	// char *x;
 	// char *y;
 
@@ -42,59 +42,63 @@ static void	ft_print_menu_2(t_win *win)
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 235, 440, PURPLE, x);
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 195, 465, PURPLE, "Y = ");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 235, 465, PURPLE, y);
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1500, 10, PURPLE, \
-			"Press M to display");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1500, 30, PURPLE, \
-			"or hide the menu");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1500, 60, PURPLE, \
-			"Hold * to get");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1500, 80, PURPLE, \
-			"the animation");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1500, 10, PURPLE, \
+	// 		"Press M to display");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1500, 30, PURPLE, \
+	// 		"or hide the menu");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1500, 60, PURPLE, \
+	// 		"Hold * to get");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1500, 80, PURPLE, \
+	// 		"the animation");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 950, 970, PURPLE, \
 	// 	"MAP NAME :");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1060, 970, PURPLE, \
 	// 	win->filename);
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 950, 970, PURPLE, \
-		"ITERATIONS :");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1090, 970, PURPLE, ft_itoa(win->it_max));
+
 	// free(x);
 	// free(y);
-}
+// }
 
 static void	ft_print_menu_1(t_win *win)
 {
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1520, 390, PURPLE, \
-		"MENU ");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 420, PURPLE, \
-			"Parallel projection : P");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 440, PURPLE, \
-			"Isometric projection : I");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 460, PURPLE, \
-			"Restart : O");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 480, PURPLE, \
-			"Increase alt : Page up");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 500, PURPLE, \
-			"Decrease alt : Page down");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 520, PURPLE, \
-			"Zoom in : + / Scroll");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 540, PURPLE, \
-			"Zoom out : - / Scroll");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 560, PURPLE, \
-			"Move : Arrow keys");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 580, PURPLE, \
-			"Rotate : R & T");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 600, PURPLE, \
-			"Change color type : C");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 620, PURPLE, \
-		"Quit : Esc");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 10, GREY, "Modifier iterations : O/P | ");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 290, 10, GREY, ft_itoa(win->params.it_max));
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 30, GREY, "Zoom : Molette");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 50, GREY, "Restart : R");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 70, GREY, "Modifier variation couleur : C");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 90, GREY, "Modifier palette couleur : V");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1520, 390, PURPLE, \
+	// 	"MENU ");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 420, PURPLE, \
+	// 		"Parallel projection : P");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 440, PURPLE, \
+	// 		"Isometric projection : I");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 460, PURPLE, \
+	// 		"Restart : O");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 480, PURPLE, \
+	// 		"Increase alt : Page up");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 500, PURPLE, \
+	// 		"Decrease alt : Page down");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 520, PURPLE, \
+	// 		"Zoom in : + / Scroll");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 540, PURPLE, \
+	// 		"Zoom out : - / Scroll");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 560, PURPLE, \
+	// 		"Move : Arrow keys");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 580, PURPLE, \
+	// 		"Rotate : R & T");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 600, PURPLE, \
+	// 		"Change color type : C");
+	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 620, PURPLE, \
+	// 	"Quit : Esc");
 }
 
 int			ft_print_menu(t_win *win)
 {
 	// if (win->menu == 1)
 	ft_print_menu_1(win);
-	ft_print_menu_2(win);
-	ft_print_menu_3(win);
+	// ft_print_menu_2(win);
+	// ft_print_menu_3(win);
 	return (1);
 }
 
