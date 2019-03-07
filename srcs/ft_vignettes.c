@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_vig.c                                       :+:      :+:    :+:   */
+/*   ft_vignettes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 16:38:11 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 20:04:47 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 22:38:28 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void	ft_put_vig(t_win *win)
 			}
 			x++;
 		}
-		ft_create_mandelbrot2(win);
-		ft_create_julia2(win);
+		ft_multithreading_vig(win);
 		win->params.old_it_max = win->params.it_max;
 	}
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_vig, 800, 0);

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 20:00:49 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 22:58:37 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int			deal_key(int keycode, t_win *win)
 		ft_exit(win);
 	// mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
 	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
-	ft_draw_fractale(win);
+	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
-	ft_put_vig(win);
+	// ft_put_vig(win);
 	return (1);
 }
 
@@ -85,19 +85,19 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 	}
 	// mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
 	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
-	ft_draw_fractale(win);
+	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
-	ft_put_vig(win);
+	// ft_put_vig(win);
 	return (0);
 }
 
 int		deal_expose(t_win *win)
 {
-	ft_draw_fractale(win);
+	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
-	ft_put_vig(win);
+	// ft_put_vig(win);
 	return (0);
 }
 
@@ -116,7 +116,7 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		ft_usage();
-	if (!ft_strcmp(av[1], "mandelbrot") || !ft_strcmp(av[1], "julia") || !ft_strcmp(av[1], "tricorne") || !ft_strcmp(av[1], "burningship"))
+	if (!ft_strcmp(av[1], "mandelbrot") || !ft_strcmp(av[1], "julia") || !ft_strcmp(av[1], "tricorne") || !ft_strcmp(av[1], "burningship") || !ft_strcmp(av[1], "flower"))
 	{
 		ft_select_fractale(&win, av[1]);
 		ft_hook(&win);
