@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 23:36:05 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 00:28:29 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ void	*ft_create_tricorn_multi(void *thrds)
 			if (a == thrd->win->params.it_max)
 				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 100000));
-				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 100000));
+				mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
 			y++;
 		}
 		x++;
