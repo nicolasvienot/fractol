@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 22:42:09 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 23:23:35 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ struct							s_params
 	double						ic;
 	double						rz;
 	double						iz;
+	int							color;
 };
 
 struct							s_img

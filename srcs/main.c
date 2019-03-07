@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 22:58:37 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 23:34:41 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,22 @@ int			deal_key(int keycode, t_win *win)
 		win->params.moove_hor += SIZE_MOV;
 	else if (keycode == ARROW_LEFT)
 		win->params.moove_hor -= SIZE_MOV;
-	else if (keycode == TOUCH_PLUS)
+	else if (keycode == TOUCH_P)
 		win->params.it_max += 5;
-	else if (keycode == TOUCH_LESS && win->params.it_max >= 5)
+	else if (keycode == TOUCH_O && win->params.it_max >= 5)
 		win->params.it_max -= 5;
 	else if (keycode == TOUCH_R)
 		ft_reset_fractale(win);
 	else if (keycode == TOUCH_ESC)
 		ft_exit(win);
+	else if (keycode == TOUCH_C)
+		win->params.it_max *= 1.5;
 	// mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
 	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
 	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
-	ft_print_menu(win);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_vig, 800, 0);
+	// ft_print_menu(win);
 	// ft_put_vig(win);
 	return (1);
 }
@@ -87,7 +90,8 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
 	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
-	ft_print_menu(win);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_vig, 800, 0);
+	// ft_print_menu(win);
 	// ft_put_vig(win);
 	return (0);
 }
@@ -96,8 +100,8 @@ int		deal_expose(t_win *win)
 {
 	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
-	ft_print_menu(win);
-	// ft_put_vig(win);
+	// ft_print_menu(win);
+	ft_put_vig(win);
 	return (0);
 }
 

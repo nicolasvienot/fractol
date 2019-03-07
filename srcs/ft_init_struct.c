@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 20:40:25 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 23:24:49 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	ft_init_julia(t_win *win)
 	win->params.ic = 0.01;
 	win->params.rz = 0;
 	win->params.iz = 0;
-
-
 }
 
 void	ft_init_mandelbrot(t_win *win)
@@ -54,4 +52,5 @@ void	ft_init_start(t_win *win)
 	win->img.data2 = mlx_get_data_addr(win->img.img_vig, &win->img.bpp2, &win->img.sizeline2, &win->img.endian2);
 	win->params.moove_hor = 0;
 	win->params.moove_ver = 0;
+	win->params.color = 999;
 }
