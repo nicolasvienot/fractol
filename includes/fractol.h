@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 18:53:58 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 20:48:44 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,14 @@ struct							s_params
 	double						zoom;
 	int							it_max;
 	int							old_it_max;
+	int							x;
+	int							y;
 	double						x1;
 	double						y1;
+	double						rc;
+	double						ic;
+	double						rz;
+	double						iz;
 };
 
 struct							s_img
@@ -157,8 +163,6 @@ void		ft_init_mandelbrot(t_win *win);
 void		ft_init_julia(t_win *win);
 void		ft_usage(void);
 int			ft_exit(t_win *win);
-void		ft_create_julia(t_win *win);
-void		ft_create_mandelbrot(t_win *win);
 void		ft_create_mandelbrot2(t_win *win);
 void		ft_create_tricorn(t_win *win);
 int			ft_print_menu(t_win *win);
@@ -168,12 +172,13 @@ int			ft_print_menu3(t_win *win);
 void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a);
 void		mlx_put_pixel_to_image_2(t_img *img, int x, int y, int a);
 void		ft_put_vig(t_win *win);
-t_win		*ft_select_fractale(char *str);
+void		ft_select_fractale(t_win *win, char *str);
 void		ft_draw_fractale(t_win *win);
 void		ft_reset_fractale(t_win *win);
 void		ft_create_bship(t_win *win);
 void		ft_create_julia2(t_win *win);
 void		ft_multithreading(t_win *win);
-void		*ft_create_mandelbrot_multi(void *winn);
+void		*ft_create_mandelbrot_multi(void *thrds);
+void		*ft_create_julia_multi(void *thrds);
 
 #endif

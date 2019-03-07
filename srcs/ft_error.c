@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 11:48:56 by auguyon           #+#    #+#             */
-/*   Updated: 2019/03/06 19:53:10 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 19:51:38 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void		ft_usage(void)
 
 int			ft_exit(t_win *win)
 {
-	free(win);
+	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
+	mlx_destroy_image(win->mlx_ptr, win->img.img_vig);
+	ft_putstr("oublie pas de gerer exit ;)");
 	exit(EXIT_SUCCESS);
 }

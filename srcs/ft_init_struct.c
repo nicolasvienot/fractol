@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 18:46:55 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 20:40:25 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,34 @@
 
 void	ft_init_julia(t_win *win)
 {
+	win->params.x = 0;
+	win->params.y = 0;
 	win->params.x1 = -2.6;
 	win->params.y1 = -2.3;
 	win->params.zoom = 150;
 	win->params.it_max = 50;
 	win->params.old_it_max = 0;
+	win->params.rc = 0.285;
+	win->params.ic = 0.01;
+	win->params.rz = 0;
+	win->params.iz = 0;
+
+
 }
 
 void	ft_init_mandelbrot(t_win *win)
 {
+	win->params.x = 0;
+	win->params.y = 0;
 	win->params.x1 = -2.6;
 	win->params.y1 = -2.3;
 	win->params.zoom = 150;
 	win->params.it_max = 50;
 	win->params.old_it_max = 0;
+	win->params.rc = 0;
+	win->params.ic = 0;
+	win->params.rz = 0;
+	win->params.iz = 0;
 }
 
 void	ft_init_start(t_win *win)

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 19:34:33 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 20:00:49 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int			deal_key(int keycode, t_win *win)
 		ft_reset_fractale(win);
 	else if (keycode == TOUCH_ESC)
 		ft_exit(win);
-	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
-	win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
+	// mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
+	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
 	ft_draw_fractale(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
@@ -83,8 +83,8 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 			ft_reset_fractale(win);
 		}
 	}
-	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
-	win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
+	// mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
+	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
 	ft_draw_fractale(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
@@ -112,15 +112,14 @@ void	ft_hook(t_win *win)
 
 int		main(int ac, char **av)
 {
-	t_win	*win;
+	t_win	win;
 
 	if (ac != 2)
 		ft_usage();
 	if (!ft_strcmp(av[1], "mandelbrot") || !ft_strcmp(av[1], "julia") || !ft_strcmp(av[1], "tricorne") || !ft_strcmp(av[1], "burningship"))
 	{
-		ft_putstr("lol");
-		win = ft_select_fractale(av[1]);
-		ft_hook(win);
+		ft_select_fractale(&win, av[1]);
+		ft_hook(&win);
 	}
 	else
 		ft_usage();	

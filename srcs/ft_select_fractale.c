@@ -6,18 +6,14 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 18:59:14 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 20:48:43 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_win	*ft_select_fractale(char *str)
+void	ft_select_fractale(t_win *win, char *str)
 {
-	t_win	*win;
-
-	if (!(win = (t_win*)malloc(sizeof(t_win))))
-		return (0);
 	ft_init_start(win);
 	if (!ft_strcmp(str, "mandelbrot"))
 	{
@@ -39,7 +35,6 @@ t_win	*ft_select_fractale(char *str)
 		win->fract = 4;
 		ft_init_mandelbrot(win);
 	}
-	return (win);
 }
 
 void	ft_reset_fractale(t_win *win)
@@ -61,7 +56,7 @@ void	ft_draw_fractale(t_win *win)
 	if (win->fract == 1)
 		ft_multithreading(win);
 	if (win->fract == 2)
-		ft_create_julia(win);
+		ft_multithreading(win);
 	if (win->fract == 3)
 		ft_create_tricorn(win);
 	if (win->fract == 4)
@@ -82,10 +77,21 @@ void		ft_multithreading(t_win *win)
 	{
 		mthrds->thrd[i].id = i;
 		mthrds->thrd[i].win = win;
-		if (pthread_create(&mthrds->threads[i], NULL, ft_create_mandelbrot_multi, &mthrds->thrd[i]))
+		if (win->fract == 1)
 		{
-			ft_putstr("erreur pthread create poto");
-			return ;
+			if (pthread_create(&mthrds->threads[i], NULL, ft_create_mandelbrot_multi, &mthrds->thrd[i]))
+			{
+				ft_putstr("erreur pthread create poto");
+				return ;
+			}
+		}
+		if (win->fract == 2)
+		{
+			if (pthread_create(&mthrds->threads[i], NULL, ft_create_julia_multi, &mthrds->thrd[i]))
+			{
+				ft_putstr("erreur pthread create poto");
+				return ;
+			}
 		}
 		i++;
 	}
