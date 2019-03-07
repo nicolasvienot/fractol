@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 19:54:35 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 17:31:05 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ int			ft_print_menu(t_win *win)
 	return (1);
 }
 
-void		mlx_put_pixel_to_image(t_win *win, int x, int y, int a)
+void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a)
 {
 	int		octet;
 
-	octet = win->bpp / 8;
+	octet = img->bpp / 8;
 	if (x >= 0 && y >= 0 && x < IMG_HOR_SIZE && y < IMG_VER_SIZE)
 	{
-		if (!(ft_memcpy(&win->data[octet * x + win->sizeline * y], \
+		if (!(ft_memcpy(&img->data[octet * x + img->sizeline * y], \
 			&a, octet)))
 			ft_putstr("wow c chaud");
 	}

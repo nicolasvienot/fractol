@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 20:13:46 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 18:59:14 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	ft_reset_fractale(t_win *win)
 		ft_init_mandelbrot(win);
 	if (win->fract == 4)
 		ft_init_mandelbrot(win);
-	win->moove_hor = 0;
-	win->moove_ver = 0;
+	win->params.moove_hor = 0;
+	win->params.moove_ver = 0;
 }
 
 void	ft_draw_fractale(t_win *win)
@@ -66,23 +66,23 @@ void	ft_draw_fractale(t_win *win)
 		ft_create_tricorn(win);
 	if (win->fract == 4)
 		ft_create_bship(win);
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img_ptr, 0, 0);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
 	ft_put_vig(win);
 }
 
 void		ft_multithreading(t_win *win)
 {
-	t_render	*render2;
+	t_mthrds	*mthrds;
 	int			i;
 
 	i = 0;
-	render2 = &win->render;
+	mthrds = &win->mthrds;
 	while (i < NB_THREADS)
 	{
-		render2->thrds[i].id = i;
-		render2->thrds[i].win = win;
-		if (pthread_create(&render2->threads[i], NULL, ft_create_mandelbrot_multi, &render2->thrds[i]))
+		mthrds->thrd[i].id = i;
+		mthrds->thrd[i].win = win;
+		if (pthread_create(&mthrds->threads[i], NULL, ft_create_mandelbrot_multi, &mthrds->thrd[i]))
 		{
 			ft_putstr("erreur pthread create poto");
 			return ;
@@ -92,7 +92,7 @@ void		ft_multithreading(t_win *win)
 	i = 0;
 	while (i < NB_THREADS)
 	{
-		if (pthread_join(render2->threads[i], NULL))
+		if (pthread_join(mthrds->threads[i], NULL))
 		{
 			ft_putstr("erreur pthread join poto");
 			return ;

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 19:53:51 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 18:50:39 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,23 @@ void	ft_create_mandelbrot(t_win *win)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = x / win->zoom + win->x1 + win->moove_hor;
-			ic = y / win->zoom + win->y1 + win->moove_ver;
+			rc = x / win->params.zoom + win->params.x1 + win->params.moove_hor;
+			ic = y / win->params.zoom + win->params.y1 + win->params.moove_ver;
 			rz = 0;
 			iz = 0;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < win->it_max)
+			while ((rz * rz + iz * iz) < 4 && a < win->params.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * r * iz + ic; 
 				a++;
 			}
-			if (a == win->it_max)
-				mlx_put_pixel_to_image(win, x, y, (0));
+			if (a == win->params.it_max)
+				mlx_put_pixel_to_image(&win->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(win, x, y, (a * 100000));
-				// mlx_put_pixel_to_image(win, x, y, (a * 256 * 255 / win->it_max));
+				mlx_put_pixel_to_image(&win->img, x, y, (a * 100000));
+				// mlx_put_pixel_to_image(win->img, x, y, (a * 256 * 255 / win->params->it_max));
 			y++;
 		}
 		x++;
@@ -71,20 +71,20 @@ void	ft_create_julia(t_win *win)
 		{
 			rc = 0.285;
 			ic = 0.01;
-			rz = x / win->zoom + win->x1 + win->moove_hor;
-			iz = y / win->zoom + win->y1 + win->moove_ver;
+			rz = x / win->params.zoom + win->params.x1 + win->params.moove_hor;
+			iz = y / win->params.zoom + win->params.y1 + win->params.moove_ver;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < win->it_max)
+			while ((rz * rz + iz * iz) < 4 && a < win->params.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * r * iz + ic; 
 				a++;
 			}
-			if (a == win->it_max)
-				mlx_put_pixel_to_image(win, x, y, 0);
+			if (a == win->params.it_max)
+				mlx_put_pixel_to_image(&win->img, x, y, 0);
 			else
-				mlx_put_pixel_to_image(win, x, y, (a * 100000));
+				mlx_put_pixel_to_image(&win->img, x, y, (a * 100000));
 			y++;
 		}
 		x++;
@@ -108,22 +108,22 @@ void	ft_create_tricorn(t_win *win)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = x / win->zoom + win->x1 + win->moove_hor;
-			ic = y / win->zoom + win->y1 + win->moove_ver;
+			rc = x / win->params.zoom + win->params.x1 + win->params.moove_hor;
+			ic = y / win->params.zoom + win->params.y1 + win->params.moove_ver;
 			rz = 0;
 			iz = 0;
 			a = 0;
-			while (rz * rz + iz * iz < 4 && a < win->it_max)
+			while (rz * rz + iz * iz < 4 && a < win->params.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = -2 * r * iz + ic; 
 				a++;
 			}
-			if (a == win->it_max)
-				mlx_put_pixel_to_image(win, x, y, (0));
+			if (a == win->params.it_max)
+				mlx_put_pixel_to_image(&win->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(win, x, y, (a * 100000));
+				mlx_put_pixel_to_image(&win->img, x, y, (a * 100000));
 			y++;
 		}
 		x++;
@@ -147,22 +147,22 @@ void	ft_create_bship(t_win *win)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = x / win->zoom + win->x1 + win->moove_hor;
-			ic = y / win->zoom + win->y1 + win->moove_ver;
+			rc = x / win->params.zoom + win->params.x1 + win->params.moove_hor;
+			ic = y / win->params.zoom + win->params.y1 + win->params.moove_ver;
 			rz = 0;
 			iz = 0;
 			a = 0;
-			while (rz * rz + iz * iz < 4 && a < win->it_max)
+			while (rz * rz + iz * iz < 4 && a < win->params.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * fabs(r) * fabs(iz) + ic; 
 				a++;
 			}
-			if (a == win->it_max)
-				mlx_put_pixel_to_image(win, x, y, (0));
+			if (a == win->params.it_max)
+				mlx_put_pixel_to_image(&win->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(win, x, y, (a * 100000));
+				mlx_put_pixel_to_image(&win->img, x, y, (a * 100000));
 			y++;
 		}
 		x++;
@@ -198,15 +198,15 @@ void	ft_create_mandelbrot2(t_win *win)
 			rz = 0;
 			iz = 0;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < win->it_max)
+			while ((rz * rz + iz * iz) < 4 && a < win->params.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * r * iz + ic; 
 				a++;
 			}
-			if (a == win->it_max)
-				mlx_put_pixel_to_image_2(win, x, y, (0));
+			if (a == win->params.it_max)
+				mlx_put_pixel_to_image_2(&win->img, x, y, (0));
 			y++;
 		}
 		x++;
@@ -243,15 +243,15 @@ void	ft_create_julia2(t_win *win)
 			rz = x / zoom_x + x1;
 			iz = y / zoom_y + y1;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < win->it_max)
+			while ((rz * rz + iz * iz) < 4 && a < win->params.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * r * iz + ic; 
 				a++;
 			}
-			if (a == win->it_max)
-				mlx_put_pixel_to_image_2(win, x, y + VIG_VER_SIZE, 0);
+			if (a == win->params.it_max)
+				mlx_put_pixel_to_image_2(&win->img, x, y + VIG_VER_SIZE, 0);
 			y++;
 		}
 		x++;

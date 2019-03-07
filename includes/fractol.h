@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 20:11:41 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 18:53:58 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define MAX_ALT 15
 # define MIN_ALT -15
 
-# define NB_THREADS 8
+# define NB_THREADS 20
 # define MAX_ALT 15
 # define MIN_ALT -15
 
@@ -48,6 +48,7 @@
 # define WHITE 16777215
 # define GREY 6908265
 
+# define WIN_NAME "nvienot's Fract'ol"
 # define WIN_HOR_SIZE 1000
 # define WIN_VER_SIZE 700
 # define IMG_HOR_SIZE 1000
@@ -73,45 +74,83 @@
 # define PAGE_DOWN 121
 # define PAGE_UP 116
 
-typedef struct		s_win	t_win;
+typedef	struct s_win			t_win;
+typedef struct s_img			t_img;
+typedef struct s_params			t_params;
+typedef struct s_mthrds			t_mthrds;
+typedef struct s_thrd			t_thrd;
 
-typedef struct		s_thread
+struct							s_thrd
 {
-	int				id;
-	t_win			*win;
-}					t_thread;
-
-typedef struct		s_render
-{
-	pthread_t		threads[NB_THREADS];
-	t_thread		thrds[NB_THREADS];
-}					t_render;
-
-struct				s_win
-{
-	int				fract;
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-	char			*data;
-	int				img;
-	int				sizeline;
-	int				bpp;
-	int				endian;
-	int				sizeline2;
-	int				bpp2;
-	int				endian2;
-	char			*data2;
-	void			*img_vig;
-	double			moove_hor;
-	double			moove_ver;
-	double			zoom;
-	int				it_max;
-	int				old_it_max;
-	double			x1;
-	double			y1;
-	t_render		render;
+	int							id;
+	t_win						*win;
 };
+
+struct							s_mthrds
+{
+	pthread_t					threads[NB_THREADS];
+	t_thrd						thrd[NB_THREADS];
+};
+
+struct							s_params
+{
+	double						moove_hor;
+	double						moove_ver;
+	double						zoom;
+	int							it_max;
+	int							old_it_max;
+	double						x1;
+	double						y1;
+};
+
+struct							s_img
+{
+	void						*img_ptr;
+	void						*img_vig;
+	char						*data;
+	char						*data2;
+	int							sizeline;
+	int							sizeline2;
+	int							bpp;
+	int							bpp2;
+	int							endian;
+	int							endian2;
+};
+
+struct							s_win
+{
+	void						*mlx_ptr;
+	void						*win_ptr;
+	int							fract;
+	// int							img;
+	t_params					params;
+	t_mthrds					mthrds;
+	t_img						img;
+};
+
+/*
+** draw_fractals.c
+*/
+
+/*
+** draw_fractals.c
+*/
+
+/*
+** draw_fractals.c
+*/
+
+/*
+** draw_fractals.c
+*/
+
+/*
+** draw_fractals.c
+*/
+
+/*
+** draw_fractals.c
+*/
 
 void		ft_init_start(t_win *win);
 void		ft_init_mandelbrot(t_win *win);
@@ -126,8 +165,8 @@ int			ft_print_menu(t_win *win);
 int			ft_print_menu1(t_win *win);
 int			ft_print_menu2(t_win *win);
 int			ft_print_menu3(t_win *win);
-void		mlx_put_pixel_to_image(t_win *win, int x, int y, int a);
-void		mlx_put_pixel_to_image_2(t_win *win, int x, int y, int a);
+void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a);
+void		mlx_put_pixel_to_image_2(t_img *img, int x, int y, int a);
 void		ft_put_vig(t_win *win);
 t_win		*ft_select_fractale(char *str);
 void		ft_draw_fractale(t_win *win);
@@ -138,4 +177,3 @@ void		ft_multithreading(t_win *win);
 void		*ft_create_mandelbrot_multi(void *winn);
 
 #endif
- 

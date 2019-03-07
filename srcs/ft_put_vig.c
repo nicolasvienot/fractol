@@ -6,21 +6,20 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 16:38:11 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/06 19:54:54 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/07 18:51:11 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void		mlx_put_pixel_to_image_2(t_win *win, int x, int y, int a)
+void		mlx_put_pixel_to_image_2(t_img *img, int x, int y, int a)
 {
 	int		octet;
 
-	octet = win->bpp2 / 8;
+	octet = img->bpp2 / 8;
 	if (x >= 0 && y >= 0 && x < IMG_HOR_SIZE && y < IMG_VER_SIZE)
 	{
-		if (!(ft_memcpy(&win->data2[octet * x + win->sizeline2 * y], \
-			&a, octet)))
+		if (!(ft_memcpy(&img->data2[octet * x + img->sizeline2 * y], &a, octet)))
 			ft_putstr("wow c chaud");
 	}
 }
@@ -35,7 +34,7 @@ void	ft_put_vig(t_win *win)
 	g = 100;
 	b = 100;
 	
-	if (win->it_max != win->old_it_max)
+	if (win->params.it_max != win->params.old_it_max)
 	{
 		x = 0;
 		while (x < VIG_HOR_SIZE)
@@ -47,14 +46,14 @@ void	ft_put_vig(t_win *win)
 					color = 256 * 256 * r + 256 * g + b;
 				else
 					color = 256 * 256 * 256 * a + 256 * 256 * r + 256 * g + b;
-				mlx_put_pixel_to_image_2(win, x, y, color);
+				mlx_put_pixel_to_image_2(&win->img, x, y, color);
 				y++;
 			}
 			x++;
 		}
 		ft_create_mandelbrot2(win);
 		ft_create_julia2(win);
-		win->old_it_max = win->it_max;
+		win->params.old_it_max = win->params.it_max;
 	}
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img_vig, 800, 0);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_vig, 800, 0);
 }
