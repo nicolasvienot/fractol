@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 17:18:16 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 17:33:04 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,29 +70,14 @@ static void	ft_print_menu_1(t_win *win)
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 115, 10, GREY, x = ft_itoa(win->fract));
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 30, GREY, "Modifier iterations : O/P | ");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 290, 30, GREY, y = ft_itoa(win->params.it_max));
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 50, GREY, "Zoom : Molette");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 70, GREY, "Restart : R");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 90, GREY, "Modifier variation couleur : C");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 110, GREY, "Modifier palette couleur : V");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 130, GREY, "Quit : Esc");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 50, PURPLE, "Move : Arrow keys");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 70, GREY, "Zoom : Molette");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 90, GREY, "Restart : R");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 110, GREY, "Modifier variation couleur : C");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 130, GREY, "Modifier palette couleur : V");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 150, GREY, "Quit : Esc");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1520, 390, PURPLE, \
 	// 	"MENU ");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 420, PURPLE, \
-	// 		"Parallel projection : P");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 440, PURPLE, \
-	// 		"Isometric projection : I");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 460, PURPLE, \
-	// 		"Restart : O");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 480, PURPLE, \
-	// 		"Increase alt : Page up");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 500, PURPLE, \
-	// 		"Decrease alt : Page down");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 520, PURPLE, \
-	// 		"Zoom in : + / Scroll");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 540, PURPLE, \
-	// 		"Zoom out : - / Scroll");
-	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 560, PURPLE, \
-	// 		"Move : Arrow keys");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 580, PURPLE, \
 	// 		"Rotate : R & T");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 600, PURPLE, \

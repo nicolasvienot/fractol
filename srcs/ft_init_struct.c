@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 17:07:23 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 17:43:54 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_init_start(t_win *win)
 	win->win_ptr = mlx_new_window(win->mlx_ptr, WIN_HOR_SIZE, WIN_VER_SIZE, "FRACT'OL");
 	win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
 	win->img.data = mlx_get_data_addr(win->img.img_ptr, &win->img.bpp, &win->img.sizeline, &win->img.endian);
-	win->img.img_vig = mlx_new_image(win->mlx_ptr, VIG_HOR_SIZE, WIN_VER_SIZE);
-	win->img.data2 = mlx_get_data_addr(win->img.img_vig, &win->img.bpp2, &win->img.sizeline2, &win->img.endian2);
+	win->vig.img_ptr = mlx_new_image(win->mlx_ptr, VIG_HOR_SIZE, WIN_VER_SIZE);
+	win->vig.data = mlx_get_data_addr(win->vig.img_ptr, &win->vig.bpp, &win->vig.sizeline, &win->vig.endian);
 	win->params.moove_hor = 0;
 	win->params.moove_ver = 0;
 	win->params.color = 999;

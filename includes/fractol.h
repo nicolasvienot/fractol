@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 17:05:45 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 17:43:15 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,15 +113,10 @@ struct							s_params
 struct							s_img
 {
 	void						*img_ptr;
-	void						*img_vig;
 	char						*data;
-	char						*data2;
 	int							sizeline;
-	int							sizeline2;
 	int							bpp;
-	int							bpp2;
 	int							endian;
-	int							endian2;
 };
 
 struct							s_win
@@ -133,6 +128,7 @@ struct							s_win
 	t_params					params;
 	t_mthrds					mthrds;
 	t_img						img;
+	t_img						vig;
 };
 
 /*
@@ -170,7 +166,7 @@ int			ft_print_menu1(t_win *win);
 // int			ft_print_menu3(t_win *win);
 
 void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a);
-void		mlx_put_pixel_to_image_2(t_img *img, int x, int y, int a);
+// void		mlx_put_pixel_to_image_2(t_img *img, int x, int y, int a);
 
 void		ft_put_vig(t_win *win);
 void		ft_select_fractale(t_win *win, char *str);
