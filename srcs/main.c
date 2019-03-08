@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 00:10:57 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 17:30:51 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,22 @@ int			deal_key(int keycode, t_win *win)
 		win->params.moove_hor += SIZE_MOV;
 	else if (keycode == ARROW_LEFT)
 		win->params.moove_hor -= SIZE_MOV;
+	else if (keycode == TOUCH_PLUS)
+	{
+		if (win->fract == 8)
+			win->fract = 1;
+		else
+			win->fract += 1;
+		ft_reset_fractale(win);
+	}
+	else if (keycode == TOUCH_LESS)
+	{
+		if (win->fract == 1)
+			win->fract = 8;
+		else
+			win->fract -= 1;
+		ft_reset_fractale(win);
+	}
 	else if (keycode == TOUCH_P)
 		win->params.it_max += 1;
 	else if (keycode == TOUCH_O && win->params.it_max >= 5)
@@ -95,9 +111,9 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
 	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_vig, 800, 0);
+	// mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_vig, 800, 0);
 	ft_print_menu(win);
-	// ft_put_vig(win);
+	ft_put_vig(win);
 	return (0);
 }
 
@@ -125,7 +141,10 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		ft_usage();
-	if (!ft_strcmp(av[1], "mandelbrot") || !ft_strcmp(av[1], "julia") || !ft_strcmp(av[1], "tricorne") || !ft_strcmp(av[1], "burningship") || !ft_strcmp(av[1], "flower"))
+	if (!ft_strcmp(av[1], "mandelbrot") || !ft_strcmp(av[1], "julia") \
+		|| !ft_strcmp(av[1], "tricorne") || !ft_strcmp(av[1], "burningship") \
+			|| !ft_strcmp(av[1], "flower") || !ft_strcmp(av[1], "flower2") \
+				|| !ft_strcmp(av[1], "flower3") || !ft_strcmp(av[1], "duobrot"))
 	{
 		ft_select_fractale(&win, av[1]);
 		ft_hook(&win);

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 22:58:26 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 17:09:20 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_select_fractale(t_win *win, char *str)
 	}
 	if (!ft_strcmp(str, "julia"))
 	{
-		win->fract = 2;
+		win->fract = 5;
 		ft_init_julia(win);
 	}
 	if (!ft_strcmp(str, "tricorne"))
@@ -37,8 +37,23 @@ void	ft_select_fractale(t_win *win, char *str)
 	}
 	if (!ft_strcmp(str, "flower"))
 	{
-		win->fract = 5;
+		win->fract = 6;
 		ft_init_julia(win);
+	}
+	if (!ft_strcmp(str, "flower2"))
+	{
+		win->fract = 7;
+		ft_init_julia(win);
+	}
+	if (!ft_strcmp(str, "flower3"))
+	{
+		win->fract = 8;
+		ft_init_julia(win);
+	}
+	if (!ft_strcmp(str, "duobrot"))
+	{
+		win->fract = 2;
+		ft_init_mandelbrot(win);
 	}
 }
 
@@ -46,14 +61,20 @@ void	ft_reset_fractale(t_win *win)
 {
 	if (win->fract == 1)
 		ft_init_mandelbrot(win);
-	if (win->fract == 2)
+	if (win->fract == 5)
 		ft_init_julia(win);
 	if (win->fract == 3)
 		ft_init_mandelbrot(win);
 	if (win->fract == 4)
 		ft_init_mandelbrot(win);
-	if (win->fract == 5)
+	if (win->fract == 6)
 		ft_init_julia(win);
+	if (win->fract == 7)
+		ft_init_julia(win);
+	if (win->fract == 8)
+		ft_init_julia(win);
+	if (win->fract == 2)
+		ft_init_mandelbrot(win);
 	win->params.moove_hor = 0;
 	win->params.moove_ver = 0;
 }
@@ -77,7 +98,7 @@ void		ft_multithreading(t_win *win)
 				return ;
 			}
 		}
-		if (win->fract == 2)
+		if (win->fract == 5)
 		{
 			if (pthread_create(&mthrds->threads[i], NULL, ft_create_julia_multi, &mthrds->thrd[i]))
 			{
@@ -101,9 +122,33 @@ void		ft_multithreading(t_win *win)
 				return ;
 			}
 		}
-		if (win->fract == 5)
+		if (win->fract == 6)
 		{
 			if (pthread_create(&mthrds->threads[i], NULL, ft_create_flower_multi, &mthrds->thrd[i]))
+			{
+				ft_putstr("erreur pthread create poto");
+				return ;
+			}
+		}
+		if (win->fract == 7)
+		{
+			if (pthread_create(&mthrds->threads[i], NULL, ft_create_flower2_multi, &mthrds->thrd[i]))
+			{
+				ft_putstr("erreur pthread create poto");
+				return ;
+			}
+		}
+		if (win->fract == 8)
+		{
+			if (pthread_create(&mthrds->threads[i], NULL, ft_create_flower3_multi, &mthrds->thrd[i]))
+			{
+				ft_putstr("erreur pthread create poto");
+				return ;
+			}
+		}
+		if (win->fract == 2)
+		{
+			if (pthread_create(&mthrds->threads[i], NULL, ft_create_duobrot_multi, &mthrds->thrd[i]))
 			{
 				ft_putstr("erreur pthread create poto");
 				return ;

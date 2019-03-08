@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 23:29:14 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 16:33:24 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void	*ft_create_flower_vig(void *thrds)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
-				iz = 2 * r * iz + ic; 
+				iz = -2 * r * iz + ic; 
 				a++;
 			}
 			if (a == thrd->win->params.it_max && thrd->win->params.it_max > 0)

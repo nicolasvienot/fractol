@@ -6,11 +6,13 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 00:00:52 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 17:18:16 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+
 
 // static void	ft_print_menu_3(t_win *win)
 // {
@@ -61,12 +63,18 @@
 
 static void	ft_print_menu_1(t_win *win)
 {
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 10, GREY, "Modifier iterations : O/P | ");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 290, 10, GREY, ft_itoa(win->params.it_max));
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 30, GREY, "Zoom : Molette");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 50, GREY, "Restart : R");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 70, GREY, "Modifier variation couleur : C");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 90, GREY, "Modifier palette couleur : V");
+	char *x;
+	char *y;
+
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 10, GREY, "Fractale : ");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 115, 10, GREY, x = ft_itoa(win->fract));
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 30, GREY, "Modifier iterations : O/P | ");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 290, 30, GREY, y = ft_itoa(win->params.it_max));
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 50, GREY, "Zoom : Molette");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 70, GREY, "Restart : R");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 90, GREY, "Modifier variation couleur : C");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 110, GREY, "Modifier palette couleur : V");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 130, GREY, "Quit : Esc");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1520, 390, PURPLE, \
 	// 	"MENU ");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 420, PURPLE, \
@@ -91,6 +99,9 @@ static void	ft_print_menu_1(t_win *win)
 	// 		"Change color type : C");
 	// mlx_string_put(win->mlx_ptr, win->win_ptr, 1440, 620, PURPLE, \
 	// 	"Quit : Esc");
+
+	free (x);
+	free (y);
 }
 
 int			ft_print_menu(t_win *win)

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/07 23:51:29 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 17:05:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,9 @@ void		*ft_create_julia_multi(void *thrds);
 void		*ft_create_tricorn_multi(void *thrds);
 void		*ft_create_bship_multi(void *thrds);
 void		*ft_create_flower_multi(void *thrds);
+void		*ft_create_flower2_multi(void *thrds);
+void		*ft_create_flower3_multi(void *thrds);
+void		*ft_create_duobrot_multi(void *thrds);
 
 void		*ft_create_mandelbrot_vig(void *thrds);
 void		*ft_create_julia_vig(void *thrds);
