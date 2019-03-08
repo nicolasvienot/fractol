@@ -6,11 +6,21 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 17:50:29 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 18:55:42 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int			deal_motion(int mouse, int x, int y, t_win *win)
+{
+	ft_putnbr(x);
+	ft_putnbr(y);
+	(void)win;
+	(void)mouse;
+	ft_putstr("salut");
+	return (0);
+}
 
 int			deal_key(int keycode, t_win *win)
 {
@@ -132,6 +142,7 @@ void	ft_hook(t_win *win)
 	mlx_hook(win->win_ptr, 2, 1L << 0, deal_key, win);
 	mlx_mouse_hook(win->win_ptr, deal_mouse, win);
 	mlx_hook(win->win_ptr, 17, 1L << 17, ft_exit, win);
+	// mlx_hook (win->win_ptr, 6, 1L << 6, deal_motion, win);
 	mlx_loop(win->mlx_ptr);
 }
 
