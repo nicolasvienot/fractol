@@ -6,19 +6,36 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 18:55:42 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 19:48:02 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int			deal_motion(int mouse, int x, int y, t_win *win)
+int			deal_motion(int x, int y, t_win *win)
 {
-	ft_putnbr(x);
-	ft_putnbr(y);
-	(void)win;
-	(void)mouse;
-	ft_putstr("salut");
+	(void)y;
+	if (win->fract == 5)
+	{
+		if (y > (WIN_VER_SIZE / 2) && y < WIN_VER_SIZE)
+		{
+			ft_putnbr(x);
+			ft_putstr(" ");
+			win->params.rc += 0.005;
+			win->params.ic += 0.005;
+		}
+		else if (y < (WIN_VER_SIZE / 2) && y > 0)
+		{
+			ft_putnbr(x);
+			ft_putstr(" ");
+			win->params.rc -= 0.005;
+			win->params.ic -= 0.005;
+		}
+		ft_multithreading(win);
+		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
+		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->vig.img_ptr, 800, 0);
+		ft_print_menu(win);
+	}
 	return (0);
 }
 
@@ -142,7 +159,7 @@ void	ft_hook(t_win *win)
 	mlx_hook(win->win_ptr, 2, 1L << 0, deal_key, win);
 	mlx_mouse_hook(win->win_ptr, deal_mouse, win);
 	mlx_hook(win->win_ptr, 17, 1L << 17, ft_exit, win);
-	// mlx_hook (win->win_ptr, 6, 1L << 6, deal_motion, win);
+	mlx_hook(win->win_ptr, 6, 1L << 6, deal_motion, win);
 	mlx_loop(win->mlx_ptr);
 }
 

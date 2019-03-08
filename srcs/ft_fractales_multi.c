@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 17:04:10 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 19:12:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ void	*ft_create_julia_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = 0.285;
-			ic = 0.01;
+			rc = 0.285 + thrd->win->params.rc;
+			ic = 0.01 + thrd->win->params.ic;
 			rz = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
 			iz = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
 			a = 0;
