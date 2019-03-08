@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 17:43:54 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 21:22:47 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_init_julia(t_win *win)
 	win->params.zoom = 150;
 	win->params.it_max = 50;
 	win->params.old_it_max = 0;
-	win->params.rc = 0.285;
-	win->params.ic = 0.01;
+	win->params.rc = 0;
+	win->params.ic = 0;
 	win->params.rz = 0;
 	win->params.iz = 0;
 }

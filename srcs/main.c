@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 19:48:02 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/08 20:15:42 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			deal_motion(int x, int y, t_win *win)
 {
 	(void)y;
-	if (win->fract == 5)
+	if (win->fract >= 5)
 	{
 		if (y > (WIN_VER_SIZE / 2) && y < WIN_VER_SIZE)
 		{
