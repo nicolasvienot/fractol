@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 20:15:42 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/10 18:53:19 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,36 @@ int			deal_motion(int x, int y, t_win *win)
 	(void)y;
 	if (win->fract >= 5)
 	{
-		if (y > (WIN_VER_SIZE / 2) && y < WIN_VER_SIZE)
+		if (x >= 0 && y >= 0 && x <= WIN_HOR_SIZE && y <= WIN_VER_SIZE)
 		{
-			ft_putnbr(x);
-			ft_putstr(" ");
-			win->params.rc += 0.005;
-			win->params.ic += 0.005;
+			win->params.rc = (double) x  / 1000;
+			win->params.ic = (double)y / 1000;
 		}
-		else if (y < (WIN_VER_SIZE / 2) && y > 0)
-		{
-			ft_putnbr(x);
-			ft_putstr(" ");
-			win->params.rc -= 0.005;
-			win->params.ic -= 0.005;
-		}
+		// if (x > 0 && x < WIN_HOR_SIZE && y > 0 && y < WIN_VER_SIZE)
+		// {
+		// 	if (x < WIN_HOR_SIZE / 2 && y < WIN_VER_SIZE / 2)
+		// 		win->params.rc += 0.05;
+		// 	if (x > WIN_HOR_SIZE / 2 && y < WIN_VER_SIZE / 2)
+		// 		win->params.rc -= 0.05;
+		// 	if (x < WIN_HOR_SIZE / 2 && y > WIN_VER_SIZE / 2)
+		// 		win->params.ic += 0.05;
+		// 	if (x > WIN_HOR_SIZE / 2 && y > WIN_VER_SIZE / 2)
+		// 		win->params.ic -= 0.05;
+		// }
+		// if (y > (WIN_VER_SIZE / 2) && y < WIN_VER_SIZE)
+		// {
+		// 	ft_putnbr(x);
+		// 	ft_putstr(" ");
+		// 	win->params.rc += 0.005;
+		// 	win->params.ic += 0.005;
+		// }
+		// else if (y < (WIN_VER_SIZE / 2) && y > 0)
+		// {
+		// 	ft_putnbr(x);
+		// 	ft_putstr(" ");
+		// 	win->params.rc -= 0.005;
+		// 	win->params.ic -= 0.005;
+		// }
 		ft_multithreading(win);
 		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->vig.img_ptr, 800, 0);
