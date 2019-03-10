@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Nico <Nico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/10 18:53:19 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/10 23:41:55 by Nico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int			deal_motion(int x, int y, t_win *win)
 	{
 		if (x >= 0 && y >= 0 && x <= WIN_HOR_SIZE && y <= WIN_VER_SIZE)
 		{
-			win->params.rc = (double) x  / 1000;
-			win->params.ic = (double)y / 1000;
+		//	win->params.rc = ((double)x - ((WIN_HOR_SIZE - VIG_HOR_SIZE) / 2))  / 500;
+		//	win->params.ic = ((double)y - (WIN_VER_SIZE / 2)) / 500;
+			win->params.rc = ((double)x - ((WIN_HOR_SIZE) / 2))  / 500;
+			win->params.ic = ((double)y - (WIN_VER_SIZE / 2)) / 500;
 		}
 		// if (x > 0 && x < WIN_HOR_SIZE && y > 0 && y < WIN_VER_SIZE)
 		// {

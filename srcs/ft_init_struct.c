@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Nico <Nico@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 21:22:47 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/10 23:38:57 by Nico             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_init_julia(t_win *win)
 {
 	win->params.x = 0;
 	win->params.y = 0;
-	win->params.x1 = -2.6;
-	win->params.y1 = -2.3;
-	win->params.zoom = 150;
+	win->params.x1 = -2.4;
+	win->params.y1 = -1.7;
+	win->params.zoom = 200;
 	win->params.it_max = 50;
 	win->params.old_it_max = 0;
 	win->params.rc = 0;
@@ -31,9 +31,9 @@ void	ft_init_mandelbrot(t_win *win)
 {
 	win->params.x = 0;
 	win->params.y = 0;
-	win->params.x1 = -2.6;
-	win->params.y1 = -2.3;
-	win->params.zoom = 150;
+	win->params.x1 = -2.2;
+	win->params.y1 = -1.4;
+	win->params.zoom = 250;
 	win->params.it_max = 50;
 	win->params.old_it_max = 0;
 	win->params.rc = 0;
