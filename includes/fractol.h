@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 15:53:43 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 19:59:29 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,49 +132,60 @@ struct							s_win
 };
 
 /*
-** draw_fractals.c
+** ft_error.c
 */
 
-/*
-** draw_fractals.c
-*/
+void		ft_usage(void);
+int			ft_exit(t_win *win);
 
 /*
-** draw_fractals.c
+** ft_deal_mouse.c
 */
 
-/*
-** draw_fractals.c
-*/
+void		ft_create_it(t_win *win);
+int			deal_mouse(int mouse, int x, int y, t_win *win);
+int			deal_motion(int x, int y, t_win *win);
 
 /*
-** draw_fractals.c
+** ft_deal_key.c
 */
 
+int			deal_key(int keycode, t_win *win);
+
 /*
-** draw_fractals.c
+** ft_print.c
+*/
+
+int			ft_print_menu(t_win *win);
+void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a);
+void		ft_viseur(t_win *win);
+
+/*
+** ft_init_struct.c
 */
 
 void		ft_init_start(t_win *win);
 void		ft_init_mandelbrot(t_win *win);
 void		ft_init_julia(t_win *win);
-void		ft_usage(void);
-int			ft_exit(t_win *win);
-int			ft_print_menu(t_win *win);
-int			ft_print_menu1(t_win *win);
-// int			ft_print_menu2(t_win *win);
-// int			ft_print_menu3(t_win *win);
 
-void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a);
-void		ft_viseur(t_win *win);
-// void		mlx_put_pixel_to_image_2(t_img *img, int x, int y, int a);
+/*
+** ft_select_fractales.c
+*/
 
-void		ft_put_vig(t_win *win);
 void		ft_select_fractale(t_win *win, char *str);
 void		ft_reset_fractale(t_win *win);
-
 void		ft_multithreading(t_win *win);
 void		ft_multithreading_vig(t_win *win);
+
+/*
+** ft_vignettes.c
+*/
+
+void		ft_put_vig(t_win *win);
+
+/*
+** ft_fractales_multi.c
+*/
 
 void		*ft_create_mandelbrot_multi(void *thrds);
 void		*ft_create_julia_multi(void *thrds);
@@ -184,6 +195,10 @@ void		*ft_create_flower_multi(void *thrds);
 void		*ft_create_flower2_multi(void *thrds);
 void		*ft_create_flower3_multi(void *thrds);
 void		*ft_create_duobrot_multi(void *thrds);
+
+/*
+** ft_fractales_vig.c
+*/
 
 void		*ft_create_mandelbrot_vig(void *thrds);
 void		*ft_create_julia_vig(void *thrds);

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 15:56:45 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 20:05:17 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,15 @@ void	ft_init_mandelbrot(t_win *win)
 void	ft_init_start(t_win *win)
 {
 	win->mlx_ptr = mlx_init();
-	win->win_ptr = mlx_new_window(win->mlx_ptr, WIN_HOR_SIZE, WIN_VER_SIZE, "FRACT'OL");
-	win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
-	win->img.data = mlx_get_data_addr(win->img.img_ptr, &win->img.bpp, &win->img.sizeline, &win->img.endian);
+	win->win_ptr = mlx_new_window(win->mlx_ptr, \
+		WIN_HOR_SIZE, WIN_VER_SIZE, WIN_NAME);
+	win->img.img_ptr = mlx_new_image(win->mlx_ptr, \
+		IMG_HOR_SIZE, IMG_VER_SIZE);
+	win->img.data = mlx_get_data_addr(win->img.img_ptr, \
+		&win->img.bpp, &win->img.sizeline, &win->img.endian);
 	win->vig.img_ptr = mlx_new_image(win->mlx_ptr, VIG_HOR_SIZE, WIN_VER_SIZE);
-	win->vig.data = mlx_get_data_addr(win->vig.img_ptr, &win->vig.bpp, &win->vig.sizeline, &win->vig.endian);
+	win->vig.data = mlx_get_data_addr(win->vig.img_ptr, \
+		&win->vig.bpp, &win->vig.sizeline, &win->vig.endian);
 	win->params.moove_hor = 0;
 	win->params.moove_ver = 0;
 	win->motion = 0;
