@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 17:49:09 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 17:55:37 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int			deal_key(int keycode, t_win *win)
 	else if (keycode == TOUCH_C)
 	{
 		if (win->params.color > 999999999)
-			win->params.color = 999;
+			win->params.color = 99;
 		else
 			win->params.color *= 1.5;
 	}

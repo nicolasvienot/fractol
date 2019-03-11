@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 15:52:05 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 17:59:50 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,7 @@ void	*ft_create_julia_multi(void *thrds)
 				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
 			else
 				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 100000));
-				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
 			y++;
 		}
 		x++;
