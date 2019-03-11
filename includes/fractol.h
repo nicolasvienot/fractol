@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 17:43:15 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 15:53:43 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ struct							s_win
 	void						*mlx_ptr;
 	void						*win_ptr;
 	int							fract;
-	// int							img;
+	int							motion;
 	t_params					params;
 	t_mthrds					mthrds;
 	t_img						img;
@@ -166,6 +166,7 @@ int			ft_print_menu1(t_win *win);
 // int			ft_print_menu3(t_win *win);
 
 void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a);
+void		ft_viseur(t_win *win);
 // void		mlx_put_pixel_to_image_2(t_img *img, int x, int y, int a);
 
 void		ft_put_vig(t_win *win);

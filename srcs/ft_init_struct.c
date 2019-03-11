@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nico <Nico@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/10 23:38:57 by Nico             ###   ########.fr       */
+/*   Updated: 2019/03/11 15:56:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_init_julia(t_win *win)
 {
 	win->params.x = 0;
 	win->params.y = 0;
-	win->params.x1 = -2.4;
-	win->params.y1 = -1.7;
+	win->params.x1 = -2.5;
+	win->params.y1 = -1.75;
 	win->params.zoom = 200;
 	win->params.it_max = 50;
 	win->params.old_it_max = 0;
@@ -31,7 +31,7 @@ void	ft_init_mandelbrot(t_win *win)
 {
 	win->params.x = 0;
 	win->params.y = 0;
-	win->params.x1 = -2.2;
+	win->params.x1 = -2;
 	win->params.y1 = -1.4;
 	win->params.zoom = 250;
 	win->params.it_max = 50;
@@ -52,5 +52,6 @@ void	ft_init_start(t_win *win)
 	win->vig.data = mlx_get_data_addr(win->vig.img_ptr, &win->vig.bpp, &win->vig.sizeline, &win->vig.endian);
 	win->params.moove_hor = 0;
 	win->params.moove_ver = 0;
+	win->motion = 0;
 	win->params.color = 999;
 }

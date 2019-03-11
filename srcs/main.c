@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nico <Nico@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/10 23:41:55 by Nico             ###   ########.fr       */
+/*   Updated: 2019/03/11 17:49:09 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int			deal_motion(int x, int y, t_win *win)
 {
 	(void)y;
-	if (win->fract >= 5)
+	if (win->motion == 1 && win->fract >= 5)
 	{
 		if (x >= 0 && y >= 0 && x <= WIN_HOR_SIZE && y <= WIN_VER_SIZE)
 		{
 		//	win->params.rc = ((double)x - ((WIN_HOR_SIZE - VIG_HOR_SIZE) / 2))  / 500;
 		//	win->params.ic = ((double)y - (WIN_VER_SIZE / 2)) / 500;
-			win->params.rc = ((double)x - ((WIN_HOR_SIZE) / 2))  / 500;
-			win->params.ic = ((double)y - (WIN_VER_SIZE / 2)) / 500;
+			win->params.rc = ((double)x - ((WIN_HOR_SIZE) / 2))  / 300;
+			win->params.ic = ((double)y - (WIN_VER_SIZE / 2)) / 300;
 		}
 		// if (x > 0 && x < WIN_HOR_SIZE && y > 0 && y < WIN_VER_SIZE)
 		// {
@@ -50,10 +50,11 @@ int			deal_motion(int x, int y, t_win *win)
 		// 	win->params.ic -= 0.005;
 		// }
 		ft_multithreading(win);
+		ft_viseur(win);
 		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 		mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->vig.img_ptr, 800, 0);
 		ft_print_menu(win);
-	}
+	}	
 	return (0);
 }
 
@@ -91,6 +92,13 @@ int			deal_key(int keycode, t_win *win)
 		ft_reset_fractale(win);
 	else if (keycode == TOUCH_ESC)
 		ft_exit(win);
+	else if (keycode == TOUCH_M && win->fract >= 5)
+	{
+		if (win->motion == 0)
+			win->motion = 1;
+		else
+			win->motion = 0;
+	}
 	else if (keycode == TOUCH_C)
 	{
 		if (win->params.color > 999999999)
@@ -101,6 +109,9 @@ int			deal_key(int keycode, t_win *win)
 	// mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
 	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
 	ft_multithreading(win);
+	if (win->motion == 1)
+		ft_viseur(win);
+	// ft_viseur(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->vig.img_ptr, 800, 0);
 	ft_print_menu(win);
@@ -122,6 +133,7 @@ void		ft_pick_fractale(int x, int y, t_win *win)
 			win->fract = 4;
 		else if (y > WIN_VER_SIZE - 1 * WIN_VER_SIZE / 5 && y < WIN_VER_SIZE)
 			win->fract = 5;
+		win->motion = 0;
 	}
 }
 
@@ -151,10 +163,19 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 			ft_pick_fractale(x, y, win);
 			ft_reset_fractale(win);
 		}
+		if (mouse == 1 && x > 0 && x < (WIN_HOR_SIZE - VIG_HOR_SIZE) && win->fract >= 5)
+		{
+			if (win->motion == 0)
+				win->motion = 1;
+			else
+				win->motion = 0;
+		}
 	}
 	// mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
 	// win->img.img_ptr = mlx_new_image(win->mlx_ptr, IMG_HOR_SIZE, IMG_VER_SIZE);
 	ft_multithreading(win);
+	if (win->motion == 1)
+		ft_viseur(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->vig.img_ptr, 800, 0);
 	ft_print_menu(win);
@@ -165,6 +186,7 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 int		deal_expose(t_win *win)
 {
 	ft_multithreading(win);
+	// ft_viseur(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
 	ft_put_vig(win);
