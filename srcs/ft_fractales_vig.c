@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/08 17:45:18 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 23:41:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	*ft_create_mandelbrot_vig(void *thrds)
 	double		iz;
 	double		r;
 	int			a;
-	int 		x;
-	int 		y;
+	int			x;
+	int			y;
 	double		x1 = -2.1;
 	double		x2 = 0.6;
 	double		y1 = -1.2;
 	double		y2 = 1.2;
-	double		zoom_x = VIG_HOR_SIZE/(x2 - x1);
-	double		zoom_y = VIG_VER_SIZE/(y2 - y1);
+	double		zoom_x = VIG_HOR_SIZE / (x2 - x1);
+	double		zoom_y = VIG_VER_SIZE / (y2 - y1);
 
 	thrd = (t_thrd *)thrds;
 	x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;

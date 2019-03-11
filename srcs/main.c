@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 20:08:50 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 23:12:26 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int		main(int ac, char **av)
 	if (!ft_strcmp(av[1], "mandelbrot") || !ft_strcmp(av[1], "julia") \
 		|| !ft_strcmp(av[1], "tricorne") || !ft_strcmp(av[1], "burningship") \
 			|| !ft_strcmp(av[1], "flower") || !ft_strcmp(av[1], "flower2") \
-				|| !ft_strcmp(av[1], "flower3") || !ft_strcmp(av[1], "duobrot"))
+				|| !ft_strcmp(av[1], "flower3") || !ft_strcmp(av[1], "duobrot") \
+					|| !ft_strcmp(av[1], "juliacarre"))
 	{
 		ft_select_fractale(&win, av[1]);
 		ft_hook(&win);

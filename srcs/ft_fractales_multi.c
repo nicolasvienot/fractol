@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 21:19:10 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 23:31:58 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -353,6 +353,49 @@ void	*ft_create_flower2_multi(void *thrds)
 			else
 				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
 				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+			y++;
+		}
+		x++;
+	}
+	pthread_exit(NULL);
+}
+
+void	*ft_create_juliacarre_multi(void *thrds)
+{
+	t_thrd		*thrd;
+	double		rc;
+	double		ic;
+	double		rz;
+	double		iz;
+	double		r;
+	int			a;
+	int 		x;
+	int 		y;
+
+	thrd = (t_thrd *)thrds;
+	x = (IMG_HOR_SIZE * thrd->id) / NB_THREADS;
+	while (x < ((IMG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
+	{
+		y = 0;
+		while (y < IMG_VER_SIZE)
+		{
+			rc = 0.285 + thrd->win->params.rc;
+			ic = 0.01 + thrd->win->params.ic;
+			rz = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
+			iz = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			a = 0;
+			while ((rz * rz + iz * iz) < 4 && a < thrd->win->params.it_max)
+			{
+				r = rz;
+				rz = rz * rz * rz - 3 * rz * iz * iz + rc;
+				iz = 3 * r * r * iz - iz * iz * iz + ic; 
+				a++;
+			}
+			if (a == thrd->win->params.it_max)
+				mlx_put_pixel_to_image(&thrd->win->img, x, y, 0);
+			else
+				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
+				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
 			y++;
 		}
 		x++;

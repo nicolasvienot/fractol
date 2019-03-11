@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 23:06:47 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 23:15:42 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define F6 "Flower"
 # define F7 "Flower2"
 # define F8 "Flower3"
+# define F9 "JuliaCarre"
 
 # define TOUCH_ESC 53
 # define ARROW_LEFT 123
@@ -195,6 +196,7 @@ void		*ft_create_flower_multi(void *thrds);
 void		*ft_create_flower2_multi(void *thrds);
 void		*ft_create_flower3_multi(void *thrds);
 void		*ft_create_duobrot_multi(void *thrds);
+void		*ft_create_juliacarre_multi(void *thrds);
 
 /*
 ** ft_fractales_vig.c

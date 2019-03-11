@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 21:30:24 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 23:15:56 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	ft_print_menu_2(t_win *win)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F7);
 	else if (win->fract == 8)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F8);
+	else if (win->fract == 9)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F9);
 }
 
 static void	ft_print_menu_1(t_win *win)
