@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 20:04:21 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 20:23:52 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void		ft_pick_fractale(int x, int y, t_win *win)
 
 int			deal_motion(int x, int y, t_win *win)
 {
-	(void)y;
 	if (win->motion == 1 && win->fract >= 5)
 	{
 		if (x >= 0 && y >= 0 && x <= WIN_HOR_SIZE && y <= WIN_VER_SIZE)

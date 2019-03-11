@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 19:59:29 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 21:24:30 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define PI 3.14
 # define COEF_ZOOM 1.2
 # define COEF_ROTA 1
-# define SIZE_MOV 0.1
+# define SIZE_MOV 20
 # define COEF_ALT 1.2
 # define COEF_Z 0.2
 # define MIN_ZOOM 0.01
