@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 21:24:30 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 21:29:35 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,15 @@
 # define IMG_VER_SIZE 700
 # define VIG_HOR_SIZE 200
 # define VIG_VER_SIZE 140
+
+# define F1 "Mandelbrot"
+# define F2 "Duobrot"
+# define F3 "Tricorn"
+# define F4 "BurningShip"
+# define F5 "Julia"
+# define F6 "Flower"
+# define F7 "Flower2"
+# define F8 "Flower3"
 
 # define TOUCH_ESC 53
 # define ARROW_LEFT 123

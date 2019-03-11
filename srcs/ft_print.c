@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 20:07:13 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 21:30:24 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,21 @@
 static void	ft_print_menu_2(t_win *win)
 {
 	if (win->fract == 1)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, "Mandelbrot");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F1);
 	else if (win->fract == 2)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, "Duobrot");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F2);
 	else if (win->fract == 3)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, "Tricorn");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F3);
 	else if (win->fract == 4)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, \
-			GREY, "BurningShip");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F4);
 	else if (win->fract == 5)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, "Julia");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F5);
 	else if (win->fract == 6)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, "Flower");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F6);
 	else if (win->fract == 7)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, "Flower2");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F7);
 	else if (win->fract == 8)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, "Flower3");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 10, GREY, F8);
 }
 
 static void	ft_print_menu_1(t_win *win)
