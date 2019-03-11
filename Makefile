@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/11 18:51:27 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/12 00:05:05 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,3 +86,7 @@ re		:	fclean all
 
 recl	:	all clean
 			make recl -C libft/
+
+norm	:	fclean
+			norminette includes/*.h
+			norminette srcs/*.c
