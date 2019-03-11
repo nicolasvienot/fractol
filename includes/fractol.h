@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 21:29:35 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/11 23:06:47 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,14 @@
 # include <math.h>
 # include <pthread.h>
 
-# define BUFF_SIZE 9999
-# define BUF_SIZE 1000
-
-# define PI 3.14
+// # define PI 3.14
 # define COEF_ZOOM 1.2
-# define COEF_ROTA 1
+// # define COEF_ROTA 1
 # define SIZE_MOV 20
-# define COEF_ALT 1.2
-# define COEF_Z 0.2
-# define MIN_ZOOM 0.01
-# define MAX_ZOOM 150
-# define MAX_ALT 15
-# define MIN_ALT -15
+// # define MIN_ZOOM 0.01
+// # define MAX_ZOOM 150
 
 # define NB_THREADS 20
-# define MAX_ALT 15
-# define MIN_ALT -15
 
 # define BLACK 0
 # define BLUE 255
@@ -48,7 +39,6 @@
 # define WHITE 16777215
 # define GREY 6908265
 
-# define WIN_NAME "nvienot's Fract'ol"
 # define WIN_HOR_SIZE 1000
 # define WIN_VER_SIZE 700
 # define IMG_HOR_SIZE 1000
@@ -56,6 +46,7 @@
 # define VIG_HOR_SIZE 200
 # define VIG_VER_SIZE 140
 
+# define WIN_NAME "nvienot's Fract'ol"
 # define F1 "Mandelbrot"
 # define F2 "Duobrot"
 # define F3 "Tricorn"
