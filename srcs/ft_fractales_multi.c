@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/12 15:24:09 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/12 17:43:42 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	*ft_create_mandelbrot_multi(void *thrds)
 	int 		y;
 
 	thrd = (t_thrd *)thrds;
+	ft_putstr("hello ");
 	x = (IMG_HOR_SIZE * thrd->id) / NB_THREADS;
 	while (x < ((IMG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
