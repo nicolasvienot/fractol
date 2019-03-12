@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 23:57:33 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/12 15:24:09 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	*ft_create_mandelbrot_multi(void *thrds)
 		}
 		x++;
 	}
+	return (NULL);
 	pthread_exit(NULL);
 }
 

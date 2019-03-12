@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/12 00:05:05 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/12 15:19:19 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FLAGS	=  -Wall -Werror -Wextra -O2
 
 OBJS	=	$(SRCS:.c=.o)
 
-F.WORK	=	-lmlx -L mlx -framework OpenGL -framework Appkit
+F.WORK	=	-lpthread -lmlx -L mlx -framework OpenGL -framework Appkit
 
 LIB		=	libft/libft.a
 

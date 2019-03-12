@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 23:39:27 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/12 15:05:01 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int			deal_key(int keycode, t_win *win)
 		win->params.it_max += 1;
 	else if (keycode == TOUCH_O && win->params.it_max >= 5)
 		win->params.it_max -= 1;
+	else if (keycode == PAGE_UP)
+		win->params.zoom *= (double)COEF_ZOOM;
+	else if (keycode == PAGE_DOWN)
+		win->params.zoom /= (double)COEF_ZOOM;
 	else if (keycode == TOUCH_ESC)
 		ft_exit(win);
 	else if (keycode == TOUCH_M && win->fract >= 5)

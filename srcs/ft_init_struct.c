@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 20:05:17 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/12 15:26:09 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_init_mandelbrot(t_win *win)
 {
 	win->params.x = 0;
 	win->params.y = 0;
-	win->params.x1 = -2;
+	win->params.x1 = -2.1;
 	win->params.y1 = -1.4;
 	win->params.zoom = 250;
 	win->params.it_max = 50;
