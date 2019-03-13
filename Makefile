@@ -6,13 +6,13 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/13 22:29:06 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/13 23:01:58 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fractol
 
-SRCS	=	srcs/main.c srcs/ft_error.c srcs/ft_fractales_multi.c srcs/ft_print.c \
+SRCS	=	srcs/main.c srcs/ft_error.c srcs/ft_print.c \
 			srcs/ft_vignettes.c srcs/ft_init_struct.c srcs/ft_select_fractale.c \
 			srcs/ft_fractales_vig.c srcs/ft_deal_key.c srcs/ft_deal_mouse.c srcs/ft_create.c \
 			srcs/ft_calc.c

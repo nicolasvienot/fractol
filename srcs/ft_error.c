@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 11:48:56 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/12 14:56:22 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 23:05:27 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int			ft_exit(t_win *win)
 {
 	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
 	mlx_destroy_image(win->mlx_ptr, win->vig.img_ptr);
-	ft_putstr("oublie pas de gerer exit ;)");
+	ft_putstr("oublie pas de gerer exit ;) et de voir avec pthread");
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 21:07:55 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 22:54:42 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 23:05:52 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_calc_1(t_render *r, int fract, int it_max)
 		{
 			r->r = r->rz;
 			r->rz = r->rz * r->rz * r->rz - 3 * r->rz * r->iz * r->iz + r->rc;
-			r->iz = 3 * r->r * r->r * r->iz - r->iz * r->iz * r->iz + r->ic; 
+			r->iz = 3 * r->r * r->r * r->iz - r->iz * r->iz * r->iz + r->ic;
 			r->a++;
 		}
 	}

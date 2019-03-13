@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 22:45:33 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 23:05:15 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,31 +98,20 @@ void		ft_multithreading(t_win *win)
 		mthrds->thrd[i].id = i;
 		mthrds->thrd[i].w = win;
 		if (win->fract <= 4)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_mandelbrot_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
+			if (pthread_create(&mthrds->threads[i], NULL, \
+				ft_create_mandelbrot_multi, &mthrds->thrd[i]))
+				ft_exit(win);
 		if (win->fract > 4)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_julia_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
+			if (pthread_create(&mthrds->threads[i], NULL, \
+				ft_create_julia_multi, &mthrds->thrd[i]))
+				ft_exit(win);
 		i++;
 	}
 	i = 0;
 	while (i < NB_THREADS)
 	{
 		if (pthread_join(mthrds->threads[i], NULL))
-		{
-			ft_putstr("erreur pthread join poto");
-			return ;
-		}
+			ft_exit(win);
 		i++;
 	}
 }
@@ -138,41 +127,28 @@ void		ft_multithreading_vig(t_win *win)
 	{
 		mthrds->thrd[i].id = i;
 		mthrds->thrd[i].w = win;
-		if (pthread_create(&mthrds->threads[i], NULL, ft_create_mandelbrot_vig, &mthrds->thrd[i]))
-		{
-			ft_putstr("erreur pthread create poto");
-			return ;
-		}
-		if (pthread_create(&mthrds->threads[i], NULL, ft_create_julia_vig, &mthrds->thrd[i]))
-		{
-			ft_putstr("erreur pthread create poto");
-			return ;
-		}
-		if (pthread_create(&mthrds->threads[i], NULL, ft_create_tricorn_vig, &mthrds->thrd[i]))
-		{
-			ft_putstr("erreur pthread create poto");
-			return ;
-		}
-		if (pthread_create(&mthrds->threads[i], NULL, ft_create_bship_vig, &mthrds->thrd[i]))
-		{
-			ft_putstr("erreur pthread create poto");
-			return ;
-		}
-		if (pthread_create(&mthrds->threads[i], NULL, ft_create_flower_vig, &mthrds->thrd[i]))
-		{
-			ft_putstr("erreur pthread create poto");
-			return ;
-		}
+		if (pthread_create(&mthrds->threads[i], NULL, \
+			ft_create_mandelbrot_vig, &mthrds->thrd[i]))
+			ft_exit(win);
+		if (pthread_create(&mthrds->threads[i], NULL, \
+			ft_create_julia_vig, &mthrds->thrd[i]))
+			ft_exit(win);
+		if (pthread_create(&mthrds->threads[i], NULL, \
+			ft_create_tricorn_vig, &mthrds->thrd[i]))
+			ft_exit(win);
+		if (pthread_create(&mthrds->threads[i], NULL, \
+			ft_create_bship_vig, &mthrds->thrd[i]))
+			ft_exit(win);
+		if (pthread_create(&mthrds->threads[i], NULL, \
+			ft_create_flower_vig, &mthrds->thrd[i]))
+			ft_exit(win);
 		i++;
 	}
 	i = 0;
 	while (i < NB_THREADS)
 	{
 		if (pthread_join(mthrds->threads[i], NULL))
-		{
-			ft_putstr("erreur pthread join poto");
-			return ;
-		}
+			ft_exit(win);
 		i++;
 	}
 }
