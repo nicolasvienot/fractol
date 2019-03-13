@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:12:32 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 20:28:04 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@
 # include <math.h>
 # include <pthread.h>
 
-// # define PI 3.14
 # define COEF_ZOOM 1.2
-// # define COEF_ROTA 1
 # define SIZE_MOV 20
-// # define MIN_ZOOM 0.01
-// # define MAX_ZOOM 150
 
 # define NB_THREADS 20
 
@@ -81,7 +77,6 @@ typedef struct s_params			t_params;
 typedef struct s_mthrds			t_mthrds;
 typedef struct s_thrd			t_thrd;
 typedef struct s_render			t_render;
-
 
 struct							s_render
 {
@@ -221,5 +216,7 @@ void		*ft_create_julia_vig(void *thrds);
 void		*ft_create_tricorn_vig(void *thrds);
 void		*ft_create_bship_vig(void *thrds);
 void		*ft_create_flower_vig(void *thrds);
+
+void		ft_calc(t_render *r, int it_max);
 
 #endif
