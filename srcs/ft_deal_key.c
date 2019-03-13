@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:14:41 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 23:52:26 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void		ft_create_it(t_win *win)
 		win->img.img_ptr, 0, 0);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
 		win->vig.img_ptr, 800, 0);
-	//	ft_put_vig(win);
+	if (win->vig_it == 1)
+		ft_put_vig(win);
 	ft_print_menu(win);
 }
 
@@ -57,6 +58,9 @@ int			deal_key(int keycode, t_win *win)
 		win->p.zoom /= (double)COEF_ZOOM;
 	else if (keycode == TOUCH_ESC)
 		ft_exit(win);
+	else if (keycode == TOUCH_V)
+		(win->vig_it == 0) ? (win->vig_it += 1) \
+			: (win->vig_it = 0);
 	else if (keycode == TOUCH_M && win->fract >= 5)
 		(win->motion == 0) ? (win->motion += 1) \
 			: (win->motion = 0);

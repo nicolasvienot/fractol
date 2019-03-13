@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:17:04 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 23:50:12 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	ft_init_start(t_win *win)
 	win->p.moove_hor = 0;
 	win->p.moove_ver = 0;
 	win->motion = 0;
+	win->vig_it = 0;
 	win->p.color = 999;
 }

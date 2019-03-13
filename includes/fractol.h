@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 21:41:34 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 23:53:50 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 # define TOUCH_I 34
 # define TOUCH_R 15
 # define TOUCH_T 17
+# define TOUCH_V 9
 # define TOUCH_M 46
 # define TOUCH_C 8
 # define TOUCH_STAR 67
@@ -131,6 +132,7 @@ struct							s_win
 	void						*win_ptr;
 	int							fract;
 	int							motion;
+	int							vig_it;
 	t_params					p;
 	t_mthrds					mthrds;
 	t_img						img;
