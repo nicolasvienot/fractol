@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:16:30 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:11:07 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int		deal_expose(t_win *win)
 	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
-	ft_put_vig(win);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
+		win->vig.img_ptr, 800, 0);
 	return (0);
 }
 

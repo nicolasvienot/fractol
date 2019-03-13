@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 23:05:15 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:12:12 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		ft_select_fractale(t_win *win, char *str)
 		win->fract = 9;
 		ft_init_julia(win);
 	}
+	ft_put_vig(win, 1);
 }
 
 void		ft_reset_fractale(t_win *win)

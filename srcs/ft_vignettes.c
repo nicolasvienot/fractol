@@ -6,19 +6,19 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 16:38:11 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:16:20 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:06:46 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_put_vig(t_win *win)
+void	ft_put_vig(t_win *win, int test)
 {
 	int		x;
 	int		y;
 	double	color;
 
-	if (win->p.it_max != win->p.old_it_max)
+	if (win->p.it_max != win->p.old_it_max || test == 1)
 	{
 		x = 0;
 		while (x < VIG_HOR_SIZE)
@@ -39,6 +39,4 @@ void	ft_put_vig(t_win *win)
 		ft_multithreading_vig(win);
 		win->p.old_it_max = win->p.it_max;
 	}
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
-		win->vig.img_ptr, 800, 0);
 }

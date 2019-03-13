@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 23:53:50 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:07:20 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ void		ft_multithreading_vig(t_win *win);
 ** ft_vignettes.c
 */
 
-void		ft_put_vig(t_win *win);
+void		ft_put_vig(t_win *win, int test);
 
 /*
 ** ft_fractales_multi.c
