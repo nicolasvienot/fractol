@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:28:04 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 21:41:34 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,10 @@ struct							s_params
 	double						zoom;
 	int							it_max;
 	int							old_it_max;
-	int							x;
-	int							y;
 	double						x1;
 	double						y1;
 	double						rc;
 	double						ic;
-	double						rz;
-	double						iz;
 	int							color;
 };
 
@@ -217,6 +213,7 @@ void		*ft_create_tricorn_vig(void *thrds);
 void		*ft_create_bship_vig(void *thrds);
 void		*ft_create_flower_vig(void *thrds);
 
-void		ft_calc(t_render *r, int it_max);
+void		ft_calc(t_render *r, int fract, int it_max);
+void		ft_calc_1(t_render *r, int fract, int it_max);
 
 #endif
