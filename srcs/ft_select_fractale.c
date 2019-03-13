@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:16:14 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 22:45:33 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void		ft_multithreading(t_win *win)
 	{
 		mthrds->thrd[i].id = i;
 		mthrds->thrd[i].w = win;
-		if (win->fract == 1)
+		if (win->fract <= 4)
 		{
 			if (pthread_create(&mthrds->threads[i], NULL, ft_create_mandelbrot_multi, &mthrds->thrd[i]))
 			{
@@ -105,65 +105,9 @@ void		ft_multithreading(t_win *win)
 				return ;
 			}
 		}
-		if (win->fract == 5)
+		if (win->fract > 4)
 		{
 			if (pthread_create(&mthrds->threads[i], NULL, ft_create_julia_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
-		if (win->fract == 3)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_tricorn_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
-		if (win->fract == 4)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_bship_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
-		if (win->fract == 6)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_flower_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
-		if (win->fract == 7)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_flower2_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
-		if (win->fract == 8)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_flower3_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
-		if (win->fract == 2)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_duobrot_multi, &mthrds->thrd[i]))
-			{
-				ft_putstr("erreur pthread create poto");
-				return ;
-			}
-		}
-		if (win->fract == 9)
-		{
-			if (pthread_create(&mthrds->threads[i], NULL, ft_create_juliacarre_multi, &mthrds->thrd[i]))
 			{
 				ft_putstr("erreur pthread create poto");
 				return ;
