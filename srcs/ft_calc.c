@@ -6,13 +6,13 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 21:07:55 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 23:05:52 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:31:08 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_calc_2(t_render *r, int fract, int it_max)
+static void		ft_calc_2(t_render *r, int fract, int it_max)
 {
 	r->a = 0;
 	if (fract == 3 || fract == 7)
@@ -37,7 +37,7 @@ void	ft_calc_2(t_render *r, int fract, int it_max)
 	}
 }
 
-void	ft_calc_1(t_render *r, int fract, int it_max)
+static void		ft_calc_1(t_render *r, int fract, int it_max)
 {
 	r->a = 0;
 	if (fract == 1 || fract == 5)

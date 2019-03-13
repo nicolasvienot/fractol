@@ -6,13 +6,13 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:29:09 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:32:06 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	*ft_create_mandelbrot_multi(void *thrds)
+void	*ft_create_mandelbrot(void *thrds)
 {
 	t_thrd		*thrd;
 	t_render	r;
@@ -41,7 +41,7 @@ void	*ft_create_mandelbrot_multi(void *thrds)
 	pthread_exit(NULL);
 }
 
-void	*ft_create_julia_multi(void *thrds)
+void	*ft_create_julia(void *thrds)
 {
 	t_thrd		*thrd;
 	t_render	r;

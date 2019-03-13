@@ -6,13 +6,13 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:14:50 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:34:38 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void		ft_pick_fractale(int x, int y, t_win *win)
+static void		ft_pick_fractale(int x, int y, t_win *win)
 {
 	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE && x < WIN_HOR_SIZE)
 	{
@@ -34,7 +34,7 @@ void		ft_pick_fractale(int x, int y, t_win *win)
 	}
 }
 
-int			deal_motion(int x, int y, t_win *win)
+int				deal_motion(int x, int y, t_win *win)
 {
 	if (win->motion == 1 && win->fract >= 5)
 	{

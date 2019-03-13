@@ -6,13 +6,13 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:22:50 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:36:47 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		deal_expose(t_win *win)
+int			deal_expose(t_win *win)
 {
 	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
@@ -22,7 +22,7 @@ int		deal_expose(t_win *win)
 	return (0);
 }
 
-void	ft_hook(t_win *win)
+static void	ft_hook(t_win *win)
 {
 	mlx_expose_hook(win->win_ptr, deal_expose, win);
 	mlx_hook(win->win_ptr, 2, 1L << 0, deal_key, win);
@@ -32,7 +32,7 @@ void	ft_hook(t_win *win)
 	mlx_loop(win->mlx_ptr);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_win	win;
 

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:22:42 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:33:13 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void		ft_multithreading(t_win *win)
 		mthrds->thrd[i].w = win;
 		if (win->fract <= 4)
 			if (pthread_create(&mthrds->threads[i], NULL, \
-				ft_create_mandelbrot_multi, &mthrds->thrd[i]))
+				ft_create_mandelbrot, &mthrds->thrd[i]))
 				ft_exit(win);
 		if (win->fract > 4)
 			if (pthread_create(&mthrds->threads[i], NULL, \
-				ft_create_julia_multi, &mthrds->thrd[i]))
+				ft_create_julia, &mthrds->thrd[i]))
 				ft_exit(win);
 		i++;
 	}
