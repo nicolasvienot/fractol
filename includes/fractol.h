@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:22:32 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:27:08 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ int			deal_key(int keycode, t_win *win);
 */
 
 int			ft_print_menu(t_win *win);
-void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a);
+void		mlx_put_pixel_to_image(t_img img, int x, int y, int a);
 void		ft_viseur(t_win *win);
 
 /*

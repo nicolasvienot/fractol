@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 22:44:24 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:29:09 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	*ft_create_mandelbrot_multi(void *thrds)
 			r.iz = 0;
 			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max);
 			if (r.a == thrd->w->p.it_max)
-				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, (0));
+				mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, \
+				mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, \
 					(thrd->w->p.color * r.a / thrd->w->p.it_max));
 			r.y++;
 		}
@@ -59,9 +59,9 @@ void	*ft_create_julia_multi(void *thrds)
 			r.iz = r.y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max);
 			if (r.a == thrd->w->p.it_max)
-				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, (0));
+				mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, \
+				mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, \
 					(thrd->w->p.color * r.a / thrd->w->p.it_max));
 			r.y++;
 		}

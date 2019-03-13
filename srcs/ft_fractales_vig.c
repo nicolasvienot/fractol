@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:15:28 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:28:47 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	*ft_create_mandelbrot_vig(void *thrds)
 				a++;
 			}
 			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(&thrd->w->vig, x, y, (0));
+				mlx_put_pixel_to_image(thrd->w->vig, x, y, (0));
 			y++;
 		}
 		x++;
@@ -96,7 +96,7 @@ void	*ft_create_julia_vig(void *thrds)
 				a++;
 			}
 			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(&thrd->w->vig, x, y + VIG_VER_SIZE, (0));
+				mlx_put_pixel_to_image(thrd->w->vig, x, y + VIG_VER_SIZE, (0));
 			y++;
 		}
 		x++;
@@ -142,7 +142,7 @@ void	*ft_create_tricorn_vig(void *thrds)
 				a++;
 			}
 			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(&thrd->w->vig, x, (y + VIG_VER_SIZE * 2), (0));
+				mlx_put_pixel_to_image(thrd->w->vig, x, (y + VIG_VER_SIZE * 2), (0));
 			y++;
 		}
 		x++;
@@ -188,7 +188,7 @@ void	*ft_create_bship_vig(void *thrds)
 				a++;
 			}
 			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(&thrd->w->vig, x, (y + VIG_VER_SIZE * 3), (0));
+				mlx_put_pixel_to_image(thrd->w->vig, x, (y + VIG_VER_SIZE * 3), (0));
 			y++;
 		}
 		x++;
@@ -234,7 +234,7 @@ void	*ft_create_flower_vig(void *thrds)
 				a++;
 			}
 			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(&thrd->w->vig, x, (y + VIG_VER_SIZE * 4), (0));
+				mlx_put_pixel_to_image(thrd->w->vig, x, (y + VIG_VER_SIZE * 4), (0));
 			y++;
 		}
 		x++;

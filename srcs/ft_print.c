@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 23:06:59 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:28:16 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ int			ft_print_menu(t_win *win)
 	return (1);
 }
 
-void		mlx_put_pixel_to_image(t_img *img, int x, int y, int a)
+void		mlx_put_pixel_to_image(t_img img, int x, int y, int a)
 {
 	int		octet;
 
-	octet = img->bpp / 8;
+	octet = img.bpp / 8;
 	if (x >= 0 && y >= 0 && x < IMG_HOR_SIZE && y < IMG_VER_SIZE)
 	{
-		if (!(ft_memcpy(&img->data[octet * x + img->sizeline * y], \
+		if (!(ft_memcpy(&img.data[octet * x + img.sizeline * y], \
 			&a, octet)))
-			ft_putstr("wow c chaud");
+			return ;
 	}
 }
 
@@ -94,14 +94,14 @@ void		ft_viseur(t_win *win)
 	color = WHITE;
 	while (y <= (WIN_VER_SIZE / 2) + 8)
 	{
-		mlx_put_pixel_to_image(&win->img, x, y, color);
+		mlx_put_pixel_to_image(win->img, x, y, color);
 		y++;
 	}
 	y = WIN_VER_SIZE / 2;
 	x = (WIN_HOR_SIZE / 2) - 8;
 	while (x <= (WIN_HOR_SIZE / 2) + 8)
 	{
-		mlx_put_pixel_to_image(&win->img, x, y, color);
+		mlx_put_pixel_to_image(win->img, x, y, color);
 		x++;
 	}
 }

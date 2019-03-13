@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 16:38:11 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:22:44 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:28:28 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_put_vig(t_win *win, int test)
 				else
 					color = 256 * 256 * 256 * 180 + 256 * 256 * 100 \
 						+ 256 * 100 + 100;
-				mlx_put_pixel_to_image(&win->vig, x, y, color);
+				mlx_put_pixel_to_image(win->vig, x, y, color);
 				y++;
 			}
 			x++;
