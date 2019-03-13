@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 20:30:20 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 20:33:01 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_calc(t_render *r, int it_max)
 {
+	r->a = 0;
 	while ((r->rz * r->rz + r->iz * r->iz) < 4 && r->a < it_max)
 	{
 		r->r = r->rz;
@@ -39,16 +40,15 @@ void	*ft_create_mandelbrot_multi(void *thrds)
 			r.ic = r.y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			r.rz = 0;
 			r.iz = 0;
-			r.a = 0;
 			ft_calc(&r, thrd->w->p.it_max);
 			if (r.a == thrd->w->p.it_max)
 				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, (thrd->w->p.color * r.a / thrd->w->p.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, \
+					(thrd->w->p.color * r.a / thrd->w->p.it_max));
 			r.y++;
 		}
 		r.x++;
 	}
-	return (NULL);
 	pthread_exit(NULL);
 }
