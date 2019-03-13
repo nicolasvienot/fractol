@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 23:40:21 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 20:16:14 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void		ft_reset_fractale(t_win *win)
 		ft_init_mandelbrot(win);
 	if (win->fract == 9)
 		ft_init_julia(win);
-	win->params.moove_hor = 0;
-	win->params.moove_ver = 0;
+	win->p.moove_hor = 0;
+	win->p.moove_ver = 0;
 }
 
 void		ft_multithreading(t_win *win)
@@ -96,7 +96,7 @@ void		ft_multithreading(t_win *win)
 	while (i < NB_THREADS)
 	{
 		mthrds->thrd[i].id = i;
-		mthrds->thrd[i].win = win;
+		mthrds->thrd[i].w = win;
 		if (win->fract == 1)
 		{
 			if (pthread_create(&mthrds->threads[i], NULL, ft_create_mandelbrot_multi, &mthrds->thrd[i]))
@@ -193,7 +193,7 @@ void		ft_multithreading_vig(t_win *win)
 	while (i < NB_THREADS)
 	{
 		mthrds->thrd[i].id = i;
-		mthrds->thrd[i].win = win;
+		mthrds->thrd[i].w = win;
 		if (pthread_create(&mthrds->threads[i], NULL, ft_create_mandelbrot_vig, &mthrds->thrd[i]))
 		{
 			ft_putstr("erreur pthread create poto");

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/11 20:23:52 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 20:14:50 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int			deal_motion(int x, int y, t_win *win)
 	{
 		if (x >= 0 && y >= 0 && x <= WIN_HOR_SIZE && y <= WIN_VER_SIZE)
 		{
-			win->params.rc = ((double)x - ((WIN_HOR_SIZE) / 2)) / 300;
-			win->params.ic = ((double)y - (WIN_VER_SIZE / 2)) / 300;
+			win->p.rc = ((double)x - ((WIN_HOR_SIZE) / 2)) / 300;
+			win->p.ic = ((double)y - (WIN_VER_SIZE / 2)) / 300;
 		}
 		ft_create_it(win);
 	}
@@ -55,19 +55,19 @@ int			deal_mouse(int mouse, int x, int y, t_win *win)
 
 	if (x > 0 && y > 0)
 	{
-		oldx = win->params.x1 + (double)x / win->params.zoom;
-		oldy = win->params.y1 + (double)y / win->params.zoom;
-		if (mouse == 4 && win->params.zoom > 10)
+		oldx = win->p.x1 + (double)x / win->p.zoom;
+		oldy = win->p.y1 + (double)y / win->p.zoom;
+		if (mouse == 4 && win->p.zoom > 10)
 		{
-			win->params.zoom /= (double)COEF_ZOOM;
-			win->params.x1 = oldx - (double)x / win->params.zoom;
-			win->params.y1 = oldy - (double)y / win->params.zoom;
+			win->p.zoom /= (double)COEF_ZOOM;
+			win->p.x1 = oldx - (double)x / win->p.zoom;
+			win->p.y1 = oldy - (double)y / win->p.zoom;
 		}
 		if (mouse == 5)
 		{
-			win->params.zoom *= (double)COEF_ZOOM;
-			win->params.x1 = oldx - (double)x / win->params.zoom;
-			win->params.y1 = oldy - (double)y / win->params.zoom;
+			win->p.zoom *= (double)COEF_ZOOM;
+			win->p.x1 = oldx - (double)x / win->p.zoom;
+			win->p.y1 = oldy - (double)y / win->p.zoom;
 		}
 		if (mouse == 1 && x > (WIN_HOR_SIZE - VIG_HOR_SIZE) && x < WIN_HOR_SIZE)
 		{

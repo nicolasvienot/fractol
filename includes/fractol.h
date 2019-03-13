@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 18:14:49 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 20:12:32 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,25 @@ typedef struct s_img			t_img;
 typedef struct s_params			t_params;
 typedef struct s_mthrds			t_mthrds;
 typedef struct s_thrd			t_thrd;
+typedef struct s_render			t_render;
+
+
+struct							s_render
+{
+	double						rc;
+	double						ic;
+	double						rz;
+	double						iz;
+	double						r;
+	int							a;
+	int 						x;
+	int 						y;
+};
 
 struct							s_thrd
 {
 	int							id;
-	t_win						*win;
+	t_win						*w;
 };
 
 struct							s_mthrds
@@ -126,7 +140,7 @@ struct							s_win
 	void						*win_ptr;
 	int							fract;
 	int							motion;
-	t_params					params;
+	t_params					p;
 	t_mthrds					mthrds;
 	t_img						img;
 	t_img						vig;

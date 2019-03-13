@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/12 17:43:42 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 20:13:30 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,36 @@
 void	*ft_create_mandelbrot_multi(void *thrds)
 {
 	t_thrd		*thrd;
-	double		rc;
-	double		ic;
-	double		rz;
-	double		iz;
-	double		r;
-	int			a;
-	int 		x;
-	int 		y;
+	t_render	r;
 
 	thrd = (t_thrd *)thrds;
-	ft_putstr("hello ");
-	x = (IMG_HOR_SIZE * thrd->id) / NB_THREADS;
-	while (x < ((IMG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
+	r.x = (IMG_HOR_SIZE * thrd->id) / NB_THREADS;
+	while (r.x < ((IMG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
-		y = 0;
-		while (y < IMG_VER_SIZE)
+		r.y = 0;
+		while (r.y < IMG_VER_SIZE)
 		{
-			rc = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			ic = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
-			rz = 0;
-			iz = 0;
-			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->win->params.it_max)
+			r.rc = r.x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			r.ic = r.y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
+			r.rz = 0;
+			r.iz = 0;
+			r.a = 0;
+			while ((r.rz * r.rz + r.iz * r.iz) < 4 && r.a < thrd->w->p.it_max)
 			{
-				r = rz;
-				rz = rz * rz - iz * iz + rc;
-				iz = 2 * r * iz + ic; 
-				a++;
+				r.r = r.rz;
+				r.rz = r.rz * r.rz - r.iz * r.iz + r.rc;
+				r.iz = 2 * r.r * r.iz + r.ic; 
+				r.a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
+			if (r.a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 100000));
-				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
-			y++;
+				mlx_put_pixel_to_image(&thrd->w->img, r.x, r.y, (thrd->w->p.color * r.a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(&thrd->w->img, x, y, (r.a * 100000));
+				// mlx_put_pixel_to_image(thrd->w->img, x, y, (r.a * 256 * 255 / thrd->w->p.it_max));
+			r.y++;
 		}
-		x++;
+		r.x++;
 	}
 	return (NULL);
 	pthread_exit(NULL);
@@ -77,24 +69,24 @@ void	*ft_create_duobrot_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			ic = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			rc = x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			ic = y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			rz = 0;
 			iz = 0;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->win->params.it_max)
+			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
 			{
 				r = rz;
 				rz = rz * rz * rz - 3 * rz * iz * iz + rc;
 				iz = 3 * r * r * iz - iz * iz * iz + ic; 
 				a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
+			if (a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 100000));
-				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (thrd->w->p.color * a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(&thrd->w->img, x, y, (a * 100000));
+				// mlx_put_pixel_to_image(thrd->w->img, x, y, (a * 256 * 255 / thrd->w->p.it_max));
 			y++;
 		}
 		x++;
@@ -121,23 +113,23 @@ void	*ft_create_julia_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = 0.285 + thrd->win->params.rc;
-			ic = 0.01 + thrd->win->params.ic;
-			rz = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			iz = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			rc = 0.285 + thrd->w->p.rc;
+			ic = 0.01 + thrd->w->p.ic;
+			rz = x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			iz = y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->win->params.it_max)
+			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * r * iz + ic; 
 				a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
+			if (a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (thrd->w->p.color * a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(&thrd->w->img, x, y, (a * 256 * 255 / thrd->w->p.it_max));
 			y++;
 		}
 		x++;
@@ -164,24 +156,24 @@ void	*ft_create_tricorn_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			ic = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			rc = x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			ic = y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			rz = 0;
 			iz = 0;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->win->params.it_max)
+			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = -2 * r * iz + ic; 
 				a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
+			if (a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 100000));
-				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (thrd->w->p.color * a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(&thrd->w->img, x, y, (a * 100000));
+				// mlx_put_pixel_to_image(&thrd->w->img, x, y, (a * 256 * 255 / thrd->w->p.it_max));
 			y++;
 		}
 		x++;
@@ -208,24 +200,24 @@ void	*ft_create_bship_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			ic = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			rc = x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			ic = y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			rz = 0;
 			iz = 0;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->win->params.it_max)
+			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * fabs(r) * fabs(iz) + ic;  
 				a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
+			if (a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 100000));
-				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (thrd->w->p.color * a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(&thrd->w->img, x, y, (a * 100000));
+				// mlx_put_pixel_to_image(thrd->w->img, x, y, (a * 256 * 255 / thrd->w->p.it_max));
 			y++;
 		}
 		x++;
@@ -252,23 +244,23 @@ void	*ft_create_flower_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = 0.285 + thrd->win->params.rc;;
-			ic = 0.01 + thrd->win->params.ic;;
-			rz = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			iz = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			rc = 0.285 + thrd->w->p.rc;;
+			ic = 0.01 + thrd->w->p.ic;;
+			rz = x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			iz = y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			a = 0;
-			while ((rz * rz - iz * iz) < 4 && a < thrd->win->params.it_max)
+			while ((rz * rz - iz * iz) < 4 && a < thrd->w->p.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * r * iz + ic; 
 				a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
+			if (a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (thrd->w->p.color * a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(thrd->w->img, x, y, (a * 256 * 255 / thrd->w->p.it_max));
 			y++;
 		}
 		x++;
@@ -295,23 +287,23 @@ void	*ft_create_flower3_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = 0.285 + thrd->win->params.rc;
-			ic = 0.01 + thrd->win->params.ic;;
-			rz = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			iz = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			rc = 0.285 + thrd->w->p.rc;
+			ic = 0.01 + thrd->w->p.ic;;
+			rz = x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			iz = y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->win->params.it_max)
+			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = 2 * fabs(r) * fabs(iz) + ic; 
 				a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
+			if (a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (thrd->w->p.color * a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(thrd->w->img, x, y, (a * 256 * 255 / thrd->w->p.it_max));
 			y++;
 		}
 		x++;
@@ -338,23 +330,23 @@ void	*ft_create_flower2_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = 0.285 + thrd->win->params.rc;;
-			ic = 0.01 + thrd->win->params.ic;
-			rz = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			iz = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			rc = 0.285 + thrd->w->p.rc;;
+			ic = 0.01 + thrd->w->p.ic;
+			rz = x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			iz = y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			a = 0;
-			while ((rz * rz - iz * iz) < 4 && a < thrd->win->params.it_max)
+			while ((rz * rz - iz * iz) < 4 && a < thrd->w->p.it_max)
 			{
 				r = rz;
 				rz = rz * rz - iz * iz + rc;
 				iz = -2 * r * iz + ic; 
 				a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (0));
+			if (a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (0));
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (thrd->w->p.color * a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(thrd->w->img, x, y, (a * 256 * 255 / thrd->w->p.it_max));
 			y++;
 		}
 		x++;
@@ -381,23 +373,23 @@ void	*ft_create_juliacarre_multi(void *thrds)
 		y = 0;
 		while (y < IMG_VER_SIZE)
 		{
-			rc = 0.285 + thrd->win->params.rc;
-			ic = 0.01 + thrd->win->params.ic;
-			rz = x / thrd->win->params.zoom + thrd->win->params.x1 + thrd->win->params.moove_hor;
-			iz = y / thrd->win->params.zoom + thrd->win->params.y1 + thrd->win->params.moove_ver;
+			rc = 0.285 + thrd->w->p.rc;
+			ic = 0.01 + thrd->w->p.ic;
+			rz = x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
+			iz = y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->win->params.it_max)
+			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
 			{
 				r = rz;
 				rz = rz * rz * rz - 3 * rz * iz * iz + rc;
 				iz = 3 * r * r * iz - iz * iz * iz + ic; 
 				a++;
 			}
-			if (a == thrd->win->params.it_max)
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, 0);
+			if (a == thrd->w->p.it_max)
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, 0);
 			else
-				mlx_put_pixel_to_image(&thrd->win->img, x, y, (thrd->win->params.color * a / thrd->win->params.it_max));
-				// mlx_put_pixel_to_image(&thrd->win->img, x, y, (a * 256 * 255 / thrd->win->params.it_max));
+				mlx_put_pixel_to_image(&thrd->w->img, x, y, (thrd->w->p.color * a / thrd->w->p.it_max));
+				// mlx_put_pixel_to_image(&thrd->w->img, x, y, (a * 256 * 255 / thrd->w->p.it_max));
 			y++;
 		}
 		x++;

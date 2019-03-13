@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/12 15:05:01 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/13 20:14:41 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,29 @@ static void	deal_key_reset(int keycode, t_win *win)
 int			deal_key(int keycode, t_win *win)
 {
 	if (keycode == ARROW_DOWN)
-		win->params.moove_ver += SIZE_MOV / win->params.zoom;
+		win->p.moove_ver += SIZE_MOV / win->p.zoom;
 	else if (keycode == ARROW_UP)
-		win->params.moove_ver -= SIZE_MOV / win->params.zoom;
+		win->p.moove_ver -= SIZE_MOV / win->p.zoom;
 	else if (keycode == ARROW_RIGHT)
-		win->params.moove_hor += SIZE_MOV / win->params.zoom;
+		win->p.moove_hor += SIZE_MOV / win->p.zoom;
 	else if (keycode == ARROW_LEFT)
-		win->params.moove_hor -= SIZE_MOV / win->params.zoom;
+		win->p.moove_hor -= SIZE_MOV / win->p.zoom;
 	else if (keycode == TOUCH_P)
-		win->params.it_max += 1;
-	else if (keycode == TOUCH_O && win->params.it_max >= 5)
-		win->params.it_max -= 1;
+		win->p.it_max += 1;
+	else if (keycode == TOUCH_O && win->p.it_max >= 5)
+		win->p.it_max -= 1;
 	else if (keycode == PAGE_UP)
-		win->params.zoom *= (double)COEF_ZOOM;
+		win->p.zoom *= (double)COEF_ZOOM;
 	else if (keycode == PAGE_DOWN)
-		win->params.zoom /= (double)COEF_ZOOM;
+		win->p.zoom /= (double)COEF_ZOOM;
 	else if (keycode == TOUCH_ESC)
 		ft_exit(win);
 	else if (keycode == TOUCH_M && win->fract >= 5)
 		(win->motion == 0) ? (win->motion += 1) \
 			: (win->motion = 0);
 	else if (keycode == TOUCH_C)
-		(win->params.color > 999999999) ? (win->params.color = 99) \
-			: (win->params.color *= 1.5);
+		(win->p.color > 999999999) ? (win->p.color = 99) \
+			: (win->p.color *= 1.5);
 	else if (keycode == TOUCH_PLUS || keycode == TOUCH_LESS \
 		|| keycode == TOUCH_R)
 		deal_key_reset(keycode, win);
