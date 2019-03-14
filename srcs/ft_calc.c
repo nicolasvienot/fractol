@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 21:07:55 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 01:07:48 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 02:01:50 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void		ft_calc_1(t_render *r, int fract, int it_max)
 	}
 }
 
-void	ft_calc(t_render *r, int fract, int it_max)
+void			ft_calc(t_render *r, int fract, int it_max)
 {
 	if (fract == 1 || fract == 2 || fract == 6 || fract == 7)
 		ft_calc_1(r, fract, it_max);

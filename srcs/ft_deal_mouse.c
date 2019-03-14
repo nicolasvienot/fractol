@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 01:19:17 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:53:18 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ int				deal_motion(int x, int y, t_win *win)
 	return (1);
 }
 
+static void		deal_mouse_click(t_win *win, int x, int y)
+{
+	if (x > (WIN_HOR_SIZE - VIG_HOR_SIZE) && x < WIN_HOR_SIZE)
+	{
+		ft_pick_fractale(x, y, win);
+		ft_reset_fractale(win);
+	}
+	if (x > 0 && x < (WIN_HOR_SIZE - VIG_HOR_SIZE) && win->fract > 5)
+		(win->motion == 0) ? (win->motion += 1) : (win->motion = 0);
+}
+
 int				deal_mouse(int mouse, int x, int y, t_win *win)
 {
 	double	oldx;
@@ -63,21 +74,14 @@ int				deal_mouse(int mouse, int x, int y, t_win *win)
 			win->p.x1 = oldx - (double)x / win->p.zoom;
 			win->p.y1 = oldy - (double)y / win->p.zoom;
 		}
-		if (mouse == 5)
+		else if (mouse == 5)
 		{
 			win->p.zoom *= (double)COEF_ZOOM;
 			win->p.x1 = oldx - (double)x / win->p.zoom;
 			win->p.y1 = oldy - (double)y / win->p.zoom;
 		}
-		if (mouse == 1 && x > (WIN_HOR_SIZE - VIG_HOR_SIZE) && x < WIN_HOR_SIZE)
-		{
-			ft_pick_fractale(x, y, win);
-			ft_reset_fractale(win);
-		}
-		if (mouse == 1 && x > 0 && x < (WIN_HOR_SIZE - VIG_HOR_SIZE) \
-			&& win->fract > 5)
-			(win->motion == 0) ? (win->motion += 1) \
-				: (win->motion = 0);
+		else if (mouse == 1)
+			deal_mouse_click(win, x, y);
 	}
 	ft_create_it(win);
 	return (1);

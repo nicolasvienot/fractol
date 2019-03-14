@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 01:46:29 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 02:00:19 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,7 @@ int						deal_mouse(int mouse, int x, int y, t_win *win);
 ** ft_deal_key.c
 */
 
-void					ft_create_it(t_win *win);
-int						deal_key(int keycode, t_win *win);
+int						deal_key(int key, t_win *win);
 
 /*
 ** ft_print.c
@@ -196,6 +195,7 @@ void					ft_put_vig(t_win *win, int test);
 ** ft_create.c
 */
 
+void					ft_create_it(t_win *win);
 void					*ft_create_mandelbrot(void *thrds);
 void					*ft_create_julia(void *thrds);
 
