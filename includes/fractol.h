@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 02:00:19 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 02:06:49 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define COEF_ZOOM 1.2
 # define SIZE_MOV 20
 
-# define NB_THREADS 20
+# define NB_THREADS 4
 
 # define BLACK 0
 # define BLUE 255
