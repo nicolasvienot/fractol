@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:36:47 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 00:56:27 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			main(int ac, char **av)
 		|| !ft_strcmp(av[1], "tricorne") || !ft_strcmp(av[1], "burningship") \
 		|| !ft_strcmp(av[1], "flower") || !ft_strcmp(av[1], "flower2") \
 		|| !ft_strcmp(av[1], "flower3") || !ft_strcmp(av[1], "duobrot") \
-		|| !ft_strcmp(av[1], "juliacarre"))
+		|| !ft_strcmp(av[1], "juliacarre") || !ft_strcmp(av[1], "juliacarre2"))
 	{
 		ft_init_start(&win);
 		ft_select_fractale(&win, av[1]);

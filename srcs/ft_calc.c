@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 21:07:55 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:31:08 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:07:48 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		ft_calc_2(t_render *r, int fract, int it_max)
 {
 	r->a = 0;
-	if (fract == 3 || fract == 7)
+	if (fract == 3 || fract == 8)
 	{
 		while ((r->rz * r->rz + r->iz * r->iz) < 4 && r->a < it_max)
 		{
@@ -25,7 +25,7 @@ static void		ft_calc_2(t_render *r, int fract, int it_max)
 			r->a++;
 		}
 	}
-	else if (fract == 4 || fract == 8)
+	else if (fract == 4 || fract == 9)
 	{
 		while ((r->rz * r->rz + r->iz * r->iz) < 4 && r->a < it_max)
 		{
@@ -40,7 +40,7 @@ static void		ft_calc_2(t_render *r, int fract, int it_max)
 static void		ft_calc_1(t_render *r, int fract, int it_max)
 {
 	r->a = 0;
-	if (fract == 1 || fract == 5)
+	if (fract == 1 || fract == 6)
 	{
 		while ((r->rz * r->rz + r->iz * r->iz) < 4 && r->a < it_max)
 		{
@@ -50,7 +50,7 @@ static void		ft_calc_1(t_render *r, int fract, int it_max)
 			r->a++;
 		}
 	}
-	else if (fract == 2 || fract == 9)
+	else if (fract == 2 || fract == 7)
 	{
 		while ((r->rz * r->rz + r->iz * r->iz) < 4 && r->a < it_max)
 		{
@@ -64,11 +64,11 @@ static void		ft_calc_1(t_render *r, int fract, int it_max)
 
 void	ft_calc(t_render *r, int fract, int it_max)
 {
-	if (fract == 1 || fract == 2 || fract == 5 || fract == 9)
+	if (fract == 1 || fract == 2 || fract == 6 || fract == 7)
 		ft_calc_1(r, fract, it_max);
-	else if (fract == 3 || fract == 4 || fract == 7 || fract == 8)
+	else if (fract == 3 || fract == 4 || fract == 8 || fract == 9)
 		ft_calc_2(r, fract, it_max);
-	else if (fract == 6)
+	else if (fract == 5 || fract == 10)
 	{
 		r->a = 0;
 		while ((r->rz * r->rz - r->iz * r->iz) < 4 && r->a < it_max)
