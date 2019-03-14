@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 01:35:57 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 02:43:22 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,32 @@ static void	ft_print_menu_1(t_win *win)
 
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 10, GREY, "Fractale : ");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 30, \
-		GREY, "Modifier iterations : O/P | ");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 290, 30, \
+		GREY, "Decrease/Increase iterations : O/P |");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 375, 30, \
 		GREY, x = ft_itoa(win->p.it_max));
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 50, \
 		GREY, "Move : Arrow keys");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 70, GREY, "Zoom : Molette");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 70, GREY, "Zoom : Scroll");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 90, \
-		GREY, "Change fractale : -/+");
+		GREY, "Change fractale : +/-");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 110, \
-		GREY, "Modifier variation couleur : C");
+		GREY, "Change color variation : C");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 130, \
-		GREY, "Modifier palette couleur : V");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 150, GREY, "Motion : ");
+		GREY, "Change color palette : X");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 150, GREY, "Reset : R");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 170, GREY, "Motion ");
 	if (win->motion == 1)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 100, 150, GREEN, "ON");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 80, 170, GREEN, "ON");
 	else
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 100, 150, RED, "OFF");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 150, GREY, "Motion : ");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 170, GREY, "Restart : R");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 190, GREY, "Quit : Esc");
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 80, 170, RED, "OFF");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 170, GREY, "M/Click");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 190, GREY, "Vig_it");
+	if (win->vig_it == 1)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 80, 190, GREEN, "ON");
+	else
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 80, 190, RED, "OFF");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 190, GREY, "V");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 210, GREY, "Quit : Esc");
 	free(x);
 }
 
