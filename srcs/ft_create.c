@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 02:02:02 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 17:09:32 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_create_it(t_win *win)
 		ft_put_vig(win, 0);
 	ft_print_menu(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
-		win->vig.img_ptr, 800, 0);
+		win->vig.img_ptr, 790, 20);
 }
 
 void	*ft_create_mandelbrot(void *thrds)

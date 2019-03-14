@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 02:06:49 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 18:06:43 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define COEF_ZOOM 1.2
 # define SIZE_MOV 20
 
-# define NB_THREADS 4
+# define NB_THREADS 8
 
 # define BLACK 0
 # define BLUE 255
@@ -39,8 +39,19 @@
 # define WIN_VER_SIZE 700
 # define IMG_HOR_SIZE 1000
 # define IMG_VER_SIZE 700
-# define VIG_HOR_SIZE 200
-# define VIG_VER_SIZE 140
+# define VIG_HOR_SIZE 190
+# define VIG_VER_SIZE 132
+# define IMG_VIG_HOR_SIZE 190
+# define IMG_VIG_VER_SIZE 660
+
+# define X1_M -2.1
+# define X2_M 0.6
+# define Y1_M -1.2
+# define Y2_M 1.2
+# define X1_J -1
+# define X2_J 1
+# define Y1_J -1.2
+# define Y2_J 1.2
 
 # define WIN_NAME "nvienot's Fract'ol"
 # define F1 "Mandelbrot"
@@ -204,10 +215,10 @@ void					*ft_create_julia(void *thrds);
 */
 
 void					*ft_create_mandelbrot_vig(void *thrds);
-void					*ft_create_julia_vig(void *thrds);
+void					*ft_create_duobrot_vig(void *thrds);
 void					*ft_create_tricorn_vig(void *thrds);
-void					*ft_create_bship_vig(void *thrds);
-void					*ft_create_flower_vig(void *thrds);
+void					*ft_create_julia_vig(void *thrds);
+void					*ft_create_andy_vig(void *thrds);
 
 /*
 ** ft_calc.c

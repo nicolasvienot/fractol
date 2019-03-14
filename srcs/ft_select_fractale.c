@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 02:15:48 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 18:11:47 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void		ft_reset_fractale(t_win *win)
 	win->p.old_it_max = 0;
 	win->p.rc = 0;
 	win->p.ic = 0;
+	ft_put_vig(win, 1);
 }
 
 void		ft_multithreading(t_win *win)
@@ -94,16 +95,16 @@ void		ft_multithreading_vig(t_win *win)
 			ft_create_mandelbrot_vig, &mthrds->thrd[i]))
 			ft_exit(win);
 		if (pthread_create(&mthrds->threads[i], NULL, \
-			ft_create_julia_vig, &mthrds->thrd[i]))
+			ft_create_duobrot_vig, &mthrds->thrd[i]))
 			ft_exit(win);
 		if (pthread_create(&mthrds->threads[i], NULL, \
 			ft_create_tricorn_vig, &mthrds->thrd[i]))
 			ft_exit(win);
 		if (pthread_create(&mthrds->threads[i], NULL, \
-			ft_create_bship_vig, &mthrds->thrd[i]))
+			ft_create_julia_vig, &mthrds->thrd[i]))
 			ft_exit(win);
 		if (pthread_create(&mthrds->threads[i], NULL, \
-			ft_create_flower_vig, &mthrds->thrd[i]))
+			ft_create_andy_vig, &mthrds->thrd[i]))
 			ft_exit(win);
 	}
 	i = -1;

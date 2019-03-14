@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 01:53:18 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 17:35:32 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,17 @@
 
 static void		ft_pick_fractale(int x, int y, t_win *win)
 {
-	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE && x < WIN_HOR_SIZE)
+	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE - 20 && x < WIN_HOR_SIZE - 20)
 	{
-		if (y > 0 && y < (WIN_VER_SIZE - 4 * WIN_VER_SIZE / 5))
+		if (y > 20 && y < (20 + VIG_VER_SIZE))
 			win->fract = 1;
-		else if (y > (WIN_VER_SIZE - 4 * WIN_VER_SIZE / 5) \
-			&& y < WIN_VER_SIZE - 3 * WIN_VER_SIZE / 5)
+		else if (y > (20 + VIG_VER_SIZE) && y < (20 + VIG_VER_SIZE * 2))
 			win->fract = 2;
-		else if (y > WIN_VER_SIZE - 3 * WIN_VER_SIZE / 5 \
-			&& y < WIN_VER_SIZE - 2 * WIN_VER_SIZE / 5)
+		else if (y > (20 + VIG_VER_SIZE * 2) && y < (20 + VIG_VER_SIZE * 3))
 			win->fract = 3;
-		else if (y > WIN_VER_SIZE - 2 * WIN_VER_SIZE / 5 \
-			&& y < WIN_VER_SIZE - 1 * WIN_VER_SIZE / 5)
+		else if (y > (20 + VIG_VER_SIZE * 3) && y < (20 + VIG_VER_SIZE * 4))
 			win->fract = 4;
-		else if (y > WIN_VER_SIZE - 1 * WIN_VER_SIZE / 5 \
-			&& y < WIN_VER_SIZE)
+		else if (y > (20 + VIG_VER_SIZE * 4) && y < (20 + VIG_VER_SIZE * 5))
 			win->fract = 5;
 		win->motion = 0;
 	}
@@ -50,12 +46,12 @@ int				deal_motion(int x, int y, t_win *win)
 
 static void		deal_mouse_click(t_win *win, int x, int y)
 {
-	if (x > (WIN_HOR_SIZE - VIG_HOR_SIZE) && x < WIN_HOR_SIZE)
+	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE - 20 && x < WIN_HOR_SIZE - 20 && y > 20 && y < (20 + VIG_VER_SIZE * 5))
 	{
 		ft_pick_fractale(x, y, win);
 		ft_reset_fractale(win);
 	}
-	if (x > 0 && x < (WIN_HOR_SIZE - VIG_HOR_SIZE) && win->fract > 5)
+	else if (win->fract > 5)
 		(win->motion == 0) ? (win->motion += 1) : (win->motion = 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 01:10:17 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 17:14:49 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	ft_init_start(t_win *win)
 		IMG_HOR_SIZE, IMG_VER_SIZE);
 	win->img.data = mlx_get_data_addr(win->img.img_ptr, \
 		&win->img.bpp, &win->img.sizeline, &win->img.endian);
-	win->vig.img_ptr = mlx_new_image(win->mlx_ptr, VIG_HOR_SIZE, WIN_VER_SIZE);
+	win->vig.img_ptr = mlx_new_image(win->mlx_ptr, \
+		IMG_VIG_HOR_SIZE, IMG_VIG_VER_SIZE);
 	win->vig.data = mlx_get_data_addr(win->vig.img_ptr, \
 		&win->vig.bpp, &win->vig.sizeline, &win->vig.endian);
 	win->motion = 0;

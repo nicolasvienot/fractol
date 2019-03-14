@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 02:52:12 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 18:06:03 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,92 +15,59 @@
 void	*ft_create_mandelbrot_vig(void *thrds)
 {
 	t_thrd		*thrd;
-	double		rc;
-	double		ic;
-	double		rz;
-	double		iz;
-	double		r;
-	int			a;
-	int			x;
-	int			y;
-	double		x1 = -2.1;
-	double		x2 = 0.6;
-	double		y1 = -1.2;
-	double		y2 = 1.2;
-	double		zoom_x = VIG_HOR_SIZE / (x2 - x1);
-	double		zoom_y = VIG_VER_SIZE / (y2 - y1);
+	t_render	r;
+	double		zoom_x;
+	double		zoom_y;
 
+	zoom_x = VIG_HOR_SIZE / (X2_M - X1_M);
+	zoom_y = VIG_VER_SIZE / (Y2_M - Y1_M);
 	thrd = (t_thrd *)thrds;
-	x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
-	while (x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
+	r.x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
+	while (r.x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
-		y = 0;
-		while (y < VIG_VER_SIZE)
+		r.y = 0;
+		while (r.y < IMG_VER_SIZE)
 		{
-			rc = x / zoom_x + x1;
-			ic = y / zoom_y + y1;
-			rz = 0;
-			iz = 0;
-			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
-			{
-				r = rz;
-				rz = rz * rz - iz * iz + rc;
-				iz = 2 * r * iz + ic;
-				a++;
-			}
-			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(thrd->w->vig, x, y, (0));
-			y++;
+			r.rc = r.x / zoom_x + X1_M;
+			r.ic = r.y / zoom_y + Y1_M;
+			r.rz = 0;
+			r.iz = 0;
+			ft_calc(&r, 1, thrd->w->p.it_max);
+			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
+				mlx_put_pixel_to_image(thrd->w->vig, r.x, r.y, (0));
+			r.y++;
 		}
-		x++;
+		r.x++;
 	}
 	pthread_exit(NULL);
 }
 
-void	*ft_create_julia_vig(void *thrds)
+void	*ft_create_duobrot_vig(void *thrds)
 {
 	t_thrd		*thrd;
-	double		rc;
-	double		ic;
-	double		rz;
-	double		iz;
-	double		r;
-	int			a;
-	int			x;
-	int			y;
-	double		x1 = -1;
-	double		x2 = 1;
-	double		y1 = -1.2;
-	double		y2 = 1.2;
-	double		zoom_x = VIG_HOR_SIZE / (x2 - x1);
-	double		zoom_y = VIG_VER_SIZE / (y2 - y1);
+	t_render	r;
+	double		zoom_x;
+	double		zoom_y;
 
+	zoom_x = VIG_HOR_SIZE / (X2_M - X1_M);
+	zoom_y = VIG_VER_SIZE / (Y2_M - Y1_M);
 	thrd = (t_thrd *)thrds;
-	x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
-	while (x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
+	r.x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
+	while (r.x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
-		y = 0;
-		while (y < VIG_VER_SIZE)
+		r.y = 0;
+		while (r.y < IMG_VER_SIZE)
 		{
-			rc = 0.285;
-			ic = 0.01;
-			rz = x / zoom_x + x1;
-			iz = y / zoom_y + y1;
-			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
-			{
-				r = rz;
-				rz = rz * rz - iz * iz + rc;
-				iz = 2 * r * iz + ic;
-				a++;
-			}
-			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(thrd->w->vig, x, \
-					y + VIG_VER_SIZE, (0));
-			y++;
+			r.rc = r.x / zoom_x + X1_M;
+			r.ic = r.y / zoom_y + Y1_M;
+			r.rz = 0;
+			r.iz = 0;
+			ft_calc(&r, 2, thrd->w->p.it_max);
+			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
+				mlx_put_pixel_to_image(thrd->w->vig, r.x, r.y + VIG_VER_SIZE, (0));
+			r.y++;
 		}
-		x++;
+		r.x++;
 	}
 	pthread_exit(NULL);
 }
@@ -108,140 +75,89 @@ void	*ft_create_julia_vig(void *thrds)
 void	*ft_create_tricorn_vig(void *thrds)
 {
 	t_thrd		*thrd;
-	double		rc;
-	double		ic;
-	double		rz;
-	double		iz;
-	double		r;
-	int			a;
-	int			x;
-	int			y;
-	double		x1 = -2.1;
-	double		x2 = 0.6;
-	double		y1 = -1.2;
-	double		y2 = 1.2;
-	double		zoom_x = VIG_HOR_SIZE / (x2 - x1);
-	double		zoom_y = VIG_VER_SIZE / (y2 - y1);
+	t_render	r;
+	double		zoom_x;
+	double		zoom_y;
 
+	zoom_x = VIG_HOR_SIZE / (X2_M - X1_M);
+	zoom_y = VIG_VER_SIZE / (Y2_M - Y1_M);
 	thrd = (t_thrd *)thrds;
-	x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
-	while (x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
+	r.x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
+	while (r.x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
-		y = 0;
-		while (y < VIG_VER_SIZE)
+		r.y = 0;
+		while (r.y < IMG_VER_SIZE)
 		{
-			rc = x / zoom_x + x1;
-			ic = y / zoom_y + y1;
-			rz = 0;
-			iz = 0;
-			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
-			{
-				r = rz;
-				rz = rz * rz - iz * iz + rc;
-				iz = -2 * r * iz + ic;
-				a++;
-			}
-			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(thrd->w->vig, x, \
-					(y + VIG_VER_SIZE * 2), (0));
-			y++;
+			r.rc = r.x / zoom_x + X1_M;
+			r.ic = r.y / zoom_y + Y1_M;
+			r.rz = 0;
+			r.iz = 0;
+			ft_calc(&r, 3, thrd->w->p.it_max);
+			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
+				mlx_put_pixel_to_image(thrd->w->vig, r.x, r.y + VIG_VER_SIZE * 2, (0));
+			r.y++;
 		}
-		x++;
+		r.x++;
 	}
 	pthread_exit(NULL);
 }
 
-void	*ft_create_bship_vig(void *thrds)
+void	*ft_create_julia_vig(void *thrds)
 {
 	t_thrd		*thrd;
-	double		rc;
-	double		ic;
-	double		rz;
-	double		iz;
-	double		r;
-	int			a;
-	int			x;
-	int			y;
-	double		x1 = -2.1;
-	double		x2 = 0.6;
-	double		y1 = -1.2;
-	double		y2 = 1.2;
-	double		zoom_x = VIG_HOR_SIZE / (x2 - x1);
-	double		zoom_y = VIG_VER_SIZE / (y2 - y1);
+	t_render	r;
+	double		zoom_x;
+	double		zoom_y;
 
+	zoom_x = VIG_HOR_SIZE / (X2_J - X1_J);
+	zoom_y = VIG_VER_SIZE / (Y2_J - Y1_J);
 	thrd = (t_thrd *)thrds;
-	x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
-	while (x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
+	r.x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
+	while (r.x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
-		y = 0;
-		while (y < VIG_VER_SIZE)
+		r.y = 0;
+		while (r.y < IMG_VER_SIZE)
 		{
-			rc = x / zoom_x + x1;
-			ic = y / zoom_y + y1;
-			rz = 0;
-			iz = 0;
-			a = 0;
-			while ((rz * rz + iz * iz) < 4 && a < thrd->w->p.it_max)
-			{
-				r = rz;
-				rz = rz * rz - iz * iz + rc;
-				iz = 2 * fabs(r) * fabs(iz) + ic;
-				a++;
-			}
-			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(thrd->w->vig, x, \
-					(y + VIG_VER_SIZE * 3), (0));
-			y++;
+			r.rc = 0.285 + thrd->w->p.rc;
+			r.ic = 0.01 + thrd->w->p.ic;
+			r.rz = r.x / zoom_x + X1_J;
+			r.iz = r.y / zoom_y + Y1_J;
+			ft_calc(&r, 6, thrd->w->p.it_max);
+			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
+				mlx_put_pixel_to_image(thrd->w->vig, r.x, r.y + VIG_VER_SIZE * 3, (0));
+			r.y++;
 		}
-		x++;
+		r.x++;
 	}
 	pthread_exit(NULL);
 }
 
-void	*ft_create_flower_vig(void *thrds)
+void	*ft_create_andy_vig(void *thrds)
 {
 	t_thrd		*thrd;
-	double		rc;
-	double		ic;
-	double		rz;
-	double		iz;
-	double		r;
-	int			a;
-	int			x;
-	int			y;
-	double		x1 = -1;
-	double		x2 = 1;
-	double		y1 = -1.2;
-	double		y2 = 1.2;
-	double		zoom_x = VIG_HOR_SIZE / (x2 - x1);
-	double		zoom_y = VIG_VER_SIZE / (y2 - y1);
+	t_render	r;
+	double		zoom_x;
+	double		zoom_y;
 
+	zoom_x = VIG_HOR_SIZE / (X2_J - X1_J);
+	zoom_y = VIG_VER_SIZE / (Y2_J - Y1_J);
 	thrd = (t_thrd *)thrds;
-	x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
-	while (x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
+	r.x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
+	while (r.x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
-		y = 0;
-		while (y < VIG_VER_SIZE)
+		r.y = 0;
+		while (r.y < IMG_VER_SIZE)
 		{
-			rc = 0.285;
-			ic = 0.01;
-			rz = x / zoom_x + x1;
-			iz = y / zoom_y + y1;
-			a = 0;
-			while ((rz * rz - iz * iz) < 4 && a < thrd->w->p.it_max)
-			{
-				r = rz;
-				rz = rz * rz - iz * iz + rc;
-				iz = -2 * r * iz + ic;
-				a++;
-			}
-			if (a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
-				mlx_put_pixel_to_image(thrd->w->vig, x, \
-					(y + VIG_VER_SIZE * 4), (0));
-			y++;
+			r.rc = 0.285 + thrd->w->p.rc;
+			r.ic = 0.01 + thrd->w->p.ic;
+			r.rz = r.x / zoom_x + X1_J;
+			r.iz = r.y / zoom_y + Y1_J;
+			ft_calc(&r, 7, thrd->w->p.it_max);
+			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0)
+				mlx_put_pixel_to_image(thrd->w->vig, r.x, r.y + VIG_VER_SIZE * 4, (0));
+			r.y++;
 		}
-		x++;
+		r.x++;
 	}
 	pthread_exit(NULL);
 }
