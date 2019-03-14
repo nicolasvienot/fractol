@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/13 23:01:58 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/14 02:57:43 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,5 +89,7 @@ recl	:	all clean
 			make recl -C libft/
 
 norm	:	fclean
+			echo "$(_RED)Starting norminette...$(_END)"
 			norminette includes/*.h
 			norminette srcs/*.c
+			echo "$(_GREEN)Done$(_END)"
