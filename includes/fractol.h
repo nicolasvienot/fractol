@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 01:32:43 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:46:29 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,146 +73,146 @@
 # define PAGE_DOWN 121
 # define PAGE_UP 116
 
-typedef	struct s_win			t_win;
-typedef struct s_img			t_img;
-typedef struct s_params			t_params;
-typedef struct s_mthrds			t_mthrds;
-typedef struct s_thrd			t_thrd;
-typedef struct s_render			t_render;
+typedef	struct s_win	t_win;
+typedef struct s_img	t_img;
+typedef struct s_params	t_params;
+typedef struct s_mthrds	t_mthrds;
+typedef struct s_thrd	t_thrd;
+typedef struct s_render	t_render;
 
-struct							s_render
+struct					s_render
 {
-	double						rc;
-	double						ic;
-	double						rz;
-	double						iz;
-	double						r;
-	int							a;
-	int 						x;
-	int 						y;
+	double				rc;
+	double				ic;
+	double				rz;
+	double				iz;
+	double				r;
+	int					a;
+	int					x;
+	int					y;
 };
 
-struct							s_thrd
+struct					s_thrd
 {
-	int							id;
-	t_win						*w;
+	int					id;
+	t_win				*w;
 };
 
-struct							s_mthrds
+struct					s_mthrds
 {
-	pthread_t					threads[NB_THREADS];
-	t_thrd						thrd[NB_THREADS];
+	pthread_t			threads[NB_THREADS];
+	t_thrd				thrd[NB_THREADS];
 };
 
-struct							s_params
+struct					s_params
 {
-	double						moove_hor;
-	double						moove_ver;
-	double						zoom;
-	int							it_max;
-	int							old_it_max;
-	double						x1;
-	double						y1;
-	double						rc;
-	double						ic;
-	int							color;
+	double				moove_hor;
+	double				moove_ver;
+	double				zoom;
+	int					it_max;
+	int					old_it_max;
+	double				x1;
+	double				y1;
+	double				rc;
+	double				ic;
+	int					color;
 };
 
-struct							s_img
+struct					s_img
 {
-	void						*img_ptr;
-	char						*data;
-	int							sizeline;
-	int							bpp;
-	int							endian;
+	void				*img_ptr;
+	char				*data;
+	int					sizeline;
+	int					bpp;
+	int					endian;
 };
 
-struct							s_win
+struct					s_win
 {
-	void						*mlx_ptr;
-	void						*win_ptr;
-	int							fract;
-	int							motion;
-	int							vig_it;
-	t_params					p;
-	t_mthrds					mthrds;
-	t_img						img;
-	t_img						vig;
+	void				*mlx_ptr;
+	void				*win_ptr;
+	int					fract;
+	int					motion;
+	int					vig_it;
+	t_params			p;
+	t_mthrds			mthrds;
+	t_img				img;
+	t_img				vig;
 };
 
 /*
 ** ft_error.c
 */
 
-void		ft_usage(void);
-int			ft_exit(t_win *win);
+void					ft_usage(void);
+int						ft_exit(t_win *win);
 
 /*
 ** ft_deal_mouse.c
 */
 
-int			deal_motion(int x, int y, t_win *win);
-int			deal_mouse(int mouse, int x, int y, t_win *win);
+int						deal_motion(int x, int y, t_win *win);
+int						deal_mouse(int mouse, int x, int y, t_win *win);
 
 /*
 ** ft_deal_key.c
 */
 
-void		ft_create_it(t_win *win);
-int			deal_key(int keycode, t_win *win);
+void					ft_create_it(t_win *win);
+int						deal_key(int keycode, t_win *win);
 
 /*
 ** ft_print.c
 */
 
-int			ft_print_menu(t_win *win);
-void		mlx_put_pixel_to_image(t_img img, int x, int y, int a);
-void		ft_viseur(t_win *win);
+int						ft_print_menu(t_win *win);
+void					mlx_put_pixel_to_image(t_img img, int x, int y, int a);
+void					ft_viseur(t_win *win);
 
 /*
 ** ft_init_struct.c
 */
 
-void		ft_init_start(t_win *win);
-void		ft_init_mandelbrot(t_win *win);
-void		ft_init_julia(t_win *win);
+void					ft_init_start(t_win *win);
+void					ft_init_mandelbrot(t_win *win);
+void					ft_init_julia(t_win *win);
 
 /*
 ** ft_select_fractales.c
 */
 
-void		ft_select_fractale(t_win *win, char *str);
-void		ft_reset_fractale(t_win *win);
-void		ft_multithreading(t_win *win);
-void		ft_multithreading_vig(t_win *win);
+void					ft_select_fractale(t_win *win, char *str);
+void					ft_reset_fractale(t_win *win);
+void					ft_multithreading(t_win *win);
+void					ft_multithreading_vig(t_win *win);
 
 /*
 ** ft_vignettes.c
 */
 
-void		ft_put_vig(t_win *win, int test);
+void					ft_put_vig(t_win *win, int test);
 
 /*
 ** ft_create.c
 */
 
-void		*ft_create_mandelbrot(void *thrds);
-void		*ft_create_julia(void *thrds);
+void					*ft_create_mandelbrot(void *thrds);
+void					*ft_create_julia(void *thrds);
 
 /*
 ** ft_fractales_vig.c
 */
 
-void		*ft_create_mandelbrot_vig(void *thrds);
-void		*ft_create_julia_vig(void *thrds);
-void		*ft_create_tricorn_vig(void *thrds);
-void		*ft_create_bship_vig(void *thrds);
-void		*ft_create_flower_vig(void *thrds);
+void					*ft_create_mandelbrot_vig(void *thrds);
+void					*ft_create_julia_vig(void *thrds);
+void					*ft_create_tricorn_vig(void *thrds);
+void					*ft_create_bship_vig(void *thrds);
+void					*ft_create_flower_vig(void *thrds);
 
 /*
 ** ft_calc.c
 */
 
-void		ft_calc(t_render *r, int fract, int it_max);
+void					ft_calc(t_render *r, int fract, int it_max);
 
 #endif
