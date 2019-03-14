@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 02:43:22 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 02:46:49 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ static void	ft_print_menu_1(t_win *win)
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 130, \
 		GREY, "Change color palette : X");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 150, GREY, "Reset : R");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 210, GREY, "Quit : Esc");
+	free(x);
+}
+
+int			ft_print_menu(t_win *win)
+{
+	ft_print_menu_1(win);
+	ft_print_menu_2(win);
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 170, GREY, "Motion ");
 	if (win->motion == 1)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 80, 170, GREEN, "ON");
@@ -67,14 +75,6 @@ static void	ft_print_menu_1(t_win *win)
 	else
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 80, 190, RED, "OFF");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 190, GREY, "V");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 210, GREY, "Quit : Esc");
-	free(x);
-}
-
-int			ft_print_menu(t_win *win)
-{
-	ft_print_menu_1(win);
-	ft_print_menu_2(win);
 	return (1);
 }
 
