@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:37:00 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 01:10:22 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:35:10 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ void		ft_select_fractale(t_win *win, char *str)
 {
 	if (!ft_strcmp(str, "mandelbrot"))
 		win->fract = 1;
-	else if (!ft_strcmp(str, "julia"))
+	else if (!ft_strcmp(str, "duobrot"))
 		win->fract = 2;
-	else if (!ft_strcmp(str, "tricorne"))
+	else if (!ft_strcmp(str, "tricorn"))
 		win->fract = 3;
 	else if (!ft_strcmp(str, "burningship"))
 		win->fract = 4;
-	else if (!ft_strcmp(str, "flower"))
+	else if (!ft_strcmp(str, "palmtree"))
 		win->fract = 5;
-	else if (!ft_strcmp(str, "flower2"))
+	else if (!ft_strcmp(str, "julia"))
 		win->fract = 6;
-	else if (!ft_strcmp(str, "flower3"))
+	else if (!ft_strcmp(str, "andy"))
 		win->fract = 7;
-	else if (!ft_strcmp(str, "duobrot"))
+	else if (!ft_strcmp(str, "microcells"))
 		win->fract = 8;
-	else if (!ft_strcmp(str, "juliacarre"))
+	else if (!ft_strcmp(str, "brain"))
 		win->fract = 9;
-	else if (!ft_strcmp(str, "juliacarre2"))
+	else if (!ft_strcmp(str, "flower"))
 		win->fract = 10;
 	ft_reset_fractale(win);
 }

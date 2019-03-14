@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:35:01 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:32:43 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@
 # define F2 "Duobrot"
 # define F3 "Tricorn"
 # define F4 "BurningShip"
-# define F5 "Julia"
-# define F6 "Flower"
-# define F7 "Flower2"
-# define F8 "Flower3"
-# define F9 "JuliaCarre"
+# define F5 "Palmtree"
+# define F6 "Julia"
+# define F7 "Andy"
+# define F8 "Microcells"
+# define F9 "Brain"
+# define F10 "Flower"
 
 # define TOUCH_ESC 53
 # define ARROW_LEFT 123

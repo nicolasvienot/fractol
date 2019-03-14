@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 11:48:56 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/13 23:05:27 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:38:50 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		ft_usage(void)
 {
-	write(1, "usage: ./fractol mandelbrot / duobrot / julia / tricorne / \
-burningship / flower / flower2 / flower3\n", 100);
+	write(1, "usage: ./fractol mandelbrot / duobrot / tricorn / burningship / \
+palmtree / julia / andy / microcells / brain / flower\n", 118);
 	exit(EXIT_FAILURE);
 }
 
