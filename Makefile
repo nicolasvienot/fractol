@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/14 02:57:43 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/14 18:43:39 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SRCS	=	srcs/main.c srcs/ft_error.c srcs/ft_print.c \
 CC		=	gcc
 
 INC.	=	-I libft/ -I includes/ -I mlx/
+
+INCL	=	libft/ includes/
 
 FLAGS	=  -Wall -Werror -Wextra -O2
 
@@ -90,6 +92,4 @@ recl	:	all clean
 
 norm	:	fclean
 			echo "$(_RED)Starting norminette...$(_END)"
-			norminette includes/*.h
-			norminette srcs/*.c
-			echo "$(_GREEN)Done$(_END)"
+			norminette $(SRCS) $(INCL) | grep -B 1 '^Error' 2> /dev/null || echo "$(_GREEN)Norme OK !$(_END)";
