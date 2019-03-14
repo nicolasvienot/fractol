@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:59:22 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:18:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			deal_key(int keycode, t_win *win)
 		win->p.moove_hor -= SIZE_MOV / win->p.zoom;
 	else if (keycode == TOUCH_P)
 		win->p.it_max += 1;
-	else if (keycode == TOUCH_O && win->p.it_max >= 5)
+	else if (keycode == TOUCH_O && win->p.it_max > 1)
 		win->p.it_max -= 1;
 	else if (keycode == PAGE_UP)
 		win->p.zoom *= (double)COEF_ZOOM;
@@ -58,7 +58,7 @@ int			deal_key(int keycode, t_win *win)
 	else if (keycode == TOUCH_V)
 		(win->vig_it == 0) ? (win->vig_it += 1) \
 			: (win->vig_it = 0);
-	else if (keycode == TOUCH_M && win->fract >= 5)
+	else if (keycode == TOUCH_M && win->fract > 5)
 		(win->motion == 0) ? (win->motion += 1) \
 			: (win->motion = 0);
 	else if (keycode == TOUCH_C)

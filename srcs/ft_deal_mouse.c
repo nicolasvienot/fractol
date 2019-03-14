@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:58:47 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:19:17 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,9 @@ int				deal_mouse(int mouse, int x, int y, t_win *win)
 			ft_reset_fractale(win);
 		}
 		if (mouse == 1 && x > 0 && x < (WIN_HOR_SIZE - VIG_HOR_SIZE) \
-			&& win->fract >= 5)
-		{
-			if (win->motion == 0)
-				win->motion = 1;
-			else
-				win->motion = 0;
-		}
+			&& win->fract > 5)
+			(win->motion == 0) ? (win->motion += 1) \
+				: (win->motion = 0);
 	}
 	ft_create_it(win);
 	return (1);

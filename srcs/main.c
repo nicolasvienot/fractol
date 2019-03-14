@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 00:56:27 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/14 01:15:38 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			main(int ac, char **av)
 	if (ac != 2)
 		ft_usage();
 	if (!ft_strcmp(av[1], "mandelbrot") || !ft_strcmp(av[1], "julia") \
-		|| !ft_strcmp(av[1], "tricorne") || !ft_strcmp(av[1], "burningship") \
+		|| !ft_strcmp(av[1], "tricorn") || !ft_strcmp(av[1], "burningship") \
 		|| !ft_strcmp(av[1], "flower") || !ft_strcmp(av[1], "flower2") \
 		|| !ft_strcmp(av[1], "flower3") || !ft_strcmp(av[1], "duobrot") \
 		|| !ft_strcmp(av[1], "juliacarre") || !ft_strcmp(av[1], "juliacarre2"))
