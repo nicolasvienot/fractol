@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 19:08:21 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 22:52:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define COEF_ZOOM 1.2
 # define SIZE_MOV 20
 
-# define NB_THREADS 8
+# define NB_THREADS 20
 
 # define BLACK 0
 # define BLUE 255
@@ -104,11 +104,11 @@ struct					s_render
 	double				r;
 	double				zoom_x;
 	double				zoom_y;
-	double				xtmp;
-	double				ytmp;
 	int					a;
 	int					x;
 	int					y;
+	double				xtmp;
+	double				ytmp;	
 };
 
 struct					s_thrd
@@ -135,7 +135,7 @@ struct					s_params
 	int					it_max;
 	int					old_it_max;
 	int					color;
-	int					pow;
+	double					pow;
 };
 
 struct					s_img
@@ -236,6 +236,6 @@ void					ft_create_andy_vig(t_thrd *thrd);
 ** ft_calc.c
 */
 
-void					ft_calc(t_render *r, int fract, int it_max, int pow);
+void					ft_calc(t_render *r, int fract, int it_max, double pow);
 
 #endif
