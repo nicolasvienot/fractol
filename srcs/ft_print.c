@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 19:05:03 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 23:08:17 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,19 @@ static void	ft_print_menu_2(t_win *win)
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 145, \
 		GREY, "Change iterations : Page-up/Page-down");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 165, \
-		GREY, "Change color variation : C");
+		GREY, "Change power : 0.1 = </> | 1 = l/k");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 185, \
-		GREY, "Change color palette : X");
+		GREY, "Change color variation : C");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 205, \
-		GREY, "Activate motion mode : M/Click");
+		GREY, "Change color palette : X");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 225, \
-		GREY, "Activate sample mode : V");
+		GREY, "Activate motion mode : M/Click");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 245, \
+		GREY, "Activate sample mode : V");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 265, \
 		GREY, "Activate immersive mode : X");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 265, GREY, "Reset : R");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 285, GREY, "Quit : Esc");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 285, GREY, "Reset : R");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 305, GREY, "Quit : Esc");
 }
 
 void		ft_print_menu(t_win *w)

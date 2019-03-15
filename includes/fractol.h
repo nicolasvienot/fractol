@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 22:52:45 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 23:05:00 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ struct					s_render
 	int					x;
 	int					y;
 	double				xtmp;
-	double				ytmp;	
+	double				ytmp;
 };
 
 struct					s_thrd
@@ -135,7 +135,7 @@ struct					s_params
 	int					it_max;
 	int					old_it_max;
 	int					color;
-	double					pow;
+	double				pow;
 };
 
 struct					s_img

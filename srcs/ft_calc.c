@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 21:07:55 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 22:59:21 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 23:09:27 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,6 @@ void			ft_calc(t_render *r, int fract, int it_max, double p)
 		y = r->iz * r->iz;
 		while (x + y < 4 && r->a < it_max)
 		{
-			// r->xtmp = pow(r->rz * r->rz + r->iz * r->iz, p / 2) * cos(p * atan2(r->iz, r->rz)) + r->rc;
-			// r->ytmp = pow(r->rz * r->rz + r->iz * r->iz, p / 2) * sin(p * atan2(r->iz, r->rz)) + r->ic;
-			// r->rz = r->xtmp;
-			// r->iz = r->ytmp;
-			// r->a++;
-			// ft_putstr("yo");
 			z = p * atan2(r->iz, r->rz);
 			r->rz = (pow(x + y, p / 2)) * cos(z) + r->rc;
 			r->iz = (pow(x + y, p / 2)) * sin(z) + r->ic;
