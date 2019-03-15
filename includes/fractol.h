@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 12:40:28 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 14:44:18 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@
 # define ARROW_UP 126
 # define TOUCH_PLUS 69
 # define TOUCH_LESS 78
-# define TOUCH_O 31
-# define TOUCH_P 35
-# define TOUCH_I 34
+// # define TOUCH_O 31
+// # define TOUCH_P 35
+// # define TOUCH_I 34
 # define TOUCH_R 15
-# define TOUCH_T 17
+// # define TOUCH_T 17
 # define TOUCH_V 9
 # define TOUCH_M 46
 # define TOUCH_C 8
-# define TOUCH_STAR 67
+// # define TOUCH_STAR 67
 # define PAGE_DOWN 121
 # define PAGE_UP 116
 

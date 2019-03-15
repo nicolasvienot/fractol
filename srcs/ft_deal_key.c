@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 12:46:59 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 14:44:33 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int				deal_key(int key, t_win *win)
 	if (key == ARROW_DOWN || key == ARROW_UP \
 		|| key == ARROW_RIGHT || key == ARROW_LEFT)
 		deal_key_move(key, win);
-	else if (key == TOUCH_P)
+	else if (key == PAGE_UP)
 		win->p.it_max += 1;
-	else if (key == TOUCH_O && win->p.it_max > 1)
+	else if (key == PAGE_DOWN && win->p.it_max > 1)
 		win->p.it_max -= 1;
 	else if (key == TOUCH_V)
 		(win->vig_it == 0) ? (win->vig_it += 1) : (win->vig_it = 0);
