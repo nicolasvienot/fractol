@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 18:11:33 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 16:10:57 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int			deal_expose(t_win *win)
 {
-	ft_multithreading(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img.img_ptr, 0, 0);
 	ft_print_menu(win);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
@@ -46,6 +45,7 @@ int			main(int ac, char **av)
 	{
 		ft_init_start(&win);
 		ft_select_fractale(&win, av[1]);
+		ft_multithreading(&win);
 		ft_hook(&win);
 	}
 	else
