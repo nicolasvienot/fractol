@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 16:03:29 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 17:11:43 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int				deal_mouse(int mouse, int x, int y, t_win *win)
 			if (win->immersive == 1)
 				win->p.it_max += 1;
 		}
-		else if (mouse == 1)
-			deal_mouse_click(win, x, y);
+		(mouse == 1) ? deal_mouse_click(win, x, y) : 0;
 	}
 	ft_create_all(win);
 	return (1);
