@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 17:35:32 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 12:46:42 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 static void		ft_pick_fractale(int x, int y, t_win *win)
 {
-	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE - 20 && x < WIN_HOR_SIZE - 20)
+	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE - MRG && x < WIN_HOR_SIZE - MRG)
 	{
-		if (y > 20 && y < (20 + VIG_VER_SIZE))
+		if (y > MRG && y < (MRG + VIG_VER_SIZE))
 			win->fract = 1;
-		else if (y > (20 + VIG_VER_SIZE) && y < (20 + VIG_VER_SIZE * 2))
+		else if (y > (MRG + VIG_VER_SIZE) && y < (MRG + VIG_VER_SIZE * 2))
 			win->fract = 2;
-		else if (y > (20 + VIG_VER_SIZE * 2) && y < (20 + VIG_VER_SIZE * 3))
+		else if (y > (MRG + VIG_VER_SIZE * 2) && y < (MRG + VIG_VER_SIZE * 3))
 			win->fract = 3;
-		else if (y > (20 + VIG_VER_SIZE * 3) && y < (20 + VIG_VER_SIZE * 4))
-			win->fract = 4;
-		else if (y > (20 + VIG_VER_SIZE * 4) && y < (20 + VIG_VER_SIZE * 5))
-			win->fract = 5;
+		else if (y > (MRG + VIG_VER_SIZE * 3) && y < (MRG + VIG_VER_SIZE * 4))
+			win->fract = 6;
+		else if (y > (MRG + VIG_VER_SIZE * 4) && y < (MRG + VIG_VER_SIZE * 5))
+			win->fract = 7;
 		win->motion = 0;
 	}
 }
@@ -39,14 +39,15 @@ int				deal_motion(int x, int y, t_win *win)
 			win->p.rc = ((double)x - ((WIN_HOR_SIZE) / 2)) / 300;
 			win->p.ic = ((double)y - (WIN_VER_SIZE / 2)) / 300;
 		}
-		ft_create_it(win);
+		ft_create_all(win);
 	}
 	return (1);
 }
 
 static void		deal_mouse_click(t_win *win, int x, int y)
 {
-	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE - 20 && x < WIN_HOR_SIZE - 20 && y > 20 && y < (20 + VIG_VER_SIZE * 5))
+	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE - MRG && x < WIN_HOR_SIZE \
+		- MRG && y > MRG && y < (MRG + VIG_VER_SIZE * 5))
 	{
 		ft_pick_fractale(x, y, win);
 		ft_reset_fractale(win);
@@ -79,6 +80,6 @@ int				deal_mouse(int mouse, int x, int y, t_win *win)
 		else if (mouse == 1)
 			deal_mouse_click(win, x, y);
 	}
-	ft_create_it(win);
+	ft_create_all(win);
 	return (1);
 }

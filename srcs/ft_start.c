@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 17:14:49 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 12:47:55 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,44 @@ void	ft_init_start(t_win *win)
 	win->motion = 0;
 	win->vig_it = 0;
 	win->p.color = 999;
+}
+
+void	ft_reset_fractale(t_win *win)
+{
+	if (win->fract <= 5)
+		ft_init_mandelbrot(win);
+	else if (win->fract > 5)
+		ft_init_julia(win);
+	win->p.moove_hor = 0;
+	win->p.moove_ver = 0;
+	win->p.it_max = 50;
+	win->p.old_it_max = 0;
+	win->p.rc = 0;
+	win->p.ic = 0;
+	ft_create_vig(win, 1);
+}
+
+void	ft_select_fractale(t_win *win, char *str)
+{
+	if (!ft_strcmp(str, "mandelbrot"))
+		win->fract = 1;
+	else if (!ft_strcmp(str, "duobrot"))
+		win->fract = 2;
+	else if (!ft_strcmp(str, "tricorn"))
+		win->fract = 3;
+	else if (!ft_strcmp(str, "burningship"))
+		win->fract = 4;
+	else if (!ft_strcmp(str, "palmtree"))
+		win->fract = 5;
+	else if (!ft_strcmp(str, "julia"))
+		win->fract = 6;
+	else if (!ft_strcmp(str, "andy"))
+		win->fract = 7;
+	else if (!ft_strcmp(str, "microcells"))
+		win->fract = 8;
+	else if (!ft_strcmp(str, "brain"))
+		win->fract = 9;
+	else if (!ft_strcmp(str, "flower"))
+		win->fract = 10;
+	ft_reset_fractale(win);
 }

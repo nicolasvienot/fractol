@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 18:01:28 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 12:46:59 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int				deal_key(int key, t_win *win)
 		deal_key_reset(key, win);
 	else if (key == TOUCH_ESC)
 		ft_exit(win);
-	ft_create_it(win);
+	ft_create_all(win);
 	return (1);
 }

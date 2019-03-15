@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 18:06:43 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 12:40:28 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define VIG_VER_SIZE 132
 # define IMG_VIG_HOR_SIZE 190
 # define IMG_VIG_VER_SIZE 660
+# define MRG 20
 
 # define X1_M -2.1
 # define X2_M 0.6
@@ -98,6 +99,8 @@ struct					s_render
 	double				rz;
 	double				iz;
 	double				r;
+	double				zoom_x;
+	double				zoom_y;
 	int					a;
 	int					x;
 	int					y;
@@ -200,13 +203,13 @@ void					ft_multithreading_vig(t_win *win);
 ** ft_vignettes.c
 */
 
-void					ft_put_vig(t_win *win, int test);
+void					ft_create_vig(t_win *win, int test);
 
 /*
 ** ft_create.c
 */
 
-void					ft_create_it(t_win *win);
+void					ft_create_all(t_win *win);
 void					*ft_create_mandelbrot(void *thrds);
 void					*ft_create_julia(void *thrds);
 
@@ -214,11 +217,12 @@ void					*ft_create_julia(void *thrds);
 ** ft_fractales_vig.c
 */
 
-void					*ft_create_mandelbrot_vig(void *thrds);
-void					*ft_create_duobrot_vig(void *thrds);
-void					*ft_create_tricorn_vig(void *thrds);
-void					*ft_create_julia_vig(void *thrds);
-void					*ft_create_andy_vig(void *thrds);
+void					*ft_vig(void *thrds);
+void					ft_create_mandelbrot_vig(t_thrd *thrd);
+void					ft_create_duobrot_vig(t_thrd *thrd);
+void					ft_create_tricorn_vig(t_thrd *thrd);
+void					ft_create_julia_vig(t_thrd *thrd);
+void					ft_create_andy_vig(t_thrd *thrd);
 
 /*
 ** ft_calc.c

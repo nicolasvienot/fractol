@@ -6,25 +6,11 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/14 17:09:32 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 12:44:19 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void	ft_create_it(t_win *win)
-{
-	ft_multithreading(win);
-	if (win->motion == 1)
-		ft_viseur(win);
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
-		win->img.img_ptr, 0, 0);
-	if (win->vig_it == 1)
-		ft_put_vig(win, 0);
-	ft_print_menu(win);
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
-		win->vig.img_ptr, 790, 20);
-}
 
 void	*ft_create_mandelbrot(void *thrds)
 {
@@ -82,4 +68,47 @@ void	*ft_create_julia(void *thrds)
 		r.x++;
 	}
 	pthread_exit(NULL);
+}
+
+void	ft_create_vig(t_win *win, int test)
+{
+	int		x;
+	int		y;
+	double	color;
+
+	if ((win->p.it_max != win->p.old_it_max \
+		&& win->p.it_max < 100) || test == 1)
+	{
+		x = -1;
+		while (++x < VIG_HOR_SIZE)
+		{
+			y = -1;
+			while (++y < IMG_VIG_VER_SIZE)
+			{
+				if (y == 0 || y == 131 || y == 263 || y == 395 \
+					|| y == 527 || y == 659 || x == 0 || x == 189)
+					color = 256 * 256 * 100 + 256 * 100 + 100;
+				else
+					color = 256 * 256 * 256 * 180 + 256 * 256 * 100 \
+						+ 256 * 100 + 100;
+				mlx_put_pixel_to_image(win->vig, x, y, color);
+			}
+		}
+		ft_multithreading_vig(win);
+		win->p.old_it_max = win->p.it_max;
+	}
+}
+
+void	ft_create_all(t_win *win)
+{
+	ft_multithreading(win);
+	if (win->motion == 1)
+		ft_viseur(win);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
+		win->img.img_ptr, 0, 0);
+	if (win->vig_it == 1)
+		ft_create_vig(win, 0);
+	ft_print_menu(win);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
+		win->vig.img_ptr, 790, 20);
 }

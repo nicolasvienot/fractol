@@ -6,16 +6,15 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/14 18:43:39 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/15 12:45:35 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fractol
 
-SRCS	=	srcs/main.c srcs/ft_error.c srcs/ft_print.c \
-			srcs/ft_vignettes.c srcs/ft_init_struct.c srcs/ft_select_fractale.c \
-			srcs/ft_fractales_vig.c srcs/ft_deal_key.c srcs/ft_deal_mouse.c srcs/ft_create.c \
-			srcs/ft_calc.c
+SRCS	=	srcs/main.c srcs/ft_error.c srcs/ft_print.c srcs/ft_start.c \
+			srcs/ft_vignettes.c srcs/ft_deal_key.c srcs/ft_deal_mouse.c \
+			srcs/ft_create.c srcs/ft_calc.c srcs/ft_multithreading.c
 
 CC		=	gcc
 
@@ -92,4 +91,4 @@ recl	:	all clean
 
 norm	:	fclean
 			echo "$(_RED)Starting norminette...$(_END)"
-			norminette $(SRCS) $(INCL) | grep -B 1 '^Error' 2> /dev/null || echo "$(_GREEN)Norme OK !$(_END)";
+			norminette $(SRCS) $(INCL) | grep -B 1 '^Error' 2> /dev/null && echo "$(_RED)Norme KO :(" || echo "$(_GREEN)Norme OK ! :)$(_END)";
