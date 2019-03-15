@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 15:14:07 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 18:54:17 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	ft_init_start(t_win *win)
 
 void	ft_reset_fractale(t_win *win)
 {
-	if (win->fract <= 5)
+	if (win->fract <= 6)
 		ft_init_mandelbrot(win);
-	else if (win->fract > 5)
+	else if (win->fract > 6)
 		ft_init_julia(win);
 	win->p.moove_hor = 0;
 	win->p.moove_ver = 0;
@@ -58,6 +58,7 @@ void	ft_reset_fractale(t_win *win)
 	win->p.old_it_max = 0;
 	win->p.rc = 0;
 	win->p.ic = 0;
+	win->p.pow = 4;
 	ft_create_vig(win, 1);
 }
 
@@ -73,15 +74,19 @@ void	ft_select_fractale(t_win *win, char *str)
 		win->fract = 4;
 	else if (!ft_strcmp(str, "palmtree"))
 		win->fract = 5;
-	else if (!ft_strcmp(str, "julia"))
+	else if (!ft_strcmp(str, "multibrot"))
 		win->fract = 6;
-	else if (!ft_strcmp(str, "andy"))
+	else if (!ft_strcmp(str, "julia"))
 		win->fract = 7;
-	else if (!ft_strcmp(str, "microcells"))
+	else if (!ft_strcmp(str, "andy"))
 		win->fract = 8;
-	else if (!ft_strcmp(str, "brain"))
+	else if (!ft_strcmp(str, "microcells"))
 		win->fract = 9;
-	else if (!ft_strcmp(str, "flower"))
+	else if (!ft_strcmp(str, "brain"))
 		win->fract = 10;
+	else if (!ft_strcmp(str, "flower"))
+		win->fract = 11;
+	else if (!ft_strcmp(str, "multijulia"))
+		win->fract = 12;
 	ft_reset_fractale(win);
 }

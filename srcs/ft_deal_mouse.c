@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 17:11:43 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 18:48:47 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ static void		ft_pick_fractale(int x, int y, t_win *win)
 		else if (y > (MRG + VIG_VER_SIZE * 2) && y < (MRG + VIG_VER_SIZE * 3))
 			win->fract = 3;
 		else if (y > (MRG + VIG_VER_SIZE * 3) && y < (MRG + VIG_VER_SIZE * 4))
-			win->fract = 6;
-		else if (y > (MRG + VIG_VER_SIZE * 4) && y < (MRG + VIG_VER_SIZE * 5))
 			win->fract = 7;
+		else if (y > (MRG + VIG_VER_SIZE * 4) && y < (MRG + VIG_VER_SIZE * 5))
+			win->fract = 8;
 		win->motion = 0;
 	}
 }
 
 int				deal_motion(int x, int y, t_win *win)
 {
-	if (win->motion == 1 && win->fract > 5)
+	if (win->motion == 1 && win->fract > 6)
 	{
 		if (x >= 0 && y >= 0 && x <= WIN_HOR_SIZE && y <= WIN_VER_SIZE)
 		{
@@ -52,7 +52,7 @@ static void		deal_mouse_click(t_win *win, int x, int y)
 		ft_pick_fractale(x, y, win);
 		ft_reset_fractale(win);
 	}
-	else if (win->fract > 5)
+	else if (win->fract > 6)
 		(win->motion == 0) ? (win->motion += 1) : (win->motion = 0);
 }
 

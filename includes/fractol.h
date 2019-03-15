@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 16:47:05 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 19:08:21 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,13 @@
 # define F3 "Tricorn"
 # define F4 "BurningShip"
 # define F5 "Palmtree"
-# define F6 "Julia"
-# define F7 "Andy"
-# define F8 "Microcells"
-# define F9 "Brain"
-# define F10 "Flower"
+# define F6 "Multibrot"
+# define F7 "Julia"
+# define F8 "Andy"
+# define F9 "Microcells"
+# define F10 "Brain"
+# define F11 "Flower"
+# define F12 "Multijulia"
 
 # define TOUCH_ESC 53
 # define ARROW_LEFT 123
@@ -83,6 +85,8 @@
 # define TOUCH_M 46
 # define PAGE_DOWN 121
 # define PAGE_UP 116
+# define TOUCH_INF 43
+# define TOUCH_SUP 47
 
 typedef	struct s_win	t_win;
 typedef struct s_img	t_img;
@@ -100,6 +104,8 @@ struct					s_render
 	double				r;
 	double				zoom_x;
 	double				zoom_y;
+	double				xtmp;
+	double				ytmp;
 	int					a;
 	int					x;
 	int					y;
@@ -122,13 +128,14 @@ struct					s_params
 	double				moove_hor;
 	double				moove_ver;
 	double				zoom;
-	int					it_max;
-	int					old_it_max;
 	double				x1;
 	double				y1;
 	double				rc;
 	double				ic;
+	int					it_max;
+	int					old_it_max;
 	int					color;
+	int					pow;
 };
 
 struct					s_img
@@ -229,6 +236,6 @@ void					ft_create_andy_vig(t_thrd *thrd);
 ** ft_calc.c
 */
 
-void					ft_calc(t_render *r, int fract, int it_max);
+void					ft_calc(t_render *r, int fract, int it_max, int pow);
 
 #endif

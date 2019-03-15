@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 17:20:26 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 18:50:32 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_create_mandelbrot_vig(t_thrd *thrd)
 			r.ic = r.y / r.zoom_y + Y1_M;
 			r.rz = 0;
 			r.iz = 0;
-			ft_calc(&r, 1, thrd->w->p.it_max);
+			ft_calc(&r, 1, thrd->w->p.it_max, 0);
 			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0 && r.x > 0 \
 				&& r.x < VIG_HOR_SIZE - 1 && r.y > 0 && r.y < VIG_VER_SIZE - 1)
 				mlx_put_pixel_to_image(thrd->w->vig, r.x, r.y, (0));
@@ -54,7 +54,7 @@ void	ft_create_duobrot_vig(t_thrd *thrd)
 			r.ic = r.y / (r.zoom_y * 0.90) + Y1_M - 0.15;
 			r.rz = 0;
 			r.iz = 0;
-			ft_calc(&r, 2, thrd->w->p.it_max);
+			ft_calc(&r, 2, thrd->w->p.it_max, 0);
 			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0 && r.x > 0 \
 				&& r.x < VIG_HOR_SIZE - 1 && r.y > 0 && r.y < VIG_VER_SIZE - 1)
 				mlx_put_pixel_to_image(thrd->w->vig, r.x, \
@@ -81,7 +81,7 @@ void	ft_create_tricorn_vig(t_thrd *thrd)
 			r.ic = r.y / (r.zoom_y * 0.9) + Y1_M - 0.1;
 			r.rz = 0;
 			r.iz = 0;
-			ft_calc(&r, 3, thrd->w->p.it_max);
+			ft_calc(&r, 3, thrd->w->p.it_max, 0);
 			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0 && r.x > 0 \
 				&& r.x < VIG_HOR_SIZE - 1 && r.y > 0 && r.y < VIG_VER_SIZE - 1)
 				mlx_put_pixel_to_image(thrd->w->vig, r.x, \
@@ -108,7 +108,7 @@ void	ft_create_julia_vig(t_thrd *thrd)
 			r.ic = 0.01 + thrd->w->p.ic;
 			r.rz = r.x / (r.zoom_x * 0.85) + X1_J - 0.15;
 			r.iz = r.y / (r.zoom_y * 0.85) + Y1_J - 0.15;
-			ft_calc(&r, 6, thrd->w->p.it_max);
+			ft_calc(&r, 7, thrd->w->p.it_max, 0);
 			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0 && r.x > 0 \
 				&& r.x < VIG_HOR_SIZE - 1 && r.y > 0 && r.y < VIG_VER_SIZE - 1)
 				mlx_put_pixel_to_image(thrd->w->vig, r.x, \
@@ -135,7 +135,7 @@ void	ft_create_andy_vig(t_thrd *thrd)
 			r.ic = 0.01 + thrd->w->p.ic;
 			r.rz = r.x / (r.zoom_x * 0.90) + X1_J - 0.65;
 			r.iz = r.y / (r.zoom_y * 0.90) + Y1_J - 0.1;
-			ft_calc(&r, 7, thrd->w->p.it_max);
+			ft_calc(&r, 8, thrd->w->p.it_max, 0);
 			if (r.a == thrd->w->p.it_max && thrd->w->p.it_max > 0 && r.x > 0 \
 				&& r.x < VIG_HOR_SIZE - 1 && r.y > 0 && r.y < VIG_VER_SIZE - 1)
 				mlx_put_pixel_to_image(thrd->w->vig, r.x, \
