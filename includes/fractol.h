@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 14:44:18 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 15:24:54 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,12 @@
 # define ARROW_UP 126
 # define TOUCH_PLUS 69
 # define TOUCH_LESS 78
-// # define TOUCH_O 31
-// # define TOUCH_P 35
-// # define TOUCH_I 34
 # define TOUCH_R 15
-// # define TOUCH_T 17
+# define TOUCH_Z 6
+# define TOUCH_X 7
+# define TOUCH_C 8
 # define TOUCH_V 9
 # define TOUCH_M 46
-# define TOUCH_C 8
-// # define TOUCH_STAR 67
 # define PAGE_DOWN 121
 # define PAGE_UP 116
 
@@ -146,8 +143,10 @@ struct					s_win
 	void				*mlx_ptr;
 	void				*win_ptr;
 	int					fract;
+	int					menu;
 	int					motion;
 	int					vig_it;
+	int					immersive;
 	t_params			p;
 	t_mthrds			mthrds;
 	t_img				img;
@@ -178,7 +177,7 @@ int						deal_key(int key, t_win *win);
 ** ft_print.c
 */
 
-int						ft_print_menu(t_win *win);
+void					ft_print_menu(t_win *w);
 void					mlx_put_pixel_to_image(t_img img, int x, int y, int a);
 void					ft_viseur(t_win *win);
 

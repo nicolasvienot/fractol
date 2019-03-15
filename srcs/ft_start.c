@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 12:47:55 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 15:14:07 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ void	ft_init_start(t_win *win)
 		IMG_VIG_HOR_SIZE, IMG_VIG_VER_SIZE);
 	win->vig.data = mlx_get_data_addr(win->vig.img_ptr, \
 		&win->vig.bpp, &win->vig.sizeline, &win->vig.endian);
+	win->menu = 0;
 	win->motion = 0;
 	win->vig_it = 0;
+	win->immersive = 0;
 	win->p.color = 999;
 }
 

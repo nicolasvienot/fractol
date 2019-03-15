@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 14:44:33 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 15:17:34 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ int				deal_key(int key, t_win *win)
 		win->p.it_max += 1;
 	else if (key == PAGE_DOWN && win->p.it_max > 1)
 		win->p.it_max -= 1;
+	else if (key == TOUCH_Z)
+		(win->menu == 0) ? (win->menu += 1) : (win->menu = 0);
+	else if (key == TOUCH_X)
+		(win->immersive == 0) ? (win->immersive += 1) : (win->immersive = 0);
 	else if (key == TOUCH_V)
 		(win->vig_it == 0) ? (win->vig_it += 1) : (win->vig_it = 0);
 	else if (key == TOUCH_M && win->fract > 5)
