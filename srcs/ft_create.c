@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 23:10:48 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 23:46:32 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	*ft_create_julia(void *thrds)
 
 	thrd = (t_thrd *)thrds;
 	r.x = (IMG_HOR_SIZE * thrd->id) / NB_THREADS;
-	r.rc = 0.285 + thrd->w->p.rc;
-	r.ic = 0.01 + thrd->w->p.ic;
 	while (r.x < ((IMG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
 		r.y = 0;
 		while (r.y < IMG_VER_SIZE)
 		{
+			r.rc = 0.285 + thrd->w->p.rc;
+			r.ic = 0.01 + thrd->w->p.ic;
 			r.rz = r.x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
 			r.iz = r.y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.pow);

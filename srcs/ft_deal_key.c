@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 23:09:10 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 00:10:08 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,12 @@ int				deal_key(int key, t_win *win)
 		win->p.it_max -= 1;
 	else if (key == TOUCH_SUP && (win->fract == 6 || win->fract == 12))
 		win->p.pow += 0.1;
-	else if (key == TOUCH_INF && (win->fract == 6 || win->fract == 12))
+	else if (key == TOUCH_INF && (win->fract == 6 || win->fract == 12) && win->p.pow > 1)
 		win->p.pow -= 0.1;
+	else if (key == TOUCH_CRF && (win->fract == 6 || win->fract == 12))
+		win->p.pow += 1;
+	else if (key == TOUCH_CRO && (win->fract == 6 || win->fract == 12) && win->p.pow > 1)
+		win->p.pow -= 1;
 	else if (key == TOUCH_Z)
 		(win->menu == 0) ? (win->menu += 1) : (win->menu = 0);
 	else if (key == TOUCH_X)

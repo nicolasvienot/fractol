@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 23:08:17 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 00:00:44 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	ft_print_menu_2(t_win *win)
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 145, \
 		GREY, "Change iterations : Page-up/Page-down");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 165, \
-		GREY, "Change power : 0.1 = </> | 1 = l/k");
+		GREY, "Change power : 0.1 = </> | 1 = [/]");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 185, \
 		GREY, "Change color variation : C");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 205, \
@@ -120,17 +120,17 @@ void		ft_viseur(t_win *win)
 	int y;
 	int color;
 
-	x = WIN_HOR_SIZE / 2;
-	y = (WIN_VER_SIZE / 2) - 8;
+	x = (WIN_HOR_SIZE / 2) + 2;
+	y = (WIN_VER_SIZE / 2) - 1 - 8;
 	color = WHITE;
-	while (y <= (WIN_VER_SIZE / 2) + 8)
+	while (y <= (WIN_VER_SIZE / 2) - 1 + 8)
 	{
 		mlx_put_pixel_to_image(win->img, x, y, color);
 		y++;
 	}
-	y = WIN_VER_SIZE / 2;
-	x = (WIN_HOR_SIZE / 2) - 8;
-	while (x <= (WIN_HOR_SIZE / 2) + 8)
+	y = (WIN_VER_SIZE / 2) - 1;
+	x = (WIN_HOR_SIZE / 2) + 2 - 8;
+	while (x <= (WIN_HOR_SIZE / 2) + 2 + 8)
 	{
 		mlx_put_pixel_to_image(win->img, x, y, color);
 		x++;

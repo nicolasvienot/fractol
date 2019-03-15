@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 17:57:16 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 20:46:24 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/15 23:39:51 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,11 @@ void	ft_create_andy_vig(t_thrd *thrd)
 	r.x = (VIG_HOR_SIZE * thrd->id) / NB_THREADS;
 	while (r.x < ((VIG_HOR_SIZE * (thrd->id + 1) / NB_THREADS)))
 	{
-		r.rc = 0.285 + thrd->w->p.rc;
-		r.ic = 0.01 + thrd->w->p.ic;
 		r.y = 0;
 		while (r.y < IMG_VER_SIZE)
 		{
+			r.rc = 0.285 + thrd->w->p.rc;
+			r.ic = 0.01 + thrd->w->p.ic;
 			r.rz = r.x / (r.zoom_x * 0.90) + X1_J - 0.65;
 			r.iz = r.y / (r.zoom_y * 0.90) + Y1_J - 0.1;
 			ft_calc(&r, 8, thrd->w->p.it_max, 0);

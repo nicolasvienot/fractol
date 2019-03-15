@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 23:05:00 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 00:08:48 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@
 # define PAGE_UP 116
 # define TOUCH_INF 43
 # define TOUCH_SUP 47
+# define TOUCH_CRO 33
+# define TOUCH_CRF 30
 
 typedef	struct s_win	t_win;
 typedef struct s_img	t_img;
@@ -107,8 +109,6 @@ struct					s_render
 	int					a;
 	int					x;
 	int					y;
-	double				xtmp;
-	double				ytmp;
 };
 
 struct					s_thrd
@@ -132,10 +132,10 @@ struct					s_params
 	double				y1;
 	double				rc;
 	double				ic;
+	double				pow;
 	int					it_max;
 	int					old_it_max;
 	int					color;
-	double				pow;
 };
 
 struct					s_img
