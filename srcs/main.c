@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 22:46:24 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 03:25:24 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int			main(int ac, char **av)
 
 	if (ac != 2)
 		ft_usage();
-	if (!ft_strcmp(av[1], "mandelbrot") || !ft_strcmp(av[1], "duobrot") \
-		|| !ft_strcmp(av[1], "tricorn") || !ft_strcmp(av[1], "burningship") \
-		|| !ft_strcmp(av[1], "palmtree") || !ft_strcmp(av[1], "julia") \
-		|| !ft_strcmp(av[1], "andy") || !ft_strcmp(av[1], "microcells") \
-		|| !ft_strcmp(av[1], "brain") || !ft_strcmp(av[1], "flower") \
-		|| !ft_strcmp(av[1], "multibrot") || !ft_strcmp(av[1], "multijulia"))
+	if (!ft_strcmp(av[1], F1) || !ft_strcmp(av[1], F2) \
+		|| !ft_strcmp(av[1], F3) || !ft_strcmp(av[1], F4) \
+		|| !ft_strcmp(av[1], F5) || !ft_strcmp(av[1], F6) \
+		|| !ft_strcmp(av[1], F7) || !ft_strcmp(av[1], F8) \
+		|| !ft_strcmp(av[1], F9) || !ft_strcmp(av[1], F10) \
+		|| !ft_strcmp(av[1], F11) || !ft_strcmp(av[1], F12))
 	{
 		ft_init_start(&win);
 		ft_select_fractale(&win, av[1]);

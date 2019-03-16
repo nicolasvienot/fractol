@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 23:24:26 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 03:38:00 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ int				deal_mouse(int mouse, int x, int y, t_win *win)
 			win->p.zoom *= (double)COEF_ZOOM;
 			win->p.x1 = oldx - (double)x / win->p.zoom;
 			win->p.y1 = oldy - (double)y / win->p.zoom;
-			if (win->immersive == 1)
-				win->p.it_max += 1;
+			(win->immersive == 1) ? win->p.it_max += 1 : 0;
 		}
 		(mouse == 1) ? deal_mouse_click(win, x, y) : 0;
 	}

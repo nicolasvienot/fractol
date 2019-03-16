@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 00:12:27 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 01:22:40 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 03:41:42 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int		ft_getfirstdecimal(float n)
 	nb = (int)n;
 	if (nb < 0)
 		nb = -nb;
-	return(nb % 10);
+	return (nb % 10);
 }

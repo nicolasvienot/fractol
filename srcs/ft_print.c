@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 02:50:50 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 03:34:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 static void	ft_get_pow(t_win *win)
 {
-	char *x;
-	char *y;
-	char *z;
-	float ent;
-	int dec;
+	char	*x;
+	char	*y;
+	float	ent;
+	int		dec;
 
 	ent = (float)win->p.pow;
 	dec = ((int)(10 * ent) % 10);
-	y = ft_itoa(ent);
-	x = ft_strjoinnfree(y, ".", 1);
-	z = ft_itoa(dec);
-	x = ft_strjoinnfree(x, z, 3);
+	x = ft_strjoinnfree(ft_itoa(ent), ".", 1);
+	x = ft_strjoinnfree(x, ft_itoa(dec), 3);
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 170, 45, GREY, x);
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 140, 25, \
+		GREY, y = ft_itoa(win->p.it_max));
 	free(x);
+	free(y);
 }
 
 static void	ft_print_menu_1(t_win *win)
 {
-	char *x;
-
 	if (win->fract == 1)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F1);
 	else if (win->fract == 2)
@@ -58,10 +56,6 @@ static void	ft_print_menu_1(t_win *win)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F11);
 	else if (win->fract == 12)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F12);
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 140, 25, \
-		GREY, x = ft_itoa(win->p.it_max));
-	ft_get_pow(win);
-	free(x);
 }
 
 static void	ft_print_menu_2(t_win *win)
@@ -95,6 +89,7 @@ void		ft_print_menu(t_win *w)
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 25, GREY, "Iterations |");
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 45, GREY, "Power (Multi) |");
 	ft_print_menu_1(w);
+	ft_get_pow(w);
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 65, \
 		GREY, "Press Z to display controls");
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 635, GREY, "Motion_ju mode");
