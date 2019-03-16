@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 03:21:03 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 18:32:24 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		deal_key_reset(int key, t_win *win)
 		(win->fract == 12) ? (win->fract = 1) : (win->fract += 1);
 	else if (key == TOUCH_LESS)
 		(win->fract == 1) ? (win->fract = 12) : (win->fract -= 1);
-	ft_reset_fractale(win);
+	ft_reset_fractal(win);
 }
 
 static void		deal_key_2(int key, t_win *win)

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 03:27:08 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 18:19:44 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,11 +163,25 @@ struct					s_win
 };
 
 /*
-** ft_error.c
+** ft_calc.c
 */
 
-void					ft_usage(void);
-int						ft_exit(t_win *win);
+void					ft_calc(t_render *r, int fract, int it_max, double pow);
+
+/*
+** ft_create.c
+*/
+
+void					*ft_create_mandelbrot(void *thrds);
+void					*ft_create_julia(void *thrds);
+void					ft_create_vig(t_win *win, int test);
+void					ft_create_all(t_win *win);
+
+/*
+** ft_deal_key.c
+*/
+
+int						deal_key(int key, t_win *win);
 
 /*
 ** ft_deal_mouse.c
@@ -177,65 +191,46 @@ int						deal_motion(int x, int y, t_win *win);
 int						deal_mouse(int mouse, int x, int y, t_win *win);
 
 /*
-** ft_deal_key.c
+** ft_multithreading.c
 */
 
-int						deal_key(int key, t_win *win);
+void					*ft_vig(void *thrds);
+void					ft_multithreading(t_win *win);
+void					ft_multithreading_vig(t_win *win);
 
 /*
 ** ft_print.c
 */
 
 void					ft_print_menu(t_win *w);
-void					mlx_put_pixel_to_image(t_img img, int x, int y, int a);
-void					ft_viseur(t_win *win);
 
 /*
-** ft_init_struct.c
+** ft_start.c
 */
 
-void					ft_init_start(t_win *win);
-void					ft_init_mandelbrot(t_win *win);
 void					ft_init_julia(t_win *win);
+void					ft_init_mandelbrot(t_win *win);
+void					ft_init_start(t_win *win);
+void					ft_reset_fractal(t_win *win);
+void					ft_select_fractal(t_win *win, char *str);
 
 /*
-** ft_select_fractales.c
+** ft_utilities.c
 */
 
-void					ft_select_fractale(t_win *win, char *str);
-void					ft_reset_fractale(t_win *win);
-void					ft_multithreading(t_win *win);
-void					ft_multithreading_vig(t_win *win);
+void					ft_usage(void);
+int						ft_exit(t_win *win);
+void					ft_viseur(t_win *win);
+void					mlx_put_pixel_to_image(t_img img, int x, int y, int a);
 
 /*
 ** ft_vignettes.c
 */
 
-void					ft_create_vig(t_win *win, int test);
-
-/*
-** ft_create.c
-*/
-
-void					ft_create_all(t_win *win);
-void					*ft_create_mandelbrot(void *thrds);
-void					*ft_create_julia(void *thrds);
-
-/*
-** ft_fractales_vig.c
-*/
-
-void					*ft_vig(void *thrds);
 void					ft_create_mandelbrot_vig(t_thrd *thrd);
 void					ft_create_duobrot_vig(t_thrd *thrd);
 void					ft_create_tricorn_vig(t_thrd *thrd);
 void					ft_create_julia_vig(t_thrd *thrd);
 void					ft_create_andy_vig(t_thrd *thrd);
-
-/*
-** ft_calc.c
-*/
-
-void					ft_calc(t_render *r, int fract, int it_max, double pow);
 
 #endif

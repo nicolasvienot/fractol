@@ -6,13 +6,27 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 03:38:00 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 18:19:44 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void		ft_pick_fractale(int x, int y, t_win *win)
+static void		ft_immersive(t_win *win, int test)
+{
+	if (test == 1)
+	{
+		if (win->immersive == 1 && win->p.it_max > 2)
+			win->p.it_max -= 1;
+	}
+	else if (test == 2)
+	{
+		if (win->immersive == 1)
+			win->p.it_max += 1;
+	}
+}
+
+static void		ft_pick_fractal(int x, int y, t_win *win)
 {
 	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE - MRG && x < WIN_HOR_SIZE - MRG)
 	{
@@ -49,8 +63,8 @@ static void		deal_mouse_click(t_win *win, int x, int y)
 	if (x > WIN_HOR_SIZE - VIG_HOR_SIZE - MRG && x < WIN_HOR_SIZE \
 		- MRG && y > MRG && y < (MRG + VIG_VER_SIZE * 5))
 	{
-		ft_pick_fractale(x, y, win);
-		ft_reset_fractale(win);
+		ft_pick_fractal(x, y, win);
+		ft_reset_fractal(win);
 	}
 	else if (win->fract > 6)
 		(win->motion == 0) ? (win->motion += 1) : (win->motion = 0);
@@ -70,15 +84,14 @@ int				deal_mouse(int mouse, int x, int y, t_win *win)
 			win->p.zoom /= (double)COEF_ZOOM;
 			win->p.x1 = oldx - (double)x / win->p.zoom;
 			win->p.y1 = oldy - (double)y / win->p.zoom;
-			if (win->immersive == 1 && win->p.it_max > 2)
-				win->p.it_max -= 1;
+			ft_immersive(win, 1);
 		}
 		else if (mouse == 5)
 		{
 			win->p.zoom *= (double)COEF_ZOOM;
 			win->p.x1 = oldx - (double)x / win->p.zoom;
 			win->p.y1 = oldy - (double)y / win->p.zoom;
-			(win->immersive == 1) ? win->p.it_max += 1 : 0;
+			ft_immersive(win, 2);
 		}
 		(mouse == 1) ? deal_mouse_click(win, x, y) : 0;
 	}

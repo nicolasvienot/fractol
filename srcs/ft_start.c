@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 03:26:56 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 18:27:02 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	ft_init_start(t_win *win)
 	win->motion = 0;
 	win->vig_it = 0;
 	win->immersive = 0;
-	win->p.color = 999;
+	win->p.color = 500;
 }
 
-void	ft_reset_fractale(t_win *win)
+void	ft_reset_fractal(t_win *win)
 {
 	if (win->fract <= 6)
 		ft_init_mandelbrot(win);
@@ -62,7 +62,7 @@ void	ft_reset_fractale(t_win *win)
 	ft_create_vig(win, 1);
 }
 
-void	ft_select_fractale(t_win *win, char *str)
+void	ft_select_fractal(t_win *win, char *str)
 {
 	if (!ft_strcmp(str, F1))
 		win->fract = 1;
@@ -88,5 +88,5 @@ void	ft_select_fractale(t_win *win, char *str)
 		win->fract = 11;
 	else if (!ft_strcmp(str, F12))
 		win->fract = 12;
-	ft_reset_fractale(win);
+	ft_reset_fractal(win);
 }

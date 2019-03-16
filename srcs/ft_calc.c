@@ -6,11 +6,23 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 21:07:55 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 04:08:04 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 18:02:49 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void		ft_modif_julia(t_render *r, int fract)
+{
+	if (fract == 8 || fract == 12)
+	{
+		if (fract == 8)
+			r->rc = r->rc + 0.155;
+		if (fract == 12)
+			r->rc = r->rc + 0.253;
+		r->ic = r->ic + 0.013;
+	}
+}
 
 static void		ft_calc_3(t_render *r, int fract, int it_max, double y)
 {
@@ -93,15 +105,8 @@ void			ft_calc(t_render *r, int fract, int it_max, double p)
 
 	y = 0;
 	r->a = 0;
-	if (fract == 8 || fract == 12)
-	{
-		if (fract == 8)
-			r->rc = r->rc + 0.155;
-		if (fract == 12)
-			r->rc = r->rc + 0.253;
-		r->ic = r->ic + 0.013;
-	}
 	y = r->iz * r->iz;
+	ft_modif_julia(r, fract);
 	if (fract == 1 || fract == 2 || fract == 7 || fract == 8)
 		ft_calc_1(r, fract, it_max, y);
 	else if (fract == 3 || fract == 4 || fract == 9 || fract == 10)

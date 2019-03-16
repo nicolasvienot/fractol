@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 03:34:45 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 18:18:42 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,31 @@ static void	ft_get_pow(t_win *win)
 		GREY, y = ft_itoa(win->p.it_max));
 	free(x);
 	free(y);
+}
+
+static void	ft_print_menu_2(t_win *win)
+{
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 85, \
+		GREY, "Move : Arrow keys");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 105, GREY, "Zoom : Scroll");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 125, \
+		GREY, "Change fractal : +/-");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 145, \
+		GREY, "Change iterations : Page-up/Page-down");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 165, \
+		GREY, "Change power : 0.1 = </> | 1 = [/]");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 185, \
+		GREY, "Change color variation : C");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 205, \
+		GREY, "Change color palette : X");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 225, \
+		GREY, "Activate motion mode : M/Click");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 245, \
+		GREY, "Activate sample mode : V");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 265, \
+		GREY, "Activate immersive mode : X");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 285, GREY, "Reset : R");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 305, GREY, "Quit : Esc");
 }
 
 static void	ft_print_menu_1(t_win *win)
@@ -58,34 +83,9 @@ static void	ft_print_menu_1(t_win *win)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F12);
 }
 
-static void	ft_print_menu_2(t_win *win)
-{
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 85, \
-		GREY, "Move : Arrow keys");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 105, GREY, "Zoom : Scroll");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 125, \
-		GREY, "Change fractale : +/-");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 145, \
-		GREY, "Change iterations : Page-up/Page-down");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 165, \
-		GREY, "Change power : 0.1 = </> | 1 = [/]");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 185, \
-		GREY, "Change color variation : C");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 205, \
-		GREY, "Change color palette : X");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 225, \
-		GREY, "Activate motion mode : M/Click");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 245, \
-		GREY, "Activate sample mode : V");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 265, \
-		GREY, "Activate immersive mode : X");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 285, GREY, "Reset : R");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 305, GREY, "Quit : Esc");
-}
-
 void		ft_print_menu(t_win *w)
 {
-	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 5, GREY, "Fractale | ");
+	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 5, GREY, "Fractal | ");
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 25, GREY, "Iterations |");
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 45, GREY, "Power (Multi) |");
 	ft_print_menu_1(w);
@@ -109,40 +109,4 @@ void		ft_print_menu(t_win *w)
 		mlx_string_put(w->mlx_ptr, w->win_ptr, 160, 675, RED, "OFF");
 	if (w->menu == 1)
 		ft_print_menu_2(w);
-}
-
-void		mlx_put_pixel_to_image(t_img img, int x, int y, int a)
-{
-	int		octet;
-
-	octet = img.bpp / 8;
-	if (x >= 0 && y >= 0 && x < IMG_HOR_SIZE && y < IMG_VER_SIZE)
-	{
-		if (!(ft_memcpy(&img.data[octet * x + img.sizeline * y], \
-			&a, octet)))
-			return ;
-	}
-}
-
-void		ft_viseur(t_win *win)
-{
-	int x;
-	int y;
-	int color;
-
-	x = (WIN_HOR_SIZE / 2) + 2;
-	y = (WIN_VER_SIZE / 2) - 1 - 8;
-	color = WHITE;
-	while (y <= (WIN_VER_SIZE / 2) - 1 + 8)
-	{
-		mlx_put_pixel_to_image(win->img, x, y, color);
-		y++;
-	}
-	y = (WIN_VER_SIZE / 2) - 1;
-	x = (WIN_HOR_SIZE / 2) + 2 - 8;
-	while (x <= (WIN_HOR_SIZE / 2) + 2 + 8)
-	{
-		mlx_put_pixel_to_image(win->img, x, y, color);
-		x++;
-	}
 }

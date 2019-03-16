@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_utilities.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/22 11:48:56 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 03:28:56 by nvienot          ###   ########.fr       */
+/*   Created: 2019/03/16 17:45:48 by nvienot           #+#    #+#             */
+/*   Updated: 2019/03/16 17:57:55 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,40 @@ int			ft_exit(t_win *win)
 	mlx_destroy_image(win->mlx_ptr, win->vig.img_ptr);
 	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
 	exit(EXIT_SUCCESS);
+}
+
+void		ft_viseur(t_win *win)
+{
+	int x;
+	int y;
+	int color;
+
+	x = (WIN_HOR_SIZE / 2) + 2;
+	y = (WIN_VER_SIZE / 2) - 1 - 8;
+	color = WHITE;
+	while (y <= (WIN_VER_SIZE / 2) - 1 + 8)
+	{
+		mlx_put_pixel_to_image(win->img, x, y, color);
+		y++;
+	}
+	y = (WIN_VER_SIZE / 2) - 1;
+	x = (WIN_HOR_SIZE / 2) + 2 - 8;
+	while (x <= (WIN_HOR_SIZE / 2) + 2 + 8)
+	{
+		mlx_put_pixel_to_image(win->img, x, y, color);
+		x++;
+	}
+}
+
+void		mlx_put_pixel_to_image(t_img img, int x, int y, int a)
+{
+	int		octet;
+
+	octet = img.bpp / 8;
+	if (x >= 0 && y >= 0 && x < IMG_HOR_SIZE && y < IMG_VER_SIZE)
+	{
+		if (!(ft_memcpy(&img.data[octet * x + img.sizeline * y], \
+			&a, octet)))
+			return ;
+	}
 }

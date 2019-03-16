@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/09 14:10:45 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/16 01:40:48 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/16 17:21:07 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,14 @@ ft_getfirstdecimal.c ft_strjoinnfree.c
 
 OBJS = $(SRCS:.c=.o)
 
+.SILENT	:
+
 all: $(NAME)
 
-$(NAME): libft.h
-	@$(CC) $(FLAGS) -c $(SRCS) 
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
+$(NAME): $(OBJS) libft.h
+	$(CC) $(FLAGS) -c $(SRCS) 
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 clean:
 	@/bin/rm -f $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 17:01:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 03:25:24 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 18:19:44 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			main(int ac, char **av)
 		|| !ft_strcmp(av[1], F11) || !ft_strcmp(av[1], F12))
 	{
 		ft_init_start(&win);
-		ft_select_fractale(&win, av[1]);
+		ft_select_fractal(&win, av[1]);
 		ft_multithreading(&win);
 		ft_hook(&win);
 	}

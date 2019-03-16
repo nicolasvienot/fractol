@@ -6,15 +6,16 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/15 12:45:35 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/16 18:18:24 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fractol
 
-SRCS	=	srcs/main.c srcs/ft_error.c srcs/ft_print.c srcs/ft_start.c \
+SRCS	=	srcs/main.c srcs/ft_start.c srcs/ft_multithreading.c \
+			srcs/ft_create.c srcs/ft_utilities.c srcs/ft_calc.c \
 			srcs/ft_vignettes.c srcs/ft_deal_key.c srcs/ft_deal_mouse.c \
-			srcs/ft_create.c srcs/ft_calc.c srcs/ft_multithreading.c
+			srcs/ft_print.c 
 
 CC		=	gcc
 
@@ -91,4 +92,4 @@ recl	:	all clean
 
 norm	:	fclean
 			echo "$(_RED)Starting norminette...$(_END)"
-			norminette $(SRCS) $(INCL) | grep -B 1 '^Error' 2> /dev/null && echo "$(_RED)Norme KO :(" || echo "$(_GREEN)Norme OK ! :)$(_END)";
+			norminette $(SRCS) $(INCL) | grep -B 1 '^Error' 2> /dev/null && echo "$(_RED)Norm KO :(" || echo "$(_GREEN)Norm OK ! :)$(_END)";
