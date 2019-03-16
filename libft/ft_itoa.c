@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 22:18:46 by nvienot           #+#    #+#             */
-/*   Updated: 2018/11/22 17:52:20 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 02:19:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ char		*ft_itoa(int n)
 	char	*repitoa;
 
 	len = ft_int_len(n);
-	if (!(repitoa = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if (n == 0)
 		return (ft_strdup("0"));
+	if (!(repitoa = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	if (n < 0)
 	{
 		repitoa[0] = '-';
