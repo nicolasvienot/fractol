@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_getfirstdecimal.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 22:16:18 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 01:39:30 by nvienot          ###   ########.fr       */
+/*   Created: 2019/03/16 00:12:27 by nvienot           #+#    #+#             */
+/*   Updated: 2019/03/16 01:22:40 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int		ft_getfirstdecimal(float n)
 {
-	char	*dst;
+	int nb;
 
-	if (!s1 || !s2)
-		return (NULL);
-	if (!(dst = ft_memalloc((ft_strlen(s1) + ft_strlen(s2)) + 1)))
-		return (NULL);
-	ft_strcat((ft_strcpy(dst, s1)), s2);
-	return (dst);
+	n = n * 10;
+	nb = (int)n;
+	if (nb < 0)
+		nb = -nb;
+	return(nb % 10);
 }

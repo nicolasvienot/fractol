@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 16:19:26 by nvienot           #+#    #+#             */
-/*   Updated: 2019/02/17 19:53:59 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 01:40:30 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int					ft_str_is_numeric(char *str);
 int					ft_str_is_printable(char *str);
 int					ft_str_is_uppercase(char *str);
 int					get_next_line(const int fd, char **line);
+int					ft_getfirstdecimal(float n);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -96,6 +97,7 @@ char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack,
 					const char *needle, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoinnfree(char *s1, char *s2, int fr);
 char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				**ft_strsplit(char const *s, char c);

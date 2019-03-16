@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 20:35:18 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 01:00:23 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_reset_fractale(t_win *win)
 	win->p.old_it_max = 0;
 	win->p.rc = 0;
 	win->p.ic = 0;
-	win->p.pow = 4;
+	win->p.pow = 4.0;
 	ft_create_vig(win, 1);
 }
 

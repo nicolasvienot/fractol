@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/09 14:10:45 by nvienot           #+#    #+#              #
-#    Updated: 2019/02/16 16:32:10 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/16 01:40:48 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ ft_lstnew.c ft_iswhitespace.c ft_strlcpy.c ft_sortinttab.c ft_strndup.c \
 ft_str_is_alpha.c ft_str_is_lowercase.c ft_str_is_numeric.c ft_ishexa.c \
 ft_str_is_printable.c ft_str_is_uppercase.c ft_strcapitalize.c \
 ft_strupcase.c ft_strlowcase.c ft_isupper.c ft_islower.c ft_data_in_tab.c \
-ft_strsplit_at_first_c.c get_next_line.c ft_atoi_base.c ft_is_present.c 
+ft_strsplit_at_first_c.c get_next_line.c ft_atoi_base.c ft_is_present.c \
+ft_getfirstdecimal.c ft_strjoinnfree.c
 
 OBJS = $(SRCS:.c=.o)
 

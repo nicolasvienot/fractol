@@ -6,16 +6,36 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 00:00:44 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/16 01:52:14 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+void	ft_get(t_win *win)
+{
+	printf("%f\n", win->p.pow);
+	char *x;
+
+	float salut;
+	int salut2;
+
+	salut = (float)win->p.pow;
+	salut2 = (int)(10 * salut);
+	salut2 = salut2 % 10;
+
+	x = ft_itoa(salut);
+	x = ft_strjoinnfree(x, ".", 1);
+	x = ft_strjoinnfree(x, ft_itoa(salut2), 3);
+
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 170, 45, GREY, x);
+
+	free(x);
+}
+
 static void	ft_print_menu_1(t_win *win)
 {
 	char *x;
-	char *y;
 
 	if (win->fract == 1)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F1);
@@ -43,10 +63,8 @@ static void	ft_print_menu_1(t_win *win)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F12);
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 140, 25, \
 		GREY, x = ft_itoa(win->p.it_max));
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 170, 45, \
-		GREY, y = ft_itoa(win->p.pow));
+	// ft_get(win);
 	free(x);
-	free(y);
 }
 
 static void	ft_print_menu_2(t_win *win)
