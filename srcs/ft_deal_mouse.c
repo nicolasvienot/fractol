@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 18:19:44 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 17:49:11 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int				deal_mouse(int mouse, int x, int y, t_win *win)
 	double	oldx;
 	double	oldy;
 
-	if (x > 0 && y > 0)
+	if (x > 0 && y > 0 && (mouse == 4 || mouse == 5 || mouse == 1))
 	{
 		oldx = win->p.x1 + (double)x / win->p.zoom;
 		oldy = win->p.y1 + (double)y / win->p.zoom;
@@ -94,7 +94,7 @@ int				deal_mouse(int mouse, int x, int y, t_win *win)
 			ft_immersive(win, 2);
 		}
 		(mouse == 1) ? deal_mouse_click(win, x, y) : 0;
+		ft_create_all(win);
 	}
-	ft_create_all(win);
 	return (1);
 }

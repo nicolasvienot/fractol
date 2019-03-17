@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 18:32:24 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 19:08:15 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,51 +21,59 @@ static void		deal_key_reset(int key, t_win *win)
 	ft_reset_fractal(win);
 }
 
-static void		deal_key_2(int key, t_win *win)
+static int		deal_key_2(int key, t_win *w, int a)
 {
-	if (key == TOUCH_SUP && (win->fract == 6 || win->fract == 12))
-		win->p.pow += 0.1;
-	else if (key == TOUCH_INF && (win->fract == 6 \
-		|| win->fract == 12) && win->p.pow > 1)
-		win->p.pow -= 0.1;
-	else if (key == TOUCH_CRF && (win->fract == 6 || win->fract == 12))
-		win->p.pow += 1;
-	else if (key == TOUCH_CRO && (win->fract == 6 \
-		|| win->fract == 12) && win->p.pow > 1)
-		win->p.pow -= 1;
-	else if (key == TOUCH_Z)
-		(win->menu == 0) ? (win->menu += 1) : (win->menu = 0);
-	else if (key == TOUCH_X)
-		(win->immersive == 0) ? (win->immersive += 1) : (win->immersive = 0);
-	else if (key == TOUCH_V)
-		(win->vig_it == 0) ? (win->vig_it += 1) : (win->vig_it = 0);
-	else if (key == TOUCH_M && win->fract > 6)
-		(win->motion == 0) ? (win->motion += 1) : (win->motion = 0);
+	if (key == TOUCH_SUP && (w->fract == 6 || w->fract == 12) && ++a > 0)
+		w->p.power += 0.1;
+	else if (key == TOUCH_INF && (w->fract == 6 \
+		|| w->fract == 12) && w->p.power > 1 && ++a > 0)
+		w->p.power -= 0.1;
+	else if (key == TOUCH_CRF && (w->fract == 6 || w->fract == 12) && ++a > 0)
+		w->p.power += 1;
+	else if (key == TOUCH_CRO && (w->fract == 6 \
+		|| w->fract == 12) && w->p.power > 1 && ++a > 0)
+		w->p.power -= 1;
+	else if (key == TOUCH_Z && ++a > 0)
+		(w->menu == 0) ? (w->menu += 1) : (w->menu = 0);
+	else if (key == TOUCH_X && ++a > 0)
+		(w->immersive == 0) ? (w->immersive += 1) : (w->immersive = 0);
+	else if (key == TOUCH_V && ++a > 0)
+		(w->vig_it == 0) ? (w->vig_it += 1) : (w->vig_it = 0);
+	else if (key == TOUCH_M && w->fract > 6 && ++a > 0)
+		(w->motion == 0) ? (w->motion += 1) : (w->motion = 0);
+	else if (key == PAGE_UP && ++a > 0)
+		w->p.it_max += 1;
+	else if (key == PAGE_DOWN && w->p.it_max > 2 && ++a > 0)
+		w->p.it_max -= 1;
+	return (a);
 }
 
 int				deal_key(int key, t_win *win)
 {
-	if (key == ARROW_UP)
+	int a;
+
+	a = 0;
+	if (key == ARROW_UP && ++a > 0)
 		win->p.moove_ver -= SIZE_MOV / win->p.zoom;
-	else if (key == ARROW_DOWN)
+	else if (key == ARROW_DOWN && ++a > 0)
 		win->p.moove_ver += SIZE_MOV / win->p.zoom;
-	else if (key == ARROW_RIGHT)
+	else if (key == ARROW_RIGHT && ++a > 0)
 		win->p.moove_hor += SIZE_MOV / win->p.zoom;
-	else if (key == ARROW_LEFT)
+	else if (key == ARROW_LEFT && ++a > 0)
 		win->p.moove_hor -= SIZE_MOV / win->p.zoom;
-	else if (key == PAGE_UP)
-		win->p.it_max += 1;
-	else if (key == PAGE_DOWN && win->p.it_max > 2)
-		win->p.it_max -= 1;
-	else if (key == TOUCH_C)
+	else if (key == TOUCH_P && ++a > 0)
+		(win->pal == 12) ? (win->pal = 1) : (win->pal += 1);
+	else if (key == TOUCH_C && win->pal == 2 && ++a > 0)
 		(win->p.color > 999999999) ? (win->p.color = 99) \
 			: (win->p.color *= 1.5);
-	else if (key == TOUCH_PLUS || key == TOUCH_LESS \
-		|| key == TOUCH_R)
+	else if ((key == TOUCH_PLUS || key == TOUCH_LESS \
+		|| key == TOUCH_R) && ++a > 0)
 		deal_key_reset(key, win);
-	else if (key == TOUCH_ESC)
+	else if (key == TOUCH_ESC && ++a > 0)
 		ft_exit(win);
-	deal_key_2(key, win);
-	ft_create_all(win);
+	else
+		a = deal_key_2(key, win, a);
+	if (a > 0)
+		ft_create_all(win);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 18:19:44 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 19:52:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define SIZE_MOV 20
 
 # define NB_THREADS 20
+
+# define UI unsigned int
 
 # define BLACK 0
 # define BLUE 255
@@ -83,6 +85,7 @@
 # define TOUCH_C 8
 # define TOUCH_V 9
 # define TOUCH_M 46
+# define TOUCH_P 35
 # define PAGE_DOWN 121
 # define PAGE_UP 116
 # define TOUCH_INF 43
@@ -106,9 +109,11 @@ struct					s_render
 	double				r;
 	double				zoom_x;
 	double				zoom_y;
+	double				rziz;
 	int					a;
 	int					x;
 	int					y;
+
 };
 
 struct					s_thrd
@@ -132,10 +137,10 @@ struct					s_params
 	double				y1;
 	double				rc;
 	double				ic;
-	double				pow;
+	double				power;
+	int					color;
 	int					it_max;
 	int					old_it_max;
-	int					color;
 };
 
 struct					s_img
@@ -156,6 +161,7 @@ struct					s_win
 	int					motion;
 	int					vig_it;
 	int					immersive;
+	int					pal;
 	t_params			p;
 	t_mthrds			mthrds;
 	t_img				img;
@@ -166,7 +172,7 @@ struct					s_win
 ** ft_calc.c
 */
 
-void					ft_calc(t_render *r, int fract, int it_max, double pow);
+void					ft_calc(t_render *r, int fract, int it_max, double p);
 
 /*
 ** ft_create.c
@@ -232,5 +238,19 @@ void					ft_create_duobrot_vig(t_thrd *thrd);
 void					ft_create_tricorn_vig(t_thrd *thrd);
 void					ft_create_julia_vig(t_thrd *thrd);
 void					ft_create_andy_vig(t_thrd *thrd);
+
+int				ft_choose_color(t_render r, int pal, int it_max, int color);
+unsigned int	basics(int i, int iter_max, int color);
+unsigned int	psycho(int i, int iter_max, int color);
+unsigned int	shade_of_grey(int i, int iter_max);
+unsigned int	smooth_shade_of_grey(int i, int iter_max, double mult);
+unsigned int	rainbow2(int i, int iter_max);
+unsigned int	vasarely(double zi);
+unsigned int	smooth_aqua_blue(int i, int iter_max, double mult);
+unsigned int	aqua_blue(int i, int iter_max);
+unsigned int	zebra(int i, int iter_max, double mult);
+unsigned int	grey(int i, int iter_max, double mult);
+unsigned int	fire(int i, int iter_max, double mult);
+unsigned int	blue(int i, int iter_max, double mult);
 
 #endif

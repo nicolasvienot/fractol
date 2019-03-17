@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 18:18:42 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 18:27:46 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_get_pow(t_win *win)
 	float	ent;
 	int		dec;
 
-	ent = (float)win->p.pow;
+	ent = (float)win->p.power;
 	dec = ((int)(10 * ent) % 10);
 	x = ft_strjoinnfree(ft_itoa(ent), ".", 1);
 	x = ft_strjoinnfree(x, ft_itoa(dec), 3);

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/15 23:46:32 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 19:13:59 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ void	*ft_create_mandelbrot(void *thrds)
 			r.ic = r.y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			r.rz = 0;
 			r.iz = 0;
-			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.pow);
-			if (r.a == thrd->w->p.it_max)
-				mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, (0));
-			else
-				mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, \
-					(thrd->w->p.color * r.a / thrd->w->p.it_max));
+			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.power);
+			mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, ft_choose_color(r, thrd->w->pal, thrd->w->p.it_max, thrd->w->p.color));
+
+			// if (r.a == thrd->w->p.it_max)
+			// 	mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, (0));
+			// else
+			// 	mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, \
+			// 		(thrd->w->p.color * r.a / thrd->w->p.it_max));
 			r.y++;
 		}
 		r.x++;
@@ -57,12 +59,13 @@ void	*ft_create_julia(void *thrds)
 			r.ic = 0.01 + thrd->w->p.ic;
 			r.rz = r.x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
 			r.iz = r.y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
-			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.pow);
-			if (r.a == thrd->w->p.it_max)
-				mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, (0));
-			else
-				mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, \
-					(thrd->w->p.color * r.a / thrd->w->p.it_max));
+			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.power);
+			mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, ft_choose_color(r, thrd->w->pal, thrd->w->p.it_max, thrd->w->p.color));
+			// if (r.a == thrd->w->p.it_max)
+			// 	mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, (0));
+			// else
+			// 	mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, \
+			// 		(thrd->w->p.color * r.a / thrd->w->p.it_max));
 			r.y++;
 		}
 		r.x++;
@@ -98,6 +101,11 @@ void	ft_create_vig(t_win *win, int test)
 
 void	ft_create_all(t_win *win)
 {
+	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
+	win->img.img_ptr = mlx_new_image(win->mlx_ptr, \
+		IMG_HOR_SIZE, IMG_VER_SIZE);
+	win->img.data = mlx_get_data_addr(win->img.img_ptr, \
+		&win->img.bpp, &win->img.sizeline, &win->img.endian);
 	ft_multithreading(win);
 	if (win->motion == 1)
 		ft_viseur(win);

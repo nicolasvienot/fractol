@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 18:27:02 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 19:20:03 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_init_start(t_win *win)
 	win->vig_it = 0;
 	win->immersive = 0;
 	win->p.color = 500;
+	win->pal = 1;
 }
 
 void	ft_reset_fractal(t_win *win)
@@ -58,7 +59,8 @@ void	ft_reset_fractal(t_win *win)
 	win->p.old_it_max = 0;
 	win->p.rc = 0;
 	win->p.ic = 0;
-	win->p.pow = 4.0;
+	win->p.power = 4.0;
+	win->p.color = 500;
 	ft_create_vig(win, 1);
 }
 
