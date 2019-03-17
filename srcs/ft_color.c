@@ -6,21 +6,13 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:57:06 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 22:02:51 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 22:44:00 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-unsigned int	psycho(int i, int iter_max, int color)
-{
-	if (i == iter_max)
-		return (0);
-	else
-		return (color * i / iter_max);
-}
-
-unsigned int	smooth(int i, int iter_max, double mult, int c)
+static unsigned int	ft_smooth(int i, int iter_max, double mult, int c)
 {
 	double nu;
 	double red;
@@ -58,7 +50,7 @@ unsigned int	smooth(int i, int iter_max, double mult, int c)
 	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
 }
 
-unsigned int	normal(int i, int c)
+static unsigned int	ft_normal(int i, int c)
 {
 	double red;
 	double green;
@@ -93,7 +85,7 @@ unsigned int	normal(int i, int c)
 	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
 }
 
-unsigned int	zebra(int i, int iter_max, double mult, int c)
+static unsigned int	ft_zebra(int i, int iter_max, double mult, int c)
 {
 	double nu;
 	double red;
@@ -107,7 +99,7 @@ unsigned int	zebra(int i, int iter_max, double mult, int c)
 			return (BLACK);
 	else
 	{
-		nu = (i + 3 - log2(log2(sqrt(mult)))) / iter_max;
+		nu = (i + 1 - log2(log2(sqrt(mult)))) / iter_max;
 		nu = nu - (int)nu;
 		red = (int)(50 / nu);
 		green = (int)(125 / nu);
@@ -116,7 +108,7 @@ unsigned int	zebra(int i, int iter_max, double mult, int c)
 	}
 }
 
-unsigned int	vasarely(double zi, int c)
+static unsigned int	ft_blackandwhite(double zi, int c)
 {
 	if (c % 2 == 1)
 	{
@@ -133,7 +125,7 @@ unsigned int	vasarely(double zi, int c)
 	return (0);
 }
 
-int				ft_choose_color(t_render r, t_win *w)
+int					ft_choose_color(t_render r, t_win *w)
 {
 	double mult;
 
@@ -144,15 +136,20 @@ int				ft_choose_color(t_render r, t_win *w)
 	else if ((w->pal == 3 || w->pal == 5) && r.a == w->p.it_max)
 		return (WHITE);
 	else if (w->pal == 1)
-		return (psycho(r.a, w->p.it_max, w->psych));
+	{
+		if (r.a == w->p.it_max)
+			return (0);
+		else
+			return (w->psych * r.a / w->p.it_max);
+	}
 	else if (w->pal == 2 || w->pal == 3)
-		return (smooth(r.a, w->p.it_max, mult, w->color));
+		return (ft_smooth(r.a, w->p.it_max, mult, w->color));
 	else if (w->pal == 4 || w->pal == 5)
-		return (normal(r.a, w->color));
+		return (ft_normal(r.a, w->color));
 	else if (w->pal == 6)
-		return (zebra(r.a, w->p.it_max, mult, w->color));
+		return (ft_zebra(r.a, w->p.it_max, mult, w->color));
 	else if (w->pal == 7)
-		return (vasarely(r.iz, w->color));
+		return (ft_blackandwhite(r.iz, w->color));
 	else
 		return (0);
 }

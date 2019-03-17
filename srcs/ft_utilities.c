@@ -6,13 +6,13 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 17:45:48 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/16 17:57:55 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 22:37:20 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void		ft_usage(void)
+void			ft_usage(void)
 {
 	write(1, "Usage: ./fractol [fractal name]\n\n", 34);
 	write(1, "Fractal names (use name, with uppercase letter) :\n", 51);
@@ -23,7 +23,7 @@ void		ft_usage(void)
 	exit(EXIT_FAILURE);
 }
 
-int			ft_exit(t_win *win)
+int				ft_exit(t_win *win)
 {
 	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
 	mlx_destroy_image(win->mlx_ptr, win->vig.img_ptr);
@@ -31,7 +31,7 @@ int			ft_exit(t_win *win)
 	exit(EXIT_SUCCESS);
 }
 
-void		ft_viseur(t_win *win)
+void			ft_viseur(t_win *win)
 {
 	int x;
 	int y;
@@ -54,7 +54,7 @@ void		ft_viseur(t_win *win)
 	}
 }
 
-void		mlx_put_pixel_to_image(t_img img, int x, int y, int a)
+void			mlx_put_pixel_to_image(t_img img, int x, int y, int a)
 {
 	int		octet;
 
