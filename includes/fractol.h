@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 20:04:14 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 21:03:54 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@
 # define ARROW_UP 126
 # define TOUCH_PLUS 69
 # define TOUCH_LESS 78
+# define TOUCH_STAR 67
 # define TOUCH_R 15
 # define TOUCH_Z 6
 # define TOUCH_X 7
@@ -138,7 +139,6 @@ struct					s_params
 	double				rc;
 	double				ic;
 	double				power;
-	int					color;
 	int					it_max;
 	int					old_it_max;
 };
@@ -162,6 +162,8 @@ struct					s_win
 	int					vig_it;
 	int					immersive;
 	int					pal;
+	int					color;
+	int					psych;
 	t_params			p;
 	t_mthrds			mthrds;
 	t_img				img;
@@ -178,19 +180,7 @@ void					ft_calc(t_render *r, int fract, int it_max, double p);
 ** ft_color.c
 */
 
-int						ft_choose_color(t_render r, int p, int it_max, int c);
-unsigned int			basics(int i, int iter_max);
-unsigned int			psycho(int i, int iter_max, int color);
-unsigned int			shade_of_grey(int i, int iter_max);
-unsigned int			smooth_shade_of_grey(int i, int iter_max, double mult);
-unsigned int			rainbow2(int i, int iter_max);
-unsigned int			vasarely(double zi);
-unsigned int			smooth_aqua_blue(int i, int iter_max, double mult);
-unsigned int			aqua_blue(int i, int iter_max);
-unsigned int			zebra(int i, int iter_max, double mult);
-unsigned int			grey(int i, int iter_max, double mult);
-unsigned int			fire(int i, int iter_max, double mult);
-unsigned int			blue(int i, int iter_max, double mult);
+int						ft_choose_color(t_render r, t_win *win);
 
 /*
 ** ft_create.c

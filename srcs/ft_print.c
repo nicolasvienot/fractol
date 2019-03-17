@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 18:27:46 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 21:43:34 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,29 @@ static void	ft_print_menu_2(t_win *win)
 static void	ft_print_menu_1(t_win *win)
 {
 	if (win->fract == 1)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F1);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F1);
 	else if (win->fract == 2)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F2);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F2);
 	else if (win->fract == 3)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F3);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F3);
 	else if (win->fract == 4)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F4);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F4);
 	else if (win->fract == 5)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F5);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F5);
 	else if (win->fract == 6)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F6);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F6);
 	else if (win->fract == 7)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F7);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F7);
 	else if (win->fract == 8)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F8);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F8);
 	else if (win->fract == 9)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F9);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F9);
 	else if (win->fract == 10)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F10);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F10);
 	else if (win->fract == 11)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F11);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F11);
 	else if (win->fract == 12)
-		mlx_string_put(win->mlx_ptr, win->win_ptr, 120, 5, GREY, F12);
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 110, 5, GREY, F12);
 }
 
 void		ft_print_menu(t_win *w)

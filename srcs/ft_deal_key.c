@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 19:08:15 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 21:22:31 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ int				deal_key(int key, t_win *win)
 	else if (key == ARROW_LEFT && ++a > 0)
 		win->p.moove_hor -= SIZE_MOV / win->p.zoom;
 	else if (key == TOUCH_P && ++a > 0)
-		(win->pal == 12) ? (win->pal = 1) : (win->pal += 1);
-	else if (key == TOUCH_C && win->pal == 2 && ++a > 0)
-		(win->p.color > 999999999) ? (win->p.color = 99) \
-			: (win->p.color *= 1.5);
+		(win->pal == 7) ? (win->pal = 1) : (win->pal += 1);
+	else if (key == TOUCH_C && ++a > 0)
+		(win->color == 4) ? (win->color = 1) : (win->color += 1);
+	else if (key == TOUCH_STAR && win->pal == 1 && ++a > 0)
+		(win->psych > 999999999) ? (win->psych = 999) : (win->psych *= 1.5);
 	else if ((key == TOUCH_PLUS || key == TOUCH_LESS \
 		|| key == TOUCH_R) && ++a > 0)
 		deal_key_reset(key, win);

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 20:06:58 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 21:06:28 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*ft_create_mandelbrot(void *thrds)
 			r.iz = 0;
 			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.power);
 			mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, ft_choose_color(r, \
-				thrd->w->pal, thrd->w->p.it_max, thrd->w->p.color));
+				thrd->w));
 			r.y++;
 		}
 		r.x++;
@@ -56,7 +56,7 @@ void	*ft_create_julia(void *thrds)
 			r.iz = r.y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.power);
 			mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, ft_choose_color(r, \
-				thrd->w->pal, thrd->w->p.it_max, thrd->w->p.color));
+				thrd->w));
 			r.y++;
 		}
 		r.x++;
@@ -92,11 +92,6 @@ void	ft_create_vig(t_win *win, int test)
 
 void	ft_create_all(t_win *win)
 {
-	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
-	win->img.img_ptr = mlx_new_image(win->mlx_ptr, \
-		IMG_HOR_SIZE, IMG_VER_SIZE);
-	win->img.data = mlx_get_data_addr(win->img.img_ptr, \
-		&win->img.bpp, &win->img.sizeline, &win->img.endian);
 	ft_multithreading(win);
 	if (win->motion == 1)
 		ft_viseur(win);

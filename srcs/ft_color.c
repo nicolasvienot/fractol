@@ -6,22 +6,11 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:57:06 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 20:08:55 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 22:02:51 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-unsigned int	basics(int i, int iter_max)
-{
-	int color;
-
-	color = 999;
-	if (i == iter_max)
-		return (0);
-	else
-		return (color * i / iter_max);
-}
 
 unsigned int	psycho(int i, int iter_max, int color)
 {
@@ -31,66 +20,80 @@ unsigned int	psycho(int i, int iter_max, int color)
 		return (color * i / iter_max);
 }
 
-unsigned int	aqua_blue(int i, int iter_max)
-{
-	double red;
-	double green;
-	double blue;
-
-	if (i == iter_max)
-		return (BLACK);
-	red = sin(0.3 * (double)i);
-	green = sin(0.3 * (double)i + 3) * 127 + 128;
-	blue = sin(0.3 * (double)i + 3) * 127 + 128;
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
-}
-
-unsigned int	shade_of_grey(int i, int iter_max)
-{
-	double red;
-	double green;
-	double blue;
-
-	if (i == iter_max)
-		return (WHITE);
-	red = sin(0.3 * (double)i) * 127 + 128;
-	green = sin(0.3 * (double)i) * 127 + 128;
-	blue = sin(0.3 * (double)i) * 127 + 128;
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
-}
-
-unsigned int	rainbow2(int i, int iter_max)
-{
-	double red;
-	double green;
-	double blue;
-
-	if (i == iter_max)
-		return (WHITE);
-	red = sin(0.3 * (double)i + 0.0) * 127.0 + 128.0;
-	green = sin(0.3 * (double)i + 2.0) * 127.0 + 128.0;
-	blue = sin(0.3 * (double)i + 4.0) * 127.0 + 128.0;
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
-}
-
-unsigned int	smooth_aqua_blue(int i, int iter_max, double mult)
+unsigned int	smooth(int i, int iter_max, double mult, int c)
 {
 	double nu;
 	double red;
 	double green;
 	double blue;
 
-	if (i == iter_max)
-		return (BLACK);
-	nu = (i + 2 - log2(log2(sqrt(mult)))) / iter_max;
+	nu = (i + 1 - log2(log2(sqrt(mult)))) / iter_max;
 	nu = nu - (int)nu;
-	red = (int)(74 * nu);
-	green = (int)(205 * nu);
-	blue = (int)(196 * nu);
+	if (c == 1)
+	{
+		red = (int)(185 * nu + 70 * nu);
+		green = (int)(55 * nu + 200 * nu);
+		blue = (int)(25 * nu + 230 * nu);
+	}
+	else if (c == 2)
+	{
+		red = (int)(185 * nu + 70 * nu);
+		green = (int)(55 * nu);
+		blue = (int)(25 * nu);
+	}
+	else if (c == 3)
+	{
+		red = (int)(255 * nu - 221 * nu);
+		green = (int)(255 * nu - 88 * nu);
+		blue = (int)(255 * nu - 15 * nu);
+	}
+	else if (c == 4)
+	{
+		red = (int)(74 * nu);
+		green = (int)(205 * nu);
+		blue = (int)(196 * nu);
+	}
+	else
+		return (0);
 	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
 }
 
-unsigned int	smooth_shade_of_grey(int i, int iter_max, double mult)
+unsigned int	normal(int i, int c)
+{
+	double red;
+	double green;
+	double blue;
+
+	if (c == 1)
+	{
+		red = sin(0.3 * (double)i);
+		green = sin(0.3 * (double)i + 3) * 127.0 + 128.0;
+		blue = sin(0.3 * (double)i + 3) * 127.0 + 128.0;
+	}
+	else if (c == 2)
+	{
+		red = sin(0.3 * (double)i) * 127.0 + 128.0;
+		green = sin(0.3 * (double)i) * 127.0 + 128.0;
+		blue = sin(0.3 * (double)i) * 127.0 + 128.0;
+	}
+	else if (c == 3)
+	{
+		red = sin(0.3 * (double)i + 0.0) * 127.0 + 128.0;
+		green = sin(0.3 * (double)i + 2.0) * 127.0 + 128.0;
+		blue = sin(0.3 * (double)i + 4.0) * 127.0 + 128.0;
+	}
+	else if (c == 4)
+	{
+		red = sin(0.3 * (double)i + 1.0) * 127.0 + 128.0;
+		green = sin(0.3 * (double)i + 2.0) * 127.0 + 128.0;
+		blue = sin(0.3 * (double)i + 3.0) * 127.0 + 128.0;
+	}
+	else
+		return (0);
+	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
+}
+
+unsigned int	zebra(int i, int iter_max, double mult, int c)
 {
 	double nu;
 	double red;
@@ -98,123 +101,58 @@ unsigned int	smooth_shade_of_grey(int i, int iter_max, double mult)
 	double blue;
 
 	if (i == iter_max)
-		return (WHITE);
-	nu = (i + 5 - log2(log2(sqrt(mult)))) / iter_max;
-	nu = nu - (int)nu;
-	red = (int)(255 * nu + 255 * nu);
-	green = (int)(255 * nu + 255 * nu);
-	blue = (int)(255 * nu + 255 * nu);
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
-}
-
-unsigned int	vasarely(double zi)
-{
-	if (zi > 0)
-		return (BLACK);
-	return (WHITE);
-}
-
-unsigned int	zebra(int i, int iter_max, double mult)
-{
-	double nu;
-	double red;
-	double green;
-	double blue;
-
-	if (i == iter_max)
-		return (WHITE);
+		if (c % 2 == 1)
+			return (WHITE);
+		else
+			return (BLACK);
 	else
 	{
-		nu = (i + 5 - log2(log2(sqrt(mult)))) / iter_max;
+		nu = (i + 3 - log2(log2(sqrt(mult)))) / iter_max;
 		nu = nu - (int)nu;
-		red = (int)(0 / nu);
-		green = (int)(255 / nu);
-		blue = (int)(255 / nu);
+		red = (int)(50 / nu);
+		green = (int)(125 / nu);
+		blue = (int)(125 / nu);
 		return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
 	}
 }
 
-unsigned int	grey(int i, int iter_max, double mult)
+unsigned int	vasarely(double zi, int c)
 {
-	double nu;
-	double red;
-	double green;
-	double blue;
-
-	if (i == iter_max)
+	if (c % 2 == 1)
+	{
+		if (zi > 0)
+			return (BLACK);
+		return (WHITE);
+	}
+	if (c % 2 == 0)
+	{
+		if (zi > 0)
+			return (WHITE);
 		return (BLACK);
-	nu = (i + 3 - log2(log2(sqrt(mult)))) / iter_max;
-	nu = nu - (int)nu;
-	red = (int)(185 * nu + 70 * nu);
-	green = (int)(55 * nu + 200 * nu);
-	blue = (int)(25 * nu + 230 * nu);
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
+	}
+	return (0);
 }
 
-unsigned int	fire(int i, int iter_max, double mult)
-{
-	double nu;
-	double red;
-	double green;
-	double blue;
-
-	if (i == iter_max)
-		return (BLACK);
-	nu = (i + 3 - log2(log2(sqrt(mult)))) / iter_max;
-	nu = nu - (int)nu;
-	red = (int)(185 * nu + 70 * nu);
-	green = (int)(55 * nu);
-	blue = (int)(25 * nu);
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
-}
-
-unsigned int	blue(int i, int iter_max, double mult)
-{
-	double nu;
-	double red;
-	double green;
-	double blue;
-
-	if (i == iter_max)
-		return (BLACK);
-	nu = (i + 3 - log2(log2(sqrt(mult)))) / iter_max;
-	nu = nu - (int)nu;
-	red = (int)(255 * nu - 221 * nu);
-	green = (int)(255 * nu - 88 * nu);
-	blue = (int)(255 * nu - 15 * nu);
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
-}
-
-int				ft_choose_color(t_render r, int p, int it_max, int c)
+int				ft_choose_color(t_render r, t_win *w)
 {
 	double mult;
 
-	if (p == 6 || p == 7 || p == 8 || p == 9 || p == 10 || p == 11)
+	if (w->pal == 2 || w->pal == 3 || w->pal == 6)
 		mult = r.rz * r.rz + r.iz * r.iz;
-	if (p == 1)
-		return (basics(r.a, it_max));
-	else if (p == 2)
-		return (psycho(r.a, it_max, c));
-	else if (p == 3)
-		return (aqua_blue(r.a, it_max));
-	else if (p == 4)
-		return (shade_of_grey(r.a, it_max));
-	else if (p == 5)
-		return (rainbow2(r.a, it_max));
-	else if (p == 6)
-		return (zebra(r.a, it_max, mult));
-	else if (p == 7)
-		return (smooth_shade_of_grey(r.a, it_max, mult));
-	else if (p == 8)
-		return (smooth_aqua_blue(r.a, it_max, mult));
-	else if (p == 9)
-		return (blue(r.a, it_max, mult));
-	else if (p == 10)
-		return (grey(r.a, it_max, mult));
-	else if (p == 11)
-		return (fire(r.a, it_max, mult));
-	else if (p == 12)
-		return (vasarely(r.iz));
+	if ((w->pal == 2 || w->pal == 4) && r.a == w->p.it_max)
+		return (BLACK);
+	else if ((w->pal == 3 || w->pal == 5) && r.a == w->p.it_max)
+		return (WHITE);
+	else if (w->pal == 1)
+		return (psycho(r.a, w->p.it_max, w->psych));
+	else if (w->pal == 2 || w->pal == 3)
+		return (smooth(r.a, w->p.it_max, mult, w->color));
+	else if (w->pal == 4 || w->pal == 5)
+		return (normal(r.a, w->color));
+	else if (w->pal == 6)
+		return (zebra(r.a, w->p.it_max, mult, w->color));
+	else if (w->pal == 7)
+		return (vasarely(r.iz, w->color));
 	else
 		return (0);
 }
