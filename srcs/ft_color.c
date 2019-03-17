@@ -6,28 +6,29 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:57:06 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 20:01:19 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 20:08:55 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-unsigned int	basics(int i, int iter_max, int color)
+unsigned int	basics(int i, int iter_max)
 {
+	int color;
+
 	color = 999;
 	if (i == iter_max)
 		return (0);
 	else
-		return(color * i / iter_max);
+		return (color * i / iter_max);
 }
-
 
 unsigned int	psycho(int i, int iter_max, int color)
 {
 	if (i == iter_max)
 		return (0);
 	else
-		return(color * i / iter_max);
+		return (color * i / iter_max);
 }
 
 unsigned int	aqua_blue(int i, int iter_max)
@@ -88,7 +89,6 @@ unsigned int	smooth_aqua_blue(int i, int iter_max, double mult)
 	blue = (int)(196 * nu);
 	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
 }
-
 
 unsigned int	smooth_shade_of_grey(int i, int iter_max, double mult)
 {
@@ -185,35 +185,36 @@ unsigned int	blue(int i, int iter_max, double mult)
 	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
 }
 
-int				ft_choose_color(t_render r, int pal, int it_max, int color)
+int				ft_choose_color(t_render r, int p, int it_max, int c)
 {
 	double mult;
 
-	mult = r.rz * r.rz + r.iz * r.iz;
-	if (pal == 1)
-		return(basics(r.a, it_max, color));
-	else if (pal == 2)
-		return(psycho(r.a, it_max, color));
-	else if (pal == 3)
-		return(aqua_blue(r.a, it_max));
-	else if (pal == 4)
-		return(shade_of_grey(r.a, it_max));
-	else if (pal == 5)
-		return(rainbow2(r.a, it_max));
-	else if (pal == 6)
-		return(zebra(r.a, it_max, mult));
-	else if (pal == 7)
-		return(smooth_shade_of_grey(r.a, it_max, mult));
-	else if (pal == 8)
-		return(smooth_aqua_blue(r.a, it_max, mult));
-	else if (pal == 9)
-		return(blue(r.a, it_max, mult));
-	else if (pal == 10)
-		return(grey(r.a, it_max, mult));
-	else if (pal == 11)
-		return(fire(r.a, it_max, mult));
-	else if (pal == 12)
-		return(vasarely(r.iz));
+	if (p == 6 || p == 7 || p == 8 || p == 9 || p == 10 || p == 11)
+		mult = r.rz * r.rz + r.iz * r.iz;
+	if (p == 1)
+		return (basics(r.a, it_max));
+	else if (p == 2)
+		return (psycho(r.a, it_max, c));
+	else if (p == 3)
+		return (aqua_blue(r.a, it_max));
+	else if (p == 4)
+		return (shade_of_grey(r.a, it_max));
+	else if (p == 5)
+		return (rainbow2(r.a, it_max));
+	else if (p == 6)
+		return (zebra(r.a, it_max, mult));
+	else if (p == 7)
+		return (smooth_shade_of_grey(r.a, it_max, mult));
+	else if (p == 8)
+		return (smooth_aqua_blue(r.a, it_max, mult));
+	else if (p == 9)
+		return (blue(r.a, it_max, mult));
+	else if (p == 10)
+		return (grey(r.a, it_max, mult));
+	else if (p == 11)
+		return (fire(r.a, it_max, mult));
+	else if (p == 12)
+		return (vasarely(r.iz));
 	else
 		return (0);
 }

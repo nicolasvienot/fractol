@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 19:13:59 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 20:06:58 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,8 @@ void	*ft_create_mandelbrot(void *thrds)
 			r.rz = 0;
 			r.iz = 0;
 			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.power);
-			mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, ft_choose_color(r, thrd->w->pal, thrd->w->p.it_max, thrd->w->p.color));
-
-			// if (r.a == thrd->w->p.it_max)
-			// 	mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, (0));
-			// else
-			// 	mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, \
-			// 		(thrd->w->p.color * r.a / thrd->w->p.it_max));
+			mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, ft_choose_color(r, \
+				thrd->w->pal, thrd->w->p.it_max, thrd->w->p.color));
 			r.y++;
 		}
 		r.x++;
@@ -60,12 +55,8 @@ void	*ft_create_julia(void *thrds)
 			r.rz = r.x / thrd->w->p.zoom + thrd->w->p.x1 + thrd->w->p.moove_hor;
 			r.iz = r.y / thrd->w->p.zoom + thrd->w->p.y1 + thrd->w->p.moove_ver;
 			ft_calc(&r, thrd->w->fract, thrd->w->p.it_max, thrd->w->p.power);
-			mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, ft_choose_color(r, thrd->w->pal, thrd->w->p.it_max, thrd->w->p.color));
-			// if (r.a == thrd->w->p.it_max)
-			// 	mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, (0));
-			// else
-			// 	mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, \
-			// 		(thrd->w->p.color * r.a / thrd->w->p.it_max));
+			mlx_put_pixel_to_image(thrd->w->img, r.x, r.y, ft_choose_color(r, \
+				thrd->w->pal, thrd->w->p.it_max, thrd->w->p.color));
 			r.y++;
 		}
 		r.x++;

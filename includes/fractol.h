@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 19:52:45 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/17 20:04:14 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,24 @@ struct					s_win
 void					ft_calc(t_render *r, int fract, int it_max, double p);
 
 /*
+** ft_color.c
+*/
+
+int						ft_choose_color(t_render r, int p, int it_max, int c);
+unsigned int			basics(int i, int iter_max);
+unsigned int			psycho(int i, int iter_max, int color);
+unsigned int			shade_of_grey(int i, int iter_max);
+unsigned int			smooth_shade_of_grey(int i, int iter_max, double mult);
+unsigned int			rainbow2(int i, int iter_max);
+unsigned int			vasarely(double zi);
+unsigned int			smooth_aqua_blue(int i, int iter_max, double mult);
+unsigned int			aqua_blue(int i, int iter_max);
+unsigned int			zebra(int i, int iter_max, double mult);
+unsigned int			grey(int i, int iter_max, double mult);
+unsigned int			fire(int i, int iter_max, double mult);
+unsigned int			blue(int i, int iter_max, double mult);
+
+/*
 ** ft_create.c
 */
 
@@ -238,19 +256,5 @@ void					ft_create_duobrot_vig(t_thrd *thrd);
 void					ft_create_tricorn_vig(t_thrd *thrd);
 void					ft_create_julia_vig(t_thrd *thrd);
 void					ft_create_andy_vig(t_thrd *thrd);
-
-int				ft_choose_color(t_render r, int pal, int it_max, int color);
-unsigned int	basics(int i, int iter_max, int color);
-unsigned int	psycho(int i, int iter_max, int color);
-unsigned int	shade_of_grey(int i, int iter_max);
-unsigned int	smooth_shade_of_grey(int i, int iter_max, double mult);
-unsigned int	rainbow2(int i, int iter_max);
-unsigned int	vasarely(double zi);
-unsigned int	smooth_aqua_blue(int i, int iter_max, double mult);
-unsigned int	aqua_blue(int i, int iter_max);
-unsigned int	zebra(int i, int iter_max, double mult);
-unsigned int	grey(int i, int iter_max, double mult);
-unsigned int	fire(int i, int iter_max, double mult);
-unsigned int	blue(int i, int iter_max, double mult);
 
 #endif
