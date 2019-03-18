@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/18 17:15:42 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/18 23:28:53 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,11 +73,11 @@ $(OBJS)	: 	%.o: %.c
 clean	:
 			make clean -C libft/
 			make clean -C mlx/
-			@$(RM) $(OBJS)
+			$(RM) $(OBJS)
 			echo "$(_RED)Cleaning obj... $(_GREEN)Done$(_END)"
 
 fclean	:	clean
-			@$(RM) $(NAME)
+			$(RM) $(NAME)
 			make fclean -C libft/
 			echo "$(_RED)Cleaning all... $(_GREEN)Done$(_END)"
 
