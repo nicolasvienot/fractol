@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 18:25:45 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 19:37:11 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	ft_print_menu_2(t_win *win)
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 205, \
 		GREY, "Change color variation : C");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 225, \
-		GREY, "Change color palette : X");
+		GREY, "Change color palette : P");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 245, \
 		GREY, "Activate motion mode : M/Click");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 265, \

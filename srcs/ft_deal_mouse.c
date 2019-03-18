@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:40:43 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 17:49:11 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 19:54:34 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,12 @@ static void		deal_mouse_click(t_win *win, int x, int y)
 		ft_reset_fractal(win);
 	}
 	else if (win->fract > 6)
-		(win->motion == 0) ? (win->motion += 1) : (win->motion = 0);
+	{
+		if (win->motion == 0)
+			win->motion = 1;
+		else
+			win->motion = 0;
+	}
 }
 
 int				deal_mouse(int mouse, int x, int y, t_win *win)

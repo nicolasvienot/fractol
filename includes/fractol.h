@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 19:05:13 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 19:46:50 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@
 # define TOUCH_P 35
 # define PAGE_DOWN 121
 # define PAGE_UP 116
-# define TOUCH_INF 43
-# define TOUCH_SUP 47
-# define TOUCH_CRO 33
-# define TOUCH_CRF 30
+# define INF 43
+# define SUP 47
+# define CRO 33
+# define CRF 30
 # define UI unsigned int
 
 typedef	struct s_win	t_win;
