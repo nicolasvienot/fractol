@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/17 18:10:34 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/18 15:52:14 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,24 +71,20 @@ $(OBJS)	: 	%.o: %.c
 			$(CC) $(FLAGS) $(INC.) -c $< -o $@
 
 clean	:
-			@$(RM) $(OBJS)
 			make clean -C libft/
 			make clean -C mlx/
-
-			echo "$(_RED)Cleaning... $(_GREEN)Done$(_END)"
+			@$(RM) $(OBJS)
+			echo "$(_RED)Cleaning obj... $(_GREEN)Done$(_END)"
 
 fclean	:	clean
 			@$(RM) $(NAME)
 			make fclean -C libft/
-
-			echo "$(_RED)Deleting... $(_GREEN)Done$(_END)"
+			echo "$(_RED)Cleaning all... $(_GREEN)Done$(_END)"
 
 re		:	fclean all
-			make re -C libft/
-			make re -C mlx/
 
-recl	:	all clean
-			make recl -C libft/
+recl	:	re
+			make clean
 
 norm	:	fclean
 			echo "$(_RED)Starting norminette...$(_END)"
