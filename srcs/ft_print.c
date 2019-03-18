@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 21:43:34 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 17:10:10 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,48 @@ static void	ft_get_pow(t_win *win)
 	free(y);
 }
 
+static void	ft_print_color(t_win *win)
+{
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 65, GREY, "Color pal |");
+	if (win->pal == 1)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P1);
+	else if (win->pal == 2)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P2);
+	else if (win->pal == 3)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P3);
+	else if (win->pal == 4)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P4);
+	else if (win->pal == 5)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P5);
+	else if (win->pal == 6)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P6);
+	else if (win->pal == 7)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P7);
+}
+
 static void	ft_print_menu_2(t_win *win)
 {
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 85, \
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 105, \
 		GREY, "Move : Arrow keys");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 105, GREY, "Zoom : Scroll");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 125, \
-		GREY, "Change fractal : +/-");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 125, GREY, "Zoom : Scroll");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 145, \
-		GREY, "Change iterations : Page-up/Page-down");
+		GREY, "Change fractal : +/-");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 165, \
-		GREY, "Change power : 0.1 = </> | 1 = [/]");
+		GREY, "Change iterations : Page-up/Page-down");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 185, \
-		GREY, "Change color variation : C");
+		GREY, "Change power : 0.1 = </> | 1 = [/]");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 205, \
-		GREY, "Change color palette : X");
+		GREY, "Change color variation : C");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 225, \
-		GREY, "Activate motion mode : M/Click");
+		GREY, "Change color palette : X");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 245, \
-		GREY, "Activate sample mode : V");
+		GREY, "Activate motion mode : M/Click");
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 265, \
+		GREY, "Activate sample mode : V");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 285, \
 		GREY, "Activate immersive mode : X");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 285, GREY, "Reset : R");
-	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 305, GREY, "Quit : Esc");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 305, GREY, "Reset : R");
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 10, 325, GREY, "Quit : Esc");
 }
 
 static void	ft_print_menu_1(t_win *win)
@@ -89,8 +108,9 @@ void		ft_print_menu(t_win *w)
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 25, GREY, "Iterations |");
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 45, GREY, "Power (Multi) |");
 	ft_print_menu_1(w);
+	ft_print_color(w);
 	ft_get_pow(w);
-	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 65, \
+	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 85, \
 		GREY, "Press Z to display controls");
 	mlx_string_put(w->mlx_ptr, w->win_ptr, 10, 635, GREY, "Motion_ju mode");
 	if (w->motion == 1)

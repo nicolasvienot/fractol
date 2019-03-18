@@ -6,7 +6,7 @@
 #    By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/14 15:52:13 by nvienot           #+#    #+#              #
-#    Updated: 2019/03/18 15:52:14 by nvienot          ###   ########.fr        #
+#    Updated: 2019/03/18 17:15:42 by nvienot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	=	fractol
 SRCS	=	srcs/main.c srcs/ft_start.c srcs/ft_multithreading.c \
 			srcs/ft_create.c srcs/ft_utilities.c srcs/ft_calc.c \
 			srcs/ft_vignettes.c srcs/ft_deal_key.c srcs/ft_deal_mouse.c \
-			srcs/ft_print.c srcs/ft_color.c
+			srcs/ft_print.c srcs/ft_color.c srcs/ft_color2.c
 
 CC		=	gcc
 

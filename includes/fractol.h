@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 21:03:54 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 17:16:25 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@
 
 # define COEF_ZOOM 1.2
 # define SIZE_MOV 20
-
 # define NB_THREADS 20
-
-# define UI unsigned int
-
 # define BLACK 0
 # define BLUE 255
 # define GREEN 65280
@@ -38,7 +34,6 @@
 # define GREY 6908265
 # define FONT_VIG 3026478180
 # define BORDER_VIG 6579300
-
 # define WIN_HOR_SIZE 1000
 # define WIN_VER_SIZE 700
 # define IMG_HOR_SIZE 1000
@@ -48,7 +43,6 @@
 # define IMG_VIG_HOR_SIZE 190
 # define IMG_VIG_VER_SIZE 660
 # define MRG 20
-
 # define X1_M -2.1
 # define X2_M 0.6
 # define Y1_M -1.2
@@ -57,7 +51,6 @@
 # define X2_J 1
 # define Y1_J -1.2
 # define Y2_J 1.2
-
 # define WIN_NAME "nvienot's Fract'ol"
 # define F1 "Mandelbrot"
 # define F2 "Duobrot"
@@ -71,7 +64,13 @@
 # define F10 "Brain"
 # define F11 "Flower"
 # define F12 "Multijulia"
-
+# define P1 "Basic"
+# define P2 "Smooth Black"
+# define P3 "Smooth White"
+# define P4 "Normal Black"
+# define P5 "Normal White"
+# define P6 "Psycho"
+# define P7 "B&W"
 # define TOUCH_ESC 53
 # define ARROW_LEFT 123
 # define ARROW_DOWN 125
@@ -93,6 +92,7 @@
 # define TOUCH_SUP 47
 # define TOUCH_CRO 33
 # define TOUCH_CRF 30
+# define UI unsigned int
 
 typedef	struct s_win	t_win;
 typedef struct s_img	t_img;
@@ -181,6 +181,13 @@ void					ft_calc(t_render *r, int fract, int it_max, double p);
 */
 
 int						ft_choose_color(t_render r, t_win *win);
+
+/*
+** ft_color2.c
+*/
+
+unsigned int			ft_zebra(int i, int iter_max, double mult, int c);
+unsigned int			ft_blackandwhite(double zi, int c);
 
 /*
 ** ft_create.c
