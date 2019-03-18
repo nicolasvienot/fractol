@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 22:29:25 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 19:09:31 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static int		deal_key_2(int key, t_win *w, int a)
 		w->p.it_max += 1;
 	else if (key == PAGE_DOWN && w->p.it_max > 2 && ++a > 0)
 		w->p.it_max -= 1;
-	else if (key == TOUCH_STAR && w->pal == 1 && ++a > 0)
-		(w->psych > 999999999) ? (w->psych = 999) : (w->psych *= 1.5);
+	else if (key == TOUCH_STAR && w->pal == 8 && ++a > 0)
+		(w->psych < (WHITE)) ? (w->psych += 9999) : (w->psych = 999);
 	return (a);
 }
 
@@ -64,7 +64,7 @@ int				deal_key(int key, t_win *win)
 	else if (key == ARROW_LEFT && ++a > 0)
 		win->p.moove_hor -= SIZE_MOV / win->p.zoom;
 	else if (key == TOUCH_P && ++a > 0)
-		(win->pal == 7) ? (win->pal = 1) : (win->pal += 1);
+		(win->pal == 8) ? (win->pal = 1) : (win->pal += 1);
 	else if (key == TOUCH_C && ++a > 0)
 		(win->color == 4) ? (win->color = 1) : (win->color += 1);
 	else if ((key == TOUCH_PLUS || key == TOUCH_LESS \

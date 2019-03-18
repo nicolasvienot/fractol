@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 17:16:25 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 19:05:13 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@
 # define P3 "Smooth White"
 # define P4 "Normal Black"
 # define P5 "Normal White"
-# define P6 "Psycho"
+# define P6 "Zinzin de l'espace"
 # define P7 "B&W"
+# define P8 "Psycho"
 # define TOUCH_ESC 53
 # define ARROW_LEFT 123
 # define ARROW_DOWN 125
@@ -186,7 +187,7 @@ int						ft_choose_color(t_render r, t_win *win);
 ** ft_color2.c
 */
 
-unsigned int			ft_zebra(int i, int iter_max, double mult, int c);
+unsigned int			ft_spiral(int i, int iter_max, double mult, int c);
 unsigned int			ft_blackandwhite(double zi, int c);
 
 /*

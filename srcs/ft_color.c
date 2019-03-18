@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:57:06 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 17:26:54 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 19:03:53 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,25 +116,24 @@ int					ft_choose_color(t_render r, t_win *w)
 
 	if (w->pal == 2 || w->pal == 3 || w->pal == 6)
 		mult = r.rz * r.rz + r.iz * r.iz;
-	if ((w->pal == 2 || w->pal == 4) && r.a == w->p.it_max)
+	if ((w->pal == 1 || w->pal == 2 || w->pal == 4) && r.a == w->p.it_max)
+		return (BLACK);
+	if (w->pal == 8 && r.a == w->p.it_max && w->color % 2 == 0)
 		return (BLACK);
 	else if ((w->pal == 3 || w->pal == 5) && r.a == w->p.it_max)
 		return (WHITE);
 	else if (w->pal == 1)
-	{
-		if (r.a == w->p.it_max)
-			return (0);
-		else
-			return (w->psych * r.a / w->p.it_max);
-	}
+		return (999 * r.a / w->p.it_max);
 	else if (w->pal == 2 || w->pal == 3)
 		return (ft_smooth_1(r.a, w->p.it_max, mult, w->color));
 	else if (w->pal == 4 || w->pal == 5)
 		return (ft_normal_1(r.a, w->color));
 	else if (w->pal == 6)
-		return (ft_zebra(r.a, w->p.it_max, mult, w->color));
+		return (ft_spiral(r.a, w->p.it_max, mult, w->color));
 	else if (w->pal == 7)
 		return (ft_blackandwhite(r.iz, w->color));
-	else
-		return (0);
+	else if (w->pal == 8)
+		if (r.a != 0)
+			return (w->psych * w->p.it_max / r.a);
+	return (0);
 }

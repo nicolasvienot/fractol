@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 21:29:22 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 17:10:10 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 18:25:45 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static void	ft_print_color(t_win *win)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P6);
 	else if (win->pal == 7)
 		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P7);
+	else if (win->pal == 8)
+		mlx_string_put(win->mlx_ptr, win->win_ptr, 130, 65, GREY, P8);
 }
 
 static void	ft_print_menu_2(t_win *win)
