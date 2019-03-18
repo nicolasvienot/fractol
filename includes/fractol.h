@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 19:46:50 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 23:15:52 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "libft.h"
 # include "mlx.h"
-# include <fcntl.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>

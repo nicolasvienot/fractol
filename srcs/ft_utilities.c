@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 17:45:48 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/17 22:37:20 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 23:18:23 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void			ft_usage(void)
 {
 	write(1, "Usage: ./fractol [fractal name]\n\n", 34);
 	write(1, "Fractal names (use name, with uppercase letter) :\n", 51);
-	write(1, "1. Mandelbrot\n2. Duobrot\n3. Tricorn\n4. Burningship\n", 52);
+	write(1, "1. Mandelbrot\n2. Duobrot\n3. Tricorn\n4. BurningShip\n", 52);
 	write(1, "5. Palmtree\n6. Multibrot\n7. Julia\n8. Andy\n", 43);
 	write(1, "9. Microcells\n10. Brain\n11. Flower\n12. Multijulia\n", 51);
 	write(1, "\nExample: './fractol Mandelbrot' - Displays Mandelbrot\n", 56);
