@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:57:06 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 19:03:53 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 20:33:33 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,57 @@
 
 static unsigned int	ft_smooth_2(int i, int iter_max, double mult, int c)
 {
-	double nu;
+	double a;
 	double red;
 	double green;
 	double blue;
 
-	nu = (i + 1 - log2(log2(sqrt(mult)))) / iter_max;
-	nu = nu - (int)nu;
+	a = (i + 1 - log2(log2(sqrt(mult)))) / iter_max;
+	a = a - (int)a;
 	if (c == 3)
 	{
-		red = (int)(255 * nu - 221 * nu);
-		green = (int)(255 * nu - 88 * nu);
-		blue = (int)(255 * nu - 15 * nu);
+		red = (int)(255 * a - 221 * a);
+		green = (int)(255 * a - 88 * a);
+		blue = (int)(255 * a - 15 * a);
 	}
 	else if (c == 4)
 	{
-		red = (int)(74 * nu);
-		green = (int)(205 * nu);
-		blue = (int)(196 * nu);
+		red = (int)(74 * a);
+		green = (int)(205 * a);
+		blue = (int)(196 * a);
 	}
 	else
+		return (0);
+	if ((red * 256 * 256 + green * 256 + blue) < 0)
 		return (0);
 	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
 }
 
 static unsigned int	ft_smooth_1(int i, int iter_max, double mult, int c)
 {
-	double nu;
+	double a;
 	double red;
 	double green;
 	double blue;
 
-	nu = (i + 1 - log2(log2(sqrt(mult)))) / iter_max;
-	nu = nu - (int)nu;
+	a = (i + 1 - log2(log2(sqrt(mult)))) / iter_max;
+	a = a - (int)a;
 	if (c == 1)
 	{
-		red = (int)(185 * nu + 70 * nu);
-		green = (int)(55 * nu + 200 * nu);
-		blue = (int)(25 * nu + 230 * nu);
+		red = (int)(185 * a + 70 * a);
+		green = (int)(55 * a + 200 * a);
+		blue = (int)(25 * a + 230 * a);
 	}
 	else if (c == 2)
 	{
-		red = (int)(185 * nu + 70 * nu);
-		green = (int)(55 * nu);
-		blue = (int)(25 * nu);
+		red = (int)(185 * a + 70 * a);
+		green = (int)(55 * a);
+		blue = (int)(25 * a);
 	}
 	else
 		return (ft_smooth_2(i, iter_max, mult, c));
+	if ((red * 256 * 256 + green * 256 + blue) < 0)
+		return (0);
 	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
 }
 
@@ -133,7 +137,8 @@ int					ft_choose_color(t_render r, t_win *w)
 	else if (w->pal == 7)
 		return (ft_blackandwhite(r.iz, w->color));
 	else if (w->pal == 8)
-		if (r.a != 0)
+		if (r.a != 0 && (w->psych * w->p.it_max / r.a > 0) \
+			&& (w->psych * w->p.it_max / r.a < WHITE))
 			return (w->psych * w->p.it_max / r.a);
 	return (0);
 }

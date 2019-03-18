@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 20:20:24 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 17:52:42 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/18 20:47:02 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,6 @@ void	ft_create_vig(t_win *win, int test)
 
 void	ft_create_all(t_win *win)
 {
-	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
-	win->img.img_ptr = mlx_new_image(win->mlx_ptr, \
-		IMG_HOR_SIZE, IMG_VER_SIZE);
-	win->img.data = mlx_get_data_addr(win->img.img_ptr, \
-		&win->img.bpp, &win->img.sizeline, &win->img.endian);
 	ft_multithreading(win);
 	if (win->motion == 1)
 		ft_viseur(win);
