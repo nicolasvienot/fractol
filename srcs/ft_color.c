@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:57:06 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 20:33:33 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/23 13:19:13 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static unsigned int	ft_smooth_2(int i, int iter_max, double mult, int c)
 		return (0);
 	if ((red * 256 * 256 + green * 256 + blue) < 0)
 		return (0);
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
+	return ((unsigned int)red << 16 | (unsigned int)green << 8 \
+		| (unsigned int)blue);
 }
 
 static unsigned int	ft_smooth_1(int i, int iter_max, double mult, int c)
@@ -65,7 +66,8 @@ static unsigned int	ft_smooth_1(int i, int iter_max, double mult, int c)
 		return (ft_smooth_2(i, iter_max, mult, c));
 	if ((red * 256 * 256 + green * 256 + blue) < 0)
 		return (0);
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
+	return ((unsigned int)red << 16 | (unsigned int)green << 8 \
+		| (unsigned int)blue);
 }
 
 static unsigned int	ft_normal_2(int i, int c)
@@ -88,7 +90,8 @@ static unsigned int	ft_normal_2(int i, int c)
 	}
 	else
 		return (0);
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
+	return ((unsigned int)red << 16 | (unsigned int)green << 8 \
+		| (unsigned int)blue);
 }
 
 static unsigned int	ft_normal_1(int i, int c)
@@ -111,7 +114,8 @@ static unsigned int	ft_normal_1(int i, int c)
 	}
 	else
 		return (ft_normal_2(i, c));
-	return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
+	return ((unsigned int)red << 16 | (unsigned int)green << 8 \
+		| (unsigned int)blue);
 }
 
 int					ft_choose_color(t_render r, t_win *w)

@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:41:57 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 23:15:52 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/23 13:23:35 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@
 # define SIZE_MOV 20
 # define NB_THREADS 20
 # define BLACK 0
-# define BLUE 255
 # define GREEN 65280
 # define RED 16711680
-# define PURPLE 16711935
 # define WHITE 16777215
 # define GREY 6908265
 # define FONT_VIG 3026478180
@@ -91,7 +89,6 @@
 # define SUP 47
 # define CRO 33
 # define CRF 30
-# define UI unsigned int
 
 typedef	struct s_win	t_win;
 typedef struct s_img	t_img;

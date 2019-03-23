@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:57:06 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 20:15:02 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/23 13:19:29 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ unsigned int	ft_spiral(int i, int iter_max, double mult, int c)
 			red = (int)(20 / a);
 			green = (int)(125 / a);
 			blue = (int)(125 / a);
-			return ((UI)red << 16 | (UI)green << 8 | (UI)blue);
+			return ((unsigned int)red << 16 | (unsigned int)green << 8 \
+				| (unsigned int)blue);
 		}
 		else
 			return (0);
