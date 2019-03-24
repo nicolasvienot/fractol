@@ -6,11 +6,13 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 15:02:50 by nvienot           #+#    #+#             */
-/*   Updated: 2019/02/17 19:45:22 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/24 16:59:33 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+// attention || fin de ligne
 
 static int	ft_base(int nb, int base)
 {

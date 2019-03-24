@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 18:39:39 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 19:51:35 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/24 16:59:20 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ static int		deal_key_2(int key, t_win *w, int a)
 	else if (key == INF && (w->fract == 6 \
 		|| w->fract == 12) && w->p.power > 1 && ++a > 0)
 		w->p.power -= 0.1;
+		// bloquer max
 	else if (key == CRF && (w->fract == 6 || w->fract == 12) && ++a > 0)
 		w->p.power += 1;
 	else if (key == CRO && (w->fract == 6 \

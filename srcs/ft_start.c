@@ -6,7 +6,7 @@
 /*   By: nvienot <nvienot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 20:49:19 by nvienot           #+#    #+#             */
-/*   Updated: 2019/03/18 18:51:17 by nvienot          ###   ########.fr       */
+/*   Updated: 2019/03/24 16:59:03 by nvienot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_init_mandelbrot(t_win *win)
 
 void	ft_init_start(t_win *win)
 {
+	// a proteger
 	win->mlx_ptr = mlx_init();
 	win->win_ptr = mlx_new_window(win->mlx_ptr, \
 		WIN_HOR_SIZE, WIN_VER_SIZE, WIN_NAME);
