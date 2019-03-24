@@ -25,6 +25,7 @@ $> ./fractol [fractal name]
 ```
 
 Fractal names (use name, with uppercase letter) :
+
 Mandelbrot, Duobrot, Tricorn, BurningShip, Palmtree, Multibrot, Julia, Andy, Microcells, Brai, Flower, Multijulia
 
 ### Controls
