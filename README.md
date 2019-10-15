@@ -31,10 +31,3 @@ $> ./fractol [fractal name]
 Fractal names (with uppercase letter) :
 
 Mandelbrot, Duobrot, Tricorn, BurningShip, Palmtree, Multibrot, Julia, Andy, Microcells, Brain, Flower, Multijulia
-
-### Controls
-
-Action | Key
----------------------- | ---------
-Building 1 | <kbd>h</kbd>
-Building 2 | <kbd>&nbsp;scroll up&nbsp;</kbd>
