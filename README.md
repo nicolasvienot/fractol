@@ -4,9 +4,7 @@ Résumé: Créer graphiquement de jolies fractales.
 
 ## Mac App
 
-<p align="center">
-  <src="resources/fractol_macapp2.png">
-</p>
+[![Image of fractol app](resources/fractol_macapp2.png?style=centerme)](https://drive.google.com/open?id=1yv9u1YI1tcDdnKvpMugl-nQSvAdbweeD)
   
 Samples | Samples  
 :-------------------------:|:-------------------------:
